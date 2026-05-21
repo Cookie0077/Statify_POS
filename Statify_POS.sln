@@ -1,8 +1,32 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Statify", "Statify\Statify.csproj", "{B9DABF27-8C2D-4440-AE39-36CC061CB52E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F0527FA7-74B7-44A6-9289-C5790F27F6A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8B02C494-E045-41FD-A2C3-67B74A85F0AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{45F48FC7-5B70-4094-9A5D-25927039215D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "as", "as", "{ABF51796-0BD0-4A27-A9DD-A359C3A7A48A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "asd", "asd", "{8681283B-EC2F-474E-9CF0-9713B90B3A06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Statifylib", "Statifylib\Statifylib.csproj", "{89894E56-AD7D-4C2F-B7CA-6C4FB8A7B594}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9DABF27-8C2D-4440-AE39-36CC061CB52E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9DABF27-8C2D-4440-AE39-36CC061CB52E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9DABF27-8C2D-4440-AE39-36CC061CB52E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9DABF27-8C2D-4440-AE39-36CC061CB52E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89894E56-AD7D-4C2F-B7CA-6C4FB8A7B594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89894E56-AD7D-4C2F-B7CA-6C4FB8A7B594}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89894E56-AD7D-4C2F-B7CA-6C4FB8A7B594}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89894E56-AD7D-4C2F-B7CA-6C4FB8A7B594}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
