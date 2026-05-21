@@ -1,7 +1,9 @@
-﻿using Statifylib.Data.Services.ArtistService;
+﻿using Statifylib.Data.Models;
+using Statifylib.Data.Services.ArtistService;
 using Statifylib.Data.Services.PlaylistService;
 using Statifylib.Data.Services.TrackService;
 using Statifylib.Data.Services.UserService;
+using System.Net.Http.Headers;
 
 namespace Statifylib.Domain;
 
@@ -11,12 +13,29 @@ public class AppController
     private ITrackService trackService;
     private IPlaylistService playlistService;
     private IArtistService artistService;
+
+    private bool usefakeservice = true;
+
+    public AppController() {
+
+        if (usefakeservice)
+        {
+            artistService = new ArtistServiceFake();
+        }
     
-    public AppController(IUserService uS,  ITrackService tS, IPlaylistService pS, IArtistService aS)
-    {
-        userService = uS;
-        trackService = tS;
-        playlistService = pS;
-        artistService = aS;
     }
+
+
+    public async Task<List<Artist>> GetArtists()
+    { 
+         List<Artist> artists = await artistService.GetArtists();
+
+        return artists;
+    }
+
+
+
+
 }
+    
+ 

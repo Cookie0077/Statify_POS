@@ -8,5 +8,26 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="6*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Row="1" Height="auto" >
+
+            <ListView DockPanel.Dock="Left"  Width="200" Padding="10" Margin="50" x:Name="ListviewTopTracks" ItemsSource="{Binding Topartists}" />
+            
+        </DockPanel>
+
+        <TabControl Grid.Row="0" SelectionChanged="TabControl_SelectionChanged" >
+            <TabItem Header="Artists" x:Name="ArtistTab" Height="22" >
+            </TabItem>
+            <TabItem Header="Einstellungen">
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

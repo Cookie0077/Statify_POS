@@ -19,7 +19,7 @@ public class ArtistServiceFake: IArtistService
 
     public Task<List<Artist>> GetArtists()
     {
-        throw new NotImplementedException();
+        return Task.FromResult(Artists.OrderBy(x => x.Id).ToList());
     }
 
     public void AddArtist(Artist artist)

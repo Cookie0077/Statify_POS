@@ -1,22 +1,32 @@
-﻿using Statifylib.Domain;
+﻿using Statifylib.Data.Models;
+using Statifylib.Domain;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Statifylib.GUI;
 
 public class Appview
 {
-    private AppController appController;
-    public Appview(AppController appController)
+    private AppController appController = new AppController();
+
+    public ObservableCollection<Artist> Topartists {  get; set; }
+    public Appview(Window currentwindow)
     {
-        this.appController = appController;
+        currentwindow.DataContext = this;
     }
 
-    public void InitUI()
+    public async void InitUI()
     {
-        throw new NotImplementedException();
+        var artists = await appController.GetArtists();
+
+        Topartists = new ObservableCollection<Artist>(artists);
     }
 
     public void UpdateDashboards()
     {
         throw new NotImplementedException();
     }
+
+
 }

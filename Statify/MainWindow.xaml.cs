@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Statifylib.GUI;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,8 +17,22 @@ namespace Statify;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private Appview appview;
     public MainWindow()
     {
         InitializeComponent();
+        appview = new Appview(this);
+        appview.InitUI();
+    }
+
+    private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.Source is TabControl tabControl)
+        {
+            TabItem ausgewaehlterTab = tabControl.SelectedItem as TabItem;
+
+            // TODO: SWITCH für den Tab.name und dann ins neue Page wechseln
+            
+        }
     }
 }

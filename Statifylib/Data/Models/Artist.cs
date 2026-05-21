@@ -13,4 +13,9 @@ public class Artist: SpotifyItem
         SpotifyId = spotifyId;
         Name = name;
     }
+
+    public override string ToString()
+    {
+        return $"{Name}";
+    }
 }
