@@ -1,0 +1,50 @@
+﻿# ========================
+# .NET / C# Build Output
+# ========================
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ========================
+# Visual Studio / Rider
+# ========================
+.vs/
+.vscode/
+*.rsuser
+*.DotSettings.user
+
+# JetBrains Rider
+.idea/
+# If you want to commit some .idea files, comment the line above
+# and uncomment selectively below:
+# !.idea/.gitignore
+# !.idea/codeStyles/
+# !.idea/dictionaries/
+
+# ========================
+# NuGet
+# ========================
+*.nupkg
+*.snupkg
+[Pp]ackages/
+NuGet.Config
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ========================
+# OS Files
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========================
+# Logs & Temp
+# ========================
+*.log
+*.tmp
+*.temp
