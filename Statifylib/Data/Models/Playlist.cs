@@ -1,10 +1,7 @@
 ﻿namespace Statifylib.Data.Models;
 
-public class Playlist
+public class Playlist: SpotifyItem
 {
-    public int Id { get; set; }
-    public string SpotifyId { get; set; }
-    public string Name { get; set; }
     public int FollowerCount { get; set; }
     public string Owner { get; set; }
     

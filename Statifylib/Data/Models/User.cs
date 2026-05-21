@@ -1,5 +1,6 @@
 ﻿namespace Statifylib.Data.Models;
 
-public class User
+public class User: SpotifyItem
 {
-    }
+    
+}
