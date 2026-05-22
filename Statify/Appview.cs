@@ -2,9 +2,8 @@
 using Statifylib.Domain;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
 
-namespace Statifylib.GUI;
+namespace Statify;
 
 public class Appview
 {

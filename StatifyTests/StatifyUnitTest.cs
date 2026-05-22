@@ -1,4 +1,5 @@
-﻿namespace StatifyTests;
+﻿
+namespace StatifyTests;
 
 public class StatifyUnitTest
 {

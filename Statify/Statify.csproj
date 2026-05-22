@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Statifylib\Statifylib.csproj" />
+      <ProjectReference Include="..\StatifyLib\StatifyLib.csproj" />
     </ItemGroup>
 
 </Project>

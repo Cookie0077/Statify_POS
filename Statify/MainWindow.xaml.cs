@@ -1,5 +1,4 @@
-﻿using Statifylib.GUI;
-using System.Text;
+﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
