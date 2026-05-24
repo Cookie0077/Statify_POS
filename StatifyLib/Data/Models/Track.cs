@@ -3,6 +3,21 @@
 public class Track: SpotifyItem
 {
     public string Image { get; set; }
+
+    
     
     public Track () {}
+
+    public Track(int id, string spotifyId, string name)
+    {
+        Id = id;
+        SpotifyId = spotifyId;
+        Name = name;
+    }
+
+
+    public override string ToString()
+    {
+        return $"{Name}";
+    }
 }

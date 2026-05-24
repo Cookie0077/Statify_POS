@@ -9,7 +9,8 @@ public class Appview
 {
     private AppController appController = new AppController();
 
-    public ObservableCollection<Artist> Topartists {  get; set; }
+    public ObservableCollection<Artist> Topartists {  get; private set; }
+    public ObservableCollection<Track> TopTracks { get; private set; }
     public Appview(Window currentwindow)
     {
         currentwindow.DataContext = this;
@@ -17,8 +18,10 @@ public class Appview
 
     public async void InitUI()
     {
-        var artists = await appController.GetArtists();
+        List<Artist> artists = await appController.GetArtists();
+        List<Track> tracks = await appController.GetTracks();
 
+        TopTracks = new ObservableCollection<Track>(tracks);
         Topartists = new ObservableCollection<Artist>(artists);
     }
 

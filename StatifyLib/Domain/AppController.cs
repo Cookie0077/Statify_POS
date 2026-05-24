@@ -21,6 +21,7 @@ public class AppController
         if (usefakeservice)
         {
             artistService = new ArtistServiceFake();
+            trackService = new TrackServiceFake();
         }
     
     }
@@ -31,6 +32,13 @@ public class AppController
          List<Artist> artists = await artistService.GetArtists();
 
         return artists;
+    }
+
+    public async Task<List<Track>> GetTracks()
+    {
+        List<Track> Tracks = await trackService.GetTracks();
+
+        return Tracks;
     }
 
 
