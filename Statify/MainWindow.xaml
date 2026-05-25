@@ -7,43 +7,35 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="6*" />
+          
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <DockPanel Grid.Row="1" Grid.Column="0"  >
-
-            <ListView DockPanel.Dock="Left"  Width="200" Padding="10" Margin=" 20 50"  ItemsSource="{Binding Topartists}" />
-            <!--<In die Mitte soll ein Dashboard -->
-            <ListView DockPanel.Dock="Right" Width="150" Margin="20 50" Padding="10" HorizontalAlignment="Right" ItemsSource="{Binding TopTracks}" />
-        </DockPanel>
-
-        <DockPanel Grid.Row="0" >
-            <TabControl SelectionChanged="TabControl_SelectionChanged" Padding="10" >
-                <TabItem Header="Home" x:Name="TabHome" Height="35"  Width="150"/>
-                <TabItem Header="Artists" x:Name="ArtistTab" Width="100"  />
-                <TabItem Header="Songs" x:Name="SongTabs"  Width="100" />
-                <TabItem Header="Playlists" x:Name="PlaylistTab"  Width="100" />
+    
+        <DockPanel Grid.Row="0">
+            <TabControl x:Name="MainTabControl" 
+                        SelectionChanged="TabControl_SelectionChanged"
+                        >
+                <TabItem Header="Home"      x:Name="TabHome"   Height="50"    Width="150"/>
+                <TabItem Header="Artists"   x:Name="ArtistTab"           Width="100"/>
+                <TabItem Header="Songs"     x:Name="SongTabs"            Width="100"/>
+                <TabItem Header="Playlists" x:Name="PlaylistTab"         Width="100"/>
             </TabControl>
 
-            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Top" Margin="50 0 0 0"  >
-                <Image  Width="50" Height="50" Margin="10 0"/>
-                <Label Content="Username" x:Name="Labelusername" Height="35" Padding="10" VerticalContentAlignment="Center" Margin="20 0" />
-                <Button x:Name="ButtonUserSettings" Content="Settings" Padding="10" Margin="20 0"/>
-
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
+                        VerticalAlignment="Top" Margin="50 0 0 0">
+                <Image Width="50" Height="50" Margin="10 0"/>
+                <Label Content="Username" x:Name="Labelusername"
+                       Height="35" Padding="10" VerticalContentAlignment="Center" Margin="20 0"/>
+                <Button x:Name="ButtonUserSettings" Content="Settings"
+                        Padding="10" Margin="20 0"/>
             </StackPanel>
-
-
         </DockPanel>
 
-       
-
-
+      
+        <Frame x:Name="Mainframe" Grid.Row="1"
+               NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

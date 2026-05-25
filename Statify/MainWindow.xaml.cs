@@ -16,21 +16,43 @@ namespace Statify;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private Appview appview;
+
+    private MainPage main = new MainPage();
     public MainWindow()
     {
         InitializeComponent();
-        appview = new Appview(this);
-        appview.InitUI();
+        Mainframe.Navigate(main);
     }
 
     private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (e.Source is TabControl tabControl)
         {
-            TabItem ausgewaehlterTab = tabControl.SelectedItem as TabItem;
+            TabItem selectedTab = tabControl.SelectedItem as TabItem;
 
-            // TODO: SWITCH für den Tab.name und dann ins neue Page wechseln
+           switch(selectedTab.Name)
+            {
+                case "TabHome":
+                    Mainframe.Navigate(main);
+                    break;
+
+                case "ArtistTab":
+                    Mainframe.Navigate(new ArtistPage());
+                    break;
+
+
+                case "SongTabs":
+                    Mainframe.Navigate(new TrackPage());
+                    break;
+
+
+                case "PlaylistTab":
+                   Mainframe.Navigate(new PlaylistPage());
+                   break;
+
+
+
+            }
             
         }
     }
