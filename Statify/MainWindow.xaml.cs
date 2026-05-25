@@ -17,11 +17,15 @@ namespace Statify;
 public partial class MainWindow : Window
 {
 
-    private MainPage main = new MainPage();
+    private MainPage mainPage = new MainPage();
+    private ArtistPage artistPage = new ArtistPage();
+    private TrackPage trackPage = new TrackPage();
+    private PlaylistPage playlistPage = new PlaylistPage();
+
     public MainWindow()
     {
         InitializeComponent();
-        Mainframe.Navigate(main);
+        Mainframe.Navigate(mainPage);
     }
 
     private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -33,21 +37,21 @@ public partial class MainWindow : Window
            switch(selectedTab.Name)
             {
                 case "TabHome":
-                    Mainframe.Navigate(main);
+                    Mainframe.Navigate(mainPage);
                     break;
 
                 case "ArtistTab":
-                    Mainframe.Navigate(new ArtistPage());
+                    Mainframe.Navigate(artistPage);
                     break;
 
 
                 case "SongTabs":
-                    Mainframe.Navigate(new TrackPage());
+                    Mainframe.Navigate(trackPage);
                     break;
 
 
                 case "PlaylistTab":
-                   Mainframe.Navigate(new PlaylistPage());
+                   Mainframe.Navigate(playlistPage);
                    break;
 
 

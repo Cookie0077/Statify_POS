@@ -1,4 +1,8 @@
-﻿using Statifylib.Data.Models;
+﻿using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
+using SkiaSharp;
+using Statifylib.Data.Models;
 using Statifylib.Domain;
 using System;
 using System.Collections.Generic;
@@ -25,6 +29,9 @@ namespace Statify
 
         public ObservableCollection<Artist> Topartists { get; private set; }
         public ObservableCollection<Track> TopTracks { get; private set; }
+
+        public ISeries[] TrackSeries { get; set; }
+        public Axis[] XAxes { get; set; }
         public MainPage()
         {
             InitializeComponent();
@@ -40,6 +47,29 @@ namespace Statify
 
             TopTracks = new ObservableCollection<Track>(tracks);
             Topartists = new ObservableCollection<Artist>(artists);
+
+            TrackSeries = new ISeries[]
+            {    
+                new ColumnSeries<int>
+                {
+                Name = "Plays",
+                // TODO: hier muss die playtime hin !!
+                Values = tracks.Select(t => t.Id).ToArray(),
+                Fill = new SolidColorPaint(SKColors.Green)
+                }
+
+
+            };
+
+            XAxes = new Axis[]
+            {
+                new Axis
+                {
+                     Labels = tracks.Select(t => t.Name).ToArray(),
+                     LabelsRotation = 45
+                }
+            };
+
         }
     }
 }
