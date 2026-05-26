@@ -44,14 +44,15 @@ namespace Statify
             List<Artist> artists = await appController.GetArtists();
 
             TopArtists = new ObservableCollection<Artist>(artists);
-            
+
             ArtistSeries = new ISeries[]
             {    
                 new ColumnSeries<int>
                 {
                     Name = "Plays",
+                    // TODO: hier muss die playtime hin !!
                     Values = artists.Select(t => t.Id).ToArray(),
-                    Fill = new SolidColorPaint(SKColors.SkyBlue)
+                    Fill = new SolidColorPaint(SKColors.Green)
                 }
 
 
@@ -62,9 +63,10 @@ namespace Statify
                 new Axis
                 {
                     Labels = artists.Select(t => t.Name).ToArray(),
-                    LabelsRotation = 90
+                    LabelsRotation = 45
                 }
             };
+            }
+
         }
     }
-}

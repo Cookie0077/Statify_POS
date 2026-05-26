@@ -12,9 +12,8 @@
     <DockPanel Background="AliceBlue" >
 
         <ListView DockPanel.Dock="Left"  Width="200" Padding="10" Margin=" 20 50"  ItemsSource="{Binding Topartists}" />
-        <lvc:CartesianChart Series="{Binding TrackSeries}" Width="250"
-                    XAxes="{Binding XAxes}"
-                    Height="300"/>
+        
+        <lvc:PieChart Series="{Binding TrackSeries}" Width="250" Height="300"/>
         <ListView DockPanel.Dock="Right" Width="150" Margin="20 50" Padding="10" HorizontalAlignment="Right" ItemsSource="{Binding TopTracks}" />
     </DockPanel>
 </Page>

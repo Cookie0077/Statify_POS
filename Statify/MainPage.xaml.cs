@@ -31,7 +31,6 @@ namespace Statify
         public ObservableCollection<Track> TopTracks { get; private set; }
 
         public ISeries[] TrackSeries { get; set; }
-        public Axis[] XAxes { get; set; }
         public MainPage()
         {
             InitializeComponent();
@@ -48,28 +47,23 @@ namespace Statify
 
             TopTracks = new ObservableCollection<Track>(tracks);
             Topartists = new ObservableCollection<Artist>(artists);
+            
 
-            TrackSeries = new ISeries[]
-            {    
-                new ColumnSeries<int>
-                {
-                Name = "Plays",
-                // TODO: hier muss die playtime hin !!
-                Values = tracks.Select(t => t.Id).ToArray(),
-                Fill = new SolidColorPaint(SKColors.Green)
-                }
+            TrackSeries = new ISeries[tracks.Count];
 
-
-            };
-
-            XAxes = new Axis[]
+            for (int i = 0; i < tracks.Count; i++)
             {
-                new Axis
+                float hue = (i * 65f) % 360f; 
+
+                TrackSeries[i] = new PieSeries<int>()
                 {
-                     Labels = tracks.Select(t => t.Name).ToArray(),
-                     LabelsRotation = 45
-                }
-            };
+                    Name = tracks[i].Name,
+                    Values = new int[1] {tracks[i].Id},
+                    // Hue, Saturation, Lightness
+                    Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f)) 
+                };
+
+            }
 
         }
     }
