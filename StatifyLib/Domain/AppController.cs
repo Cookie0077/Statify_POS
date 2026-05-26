@@ -23,7 +23,6 @@ public class AppController
             artistService = new ArtistServiceFake();
             trackService = new TrackServiceFake();
         }
-    
     }
 
 

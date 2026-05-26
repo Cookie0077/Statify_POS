@@ -9,6 +9,10 @@ public class TrackServiceFake: ITrackService
         new Track() {Id = 1,  Name = "My First Track"},
         new Track() {Id = 2,  Name = "My Second Track"},
         new Track() {Id = 3,  Name = "My Third Track"},
+        new Track() {Id = 4,  Name = "My Fourth Track"},
+        new Track() {Id = 5,  Name = "My Fifth Track"},
+        new Track() {Id = 6,  Name = "My Sixth Track"},
+        new Track() {Id = 7,  Name = "My Seventh Track"}
     };
     
     public Task<Track> GetTrack(int trackId)

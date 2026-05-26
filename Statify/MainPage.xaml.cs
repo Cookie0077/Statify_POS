@@ -42,6 +42,7 @@ namespace Statify
 
         public async void InitUI()
         {
+            // TODO: Top Artists and Tracks considering the User
             List<Artist> artists = await appController.GetArtists();
             List<Track> tracks = await appController.GetTracks();
 
