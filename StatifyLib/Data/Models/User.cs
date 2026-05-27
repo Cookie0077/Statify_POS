@@ -2,12 +2,15 @@
 
 public class User: SpotifyItem
 {
-    public string SpotifyToken { get; set; }
+    public User() { }
     
-    public User () {}
-    
-    public User ( string spotifyToken)
+    public User (string name)
     {
-        SpotifyToken = spotifyToken;
+        Name = name;
+    }
+    public User(string name, int id)
+    {
+        Name = name;
+        Id = id;
     }
 }

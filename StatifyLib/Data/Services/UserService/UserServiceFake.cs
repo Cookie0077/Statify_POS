@@ -1,4 +1,5 @@
 ﻿using Statifylib.Data.Models;
+using StatifyLib.Data.Models;
 
 namespace Statifylib.Data.Services.UserService;
 
@@ -10,11 +11,20 @@ public class UserServiceFake: IUserService
         new User(){Id = 2, Name = "Jane Doe"},
         new User(){Id = 3, Name = "Jerry Doe"}
     };
-    
-    
-    public Task<User> GetUser(int userId)
+
+    public Task<List<Artist>> GetTopArtists(int userId)
     {
-        return Task.FromResult(Users.SingleOrDefault(x => x.Id == userId));
+        throw new NotImplementedException();
+    }
+
+    public Task<List<Track>> GetTopTracks(int userId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<User> LoginUser(UserRequest user)
+    {
+        throw new NotImplementedException();
     }
 
     public void UpdateUser(User user)
@@ -24,13 +34,5 @@ public class UserServiceFake: IUserService
         Users.Add(user);
     }
 
-    public Task<List<Track>> GetTopTracks(int userId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<List<Artist>> GetTopArtists(int userId)
-    {
-        throw new NotImplementedException();
-    }
+  
 }
