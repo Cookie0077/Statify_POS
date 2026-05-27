@@ -26,6 +26,12 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         Mainframe.Navigate(mainPage);
+
+        LoginWindow loginWindow = new LoginWindow();
+        if(loginWindow.DialogResult == true)
+        {
+            
+        }
     }
 
     private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
