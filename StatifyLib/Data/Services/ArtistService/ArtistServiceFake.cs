@@ -6,9 +6,9 @@ public class ArtistServiceFake: IArtistService
 {
     private List<Artist> Artists = new List<Artist>()
     {
-        new Artist(1, "ID1", "My First Artist"),
-        new Artist(2, "ID2", "My Second Artist"),
-        new Artist(3, "ID3", "My Third Artist")
+        new Artist(1,  "My First Artist"),
+        new Artist(2,  "My Second Artist"),
+        new Artist(3, "My Third Artist")
     };
     
     public Task<Artist> GetArtist(int artistId)
