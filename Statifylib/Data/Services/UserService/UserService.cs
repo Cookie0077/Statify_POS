@@ -32,6 +32,16 @@ namespace StatifyLib.Data.Services.UserService
             return loggedInUser;
         }
 
+        public async Task<User> RegisterUser(UserRequest userRequest)
+        {
+            HttpResponseMessage result = await client.PostAsJsonAsync("/user/register", userRequest);
+
+            User loggedInUser = await result.Content.ReadFromJsonAsync<User>();
+            string error = await result.Content.ReadAsStringAsync();
+
+            return loggedInUser;
+        }
+
         public void UpdateUser(User user)
         {
             throw new NotImplementedException();

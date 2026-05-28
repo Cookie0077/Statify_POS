@@ -26,7 +26,7 @@ namespace Statify
 
         public User UserAPI;
         private IUserService UserService;
-        private AppController AppController = new AppController();
+        private AppController appController = new AppController();
 
         private bool usefakeService = true;
         public LoginWindow()
@@ -55,7 +55,7 @@ namespace Statify
             UserRequest userrequest = new UserRequest(name,pw);
           
 
-            UserAPI = await AppController.GetUserLogin(userrequest);
+            UserAPI = await appController.GetUserLogin(userrequest);
 
             if (UserAPI.Name == null)
             {
@@ -66,6 +66,17 @@ namespace Statify
             this.DialogResult = true;
 
 
+        }
+
+        private void ButtonRegister_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerWindow = new RegisterWindow();
+
+            if(registerWindow.ShowDialog() == true)
+            {
+                UserAPI = registerWindow.NewUser;
+                this.DialogResult = true;
+            }
         }
     }
 }

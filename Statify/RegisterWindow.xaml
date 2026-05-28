@@ -8,12 +8,20 @@
         Title="RegisterWindow" Height="450" Width="800">
     <DockPanel>
         <Label Content="Welcome to Statify" HorizontalAlignment="Center" DockPanel.Dock="Top" FontSize="40" Margin="10"/>
-        <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="300">
-            <TextBox x:Name="TextBoxName" Text="Enter Username" Margin="10" Padding="5" HorizontalAlignment="Center" Width="120" TextAlignment="Center" />
-            <TextBox x:Name="TextBoxPassword" Text="Enter Password" Margin="10" Padding="5" HorizontalAlignment="Center" Width="120" TextAlignment="Center" />
-            <TextBox x:Name="TextBoxReenterPW" Text="Reenter Password" Margin="10" Padding="5" HorizontalAlignment="Center" Width="120" TextAlignment="Center" />
-            <Button x:Name="ButtonLogin" Content="Login" Margin="10" Padding="5" Width="120" />
-            <Button x:Name="ButtonRegister" Content="New Account" Margin="10" Padding="5" Width="120" />
+        <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center"  Width="200" Height="300">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" >
+                <Label Content="Username:" VerticalAlignment="Center" Margin="5" Padding="4" />
+                <TextBox x:Name="TextBoxName"  Margin="10" Padding="5" HorizontalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150">
+                <Label Content="Password:" VerticalAlignment="Center" Margin="5"  Padding="4" HorizontalAlignment="Center" />
+                <PasswordBox x:Name="PasswordBoxPW"  Margin="10" Padding="5" HorizontalAlignment="Center"  />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" >
+                <Label Content="Reenter Password:" VerticalAlignment="Center" Margin="5"  Padding="4"/>
+                <PasswordBox x:Name="PasswordBoxPWRE"  Margin="10" Padding="5" HorizontalAlignment="Center" />
+            </StackPanel>
+            <Button x:Name="ButtonRegister" Content="Register" Margin="10" Padding="5" Width="100" Click="ButtonRegister_Click" />
         </StackPanel>
     </DockPanel>
 

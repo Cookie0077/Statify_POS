@@ -20,7 +20,7 @@
                 <PasswordBox x:Name="PasswordBoxPW"  Margin="10" Padding="5" HorizontalAlignment="Center" />
             </StackPanel>
             <Button x:Name="ButtonLogin" Content="Login" Margin="10" Padding="5" Width="100" Click="ButtonLogin_Click" />
-            <Button x:Name="ButtonRegister" Content="New Account" Margin="10" Padding="5" Width="100" />
+            <Button x:Name="ButtonRegister" Content="New Account" Margin="10" Padding="5" Width="100" Click="ButtonRegister_Click" />
         </StackPanel>
     </DockPanel>
 

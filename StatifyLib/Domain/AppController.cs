@@ -61,6 +61,13 @@ public class AppController
         return LoginUser;
     }
 
+    public async Task<User> GetUserRegister(UserRequest userRequest)
+    {
+        User? RegisteredUser = await userService.RegisterUser(userRequest);
+
+        return RegisteredUser;
+    }
+
 
 
 
