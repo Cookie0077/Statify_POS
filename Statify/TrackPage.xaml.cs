@@ -31,9 +31,12 @@ namespace Statify
         public ObservableCollection<Track> TopTracks { get; private set; }
 
         public ISeries[] TrackSeries  { get; set; }
-        
-        public TrackPage()
+
+        private int UserId;
+
+        public TrackPage(int UserID)
         {
+            this.UserId = UserID;
             InitializeComponent();
             DataContext = this;
 

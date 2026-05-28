@@ -1,5 +1,6 @@
 ﻿using Statifylib.Data.Models;
 using Statifylib.Data.Services.UserService;
+using Statifylib.Domain;
 using StatifyLib.Data.Models;
 using StatifyLib.Data.Services.UserService;
 using System;
@@ -25,49 +26,46 @@ namespace Statify
 
         public User UserAPI;
         private IUserService UserService;
+        private AppController AppController = new AppController();
 
         private bool usefakeService = true;
         public LoginWindow()
         {
             InitializeComponent();
 
-            if (usefakeService)
-            {
-                UserService = new UserServiceFake();
-            }
-            else
-            {
-                HttpClient client = new HttpClient()
-                {
-                    BaseAddress = new Uri("http://127.0.0.1:8000")
-                };
-
-                UserService = new UserService(client);
-            }
-
         }
 
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             string name = TextBoxName.Text;
-            string pw = TextBoxPassword.Text;
+            string pw = PasswordBoxPW.Password;
 
 
-            if(string.IsNullOrEmpty(name) || string.IsNullOrEmpty(pw))
+            if(string.IsNullOrEmpty(name) == true || string.IsNullOrEmpty(pw) == true)
             {
                 MessageBox.Show("Please enter a Name AND a password");
                 return;
             }
-            if(pw.Length <= 0 || pw.Length >= 72)
+            if(pw.Length <= 0 || pw.Length > 72)
             {
                 MessageBox.Show("Pleas enter a valid Password");
                 return;
             }
 
-             UserRequest user = new UserRequest(name,pw);
+            UserRequest userrequest = new UserRequest(name,pw);
           
 
-            UserAPI = await UserService.LoginUser(user);
+            UserAPI = await AppController.GetUserLogin(userrequest);
+
+            if (UserAPI.Name == null)
+            {
+                MessageBox.Show("Wrong Username or Password");
+                return;
+            }
+
+            this.DialogResult = true;
+
+
         }
     }
 }
