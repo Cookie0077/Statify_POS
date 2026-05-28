@@ -24,19 +24,32 @@ public partial class MainWindow : Window
     private PlaylistPage playlistPage;
     private User CurentUser;
 
+    private bool loginwindooff = true;
+
     public MainWindow()
     {
         InitializeComponent();
-       
 
-        LoginWindow loginWindow = new LoginWindow();
-        if(loginWindow.ShowDialog() == true)
+        if (!loginwindooff)
         {
-            CurentUser = loginWindow.UserAPI;
-            mainPage = new MainPage(CurentUser.Id);
-            artistPage = new ArtistPage(CurentUser.Id);
-            trackPage = new TrackPage(CurentUser.Id);
-            playlistPage = new PlaylistPage(CurentUser.Id);
+            LoginWindow loginWindow = new LoginWindow();
+            if (loginWindow.ShowDialog() == true)
+            {
+                CurentUser = loginWindow.UserAPI;
+                mainPage = new MainPage(CurentUser.Id);
+                artistPage = new ArtistPage(CurentUser.Id);
+                trackPage = new TrackPage(CurentUser.Id);
+                playlistPage = new PlaylistPage(CurentUser.Id);
+            }
+
+        }
+        else
+        {
+          
+            mainPage = new MainPage(1);
+            artistPage = new ArtistPage(1);
+            trackPage = new TrackPage(1);
+            playlistPage = new PlaylistPage(1);
         }
 
         Mainframe.Navigate(mainPage);

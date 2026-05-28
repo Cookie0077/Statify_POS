@@ -7,6 +7,7 @@ using Statifylib.Domain;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,48 +26,54 @@ namespace Statify
     /// </summary>
     public partial class MainPage : Page
     {
-        private AppController appController = new AppController();
+    private AppController appController = new AppController();
 
-        public ObservableCollection<Artist> Topartists { get; private set; }
-        public ObservableCollection<Track> TopTracks { get; private set; }
+    public ObservableCollection<Artist> Topartists { get; private set; } = new ObservableCollection<Artist>();
+    public ObservableCollection<Track> TopTracks { get; private set; } = new ObservableCollection<Track>();
 
-        public ISeries[] TrackSeries { get; set; }
-        private int UserId;
+    public ISeries[] TrackSeries { get; set; }
+    private int UserId;
+
+   
+
         public MainPage(int userId)
+    {
+        InitializeComponent();
+        DataContext = this;
+        UserId = userId;
+        InitUI();
+
+    }
+
+    public async void InitUI()
+    {
+        // TODO: Top Artists and Tracks considering the User
+        List<Artist> artists = await appController.GetArtists();
+        List<Track> tracks = await appController.GetTracks();
+
+        foreach (var artist in artists) Topartists.Add(artist);
+        foreach (var track in tracks) TopTracks.Add(track);
+
+        TrackSeries= new ISeries[tracks.Count];
+
+        for (int i = 0; i < tracks.Count; i++)
         {
-            InitializeComponent();
-            DataContext = this;
-            UserId = userId;
-            InitUI();
-          
-        }
+            float hue = (i * 65f) % 360f;
 
-        public async void InitUI()
-        {
-            // TODO: Top Artists and Tracks considering the User
-            List<Artist> artists = await appController.GetArtists();
-            List<Track> tracks = await appController.GetTracks();
-
-            TopTracks = new ObservableCollection<Track>(tracks);
-            Topartists = new ObservableCollection<Artist>(artists);
-            
-
-            TrackSeries = new ISeries[tracks.Count];
-
-            for (int i = 0; i < tracks.Count; i++)
+            TrackSeries[i] = new PieSeries<int>()
             {
-                float hue = (i * 65f) % 360f; 
+                Name = tracks[i].Name,
+                // PlayCount ist 0
+                Values = new int[1] { tracks[i].PlayCount },
+                // Hue, Saturation, Lightness
+                Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f))
+            };
 
-                TrackSeries[i] = new PieSeries<int>()
-                {
-                    Name = tracks[i].Name,
-                    Values = new int[1] {tracks[i].PlayCount},
-                    // Hue, Saturation, Lightness
-                    Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f)) 
-                };
-
-            }
-
+            TrackChart.Series = TrackSeries;
         }
+
+
+
+    }
     }
 }

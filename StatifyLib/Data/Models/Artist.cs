@@ -4,6 +4,7 @@ public class Artist: SpotifyItem
 {
     public List<string> Images { get; set; }
     public int FollowerCount { get; set; }
+
     
     public Artist () {}
     

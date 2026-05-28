@@ -6,6 +6,7 @@ using Statifylib.Data.Services.UserService;
 using StatifyLib.Data.Models;
 using StatifyLib.Data.Services.UserService;
 using System.Net.Http.Headers;
+using StatifyLib.Data.Services.TrackService;
 
 namespace Statifylib.Domain;
 
@@ -16,7 +17,7 @@ public class AppController
     private IPlaylistService playlistService;
     private IArtistService artistService;
 
-    private bool usefakeservice = true;
+    private bool usefakeservice = false;
 
     public AppController() {
         HttpClient client = new HttpClient()
@@ -28,13 +29,12 @@ public class AppController
         {
             artistService = new ArtistServiceFake();
             trackService = new TrackServiceFake();
-            userService = new UserService(client);
             
         }
         else
         {
-          
-
+            artistService = new ArtistServiceFake();
+            trackService = new TrackService(client);
             userService = new UserService(client);
         }
     }
