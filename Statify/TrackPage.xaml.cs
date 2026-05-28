@@ -18,8 +18,10 @@ namespace Statify
     /// </summary>
     public partial class TrackPage : Page
     {
-        public TrackPage()
+        private int UserId;
+        public TrackPage(int UserID)
         {
+            this.UserId = UserID;
             InitializeComponent();
             DataContext = this;
         }

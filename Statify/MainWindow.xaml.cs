@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Statifylib.Data.Models;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,21 +18,28 @@ namespace Statify;
 public partial class MainWindow : Window
 {
 
-    private MainPage mainPage = new MainPage();
-    private ArtistPage artistPage = new ArtistPage();
-    private TrackPage trackPage = new TrackPage();
-    private PlaylistPage playlistPage = new PlaylistPage();
+    private MainPage mainPage;
+    private ArtistPage artistPage;
+    private TrackPage trackPage;
+    private PlaylistPage playlistPage;
+    private User CurentUser;
 
     public MainWindow()
     {
         InitializeComponent();
-        Mainframe.Navigate(mainPage);
+       
 
         LoginWindow loginWindow = new LoginWindow();
-        if(loginWindow.DialogResult == true)
+        if(loginWindow.ShowDialog() == true)
         {
-            
+            CurentUser = loginWindow.UserAPI;
+            mainPage = new MainPage(CurentUser.Id);
+            artistPage = new ArtistPage(CurentUser.Id);
+            trackPage = new TrackPage(CurentUser.Id);
+            playlistPage = new PlaylistPage(CurentUser.Id);
         }
+
+        Mainframe.Navigate(mainPage);
     }
 
     private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)

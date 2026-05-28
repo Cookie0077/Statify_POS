@@ -31,11 +31,13 @@ namespace Statify
         public Axis[] XAxes { get; set; }
 
         public ObservableCollection<Artist> TopArtists { get; private set; }
+        private int UserId;
         
-        public ArtistPage()
+        public ArtistPage(int UserId)
         {
             InitializeComponent();
             DataContext = this;
+            this.UserId = UserId;
             InitUI();
         }
 

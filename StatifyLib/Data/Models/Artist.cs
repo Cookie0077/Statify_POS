@@ -10,7 +10,6 @@ public class Artist: SpotifyItem
     public Artist (int id, string spotifyId, string name) 
     {
         Id = id;
-        SpotifyId = spotifyId;
         Name = name;
     }
 

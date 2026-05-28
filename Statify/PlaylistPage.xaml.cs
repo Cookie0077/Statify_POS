@@ -18,9 +18,11 @@ namespace Statify
     /// </summary>
     public partial class PlaylistPage : Page
     {
-        public PlaylistPage()
+        private int UserId;
+        public PlaylistPage(int UserID)
         {
             InitializeComponent();
+            this.UserId = UserID;
             DataContext = this;
         }
     }

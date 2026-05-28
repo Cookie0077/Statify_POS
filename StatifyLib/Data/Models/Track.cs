@@ -11,7 +11,6 @@ public class Track: SpotifyItem
     public Track(int id, string spotifyId, string name)
     {
         Id = id;
-        SpotifyId = spotifyId;
         Name = name;
     }
 

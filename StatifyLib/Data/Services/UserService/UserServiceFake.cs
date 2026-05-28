@@ -12,16 +12,7 @@ public class UserServiceFake: IUserService
         new User(){Id = 3, Name = "Jerry Doe"}
     };
 
-    public Task<List<Artist>> GetTopArtists(int userId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<List<Track>> GetTopTracks(int userId)
-    {
-        throw new NotImplementedException();
-    }
-
+   
     public Task<User> LoginUser(UserRequest user)
     {
         throw new NotImplementedException();

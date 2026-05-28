@@ -5,12 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Statify"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="400" Width="500">
+        Title="LoginWindow" Height="400" Width="500"
+        WindowStyle="None">
+    
     <DockPanel>
         <Label Content="Welcome Back" HorizontalAlignment="Center" DockPanel.Dock="Top" FontSize="40" Margin="10"/>
-        <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="300">
-            <TextBox x:Name="TextBoxName" Text="Enter Username" Margin="10" Padding="5" HorizontalAlignment="Center" />
-            <TextBox x:Name="TextBoxPassword" Text="Enter Password" Margin="10" Padding="5" HorizontalAlignment="Center" />
+        <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center"  Width="200" Height="300">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <Label Content="Username:" VerticalAlignment="Center" Margin="5" Padding="4" />
+                <TextBox x:Name="TextBoxName"  Margin="10" Padding="5" HorizontalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <Label Content="Password:" VerticalAlignment="Center" Margin="5"  Padding="4"/>
+                <PasswordBox x:Name="PasswordBoxPW"  Margin="10" Padding="5" HorizontalAlignment="Center" />
+            </StackPanel>
             <Button x:Name="ButtonLogin" Content="Login" Margin="10" Padding="5" Width="100" Click="ButtonLogin_Click" />
             <Button x:Name="ButtonRegister" Content="New Account" Margin="10" Padding="5" Width="100" />
         </StackPanel>
