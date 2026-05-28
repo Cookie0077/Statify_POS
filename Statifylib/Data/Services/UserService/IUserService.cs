@@ -7,4 +7,5 @@ public interface IUserService
 {
     void UpdateUser(User user);
     Task<User> LoginUser(UserRequest user);
+    Task<User> RegisterUser(UserRequest userRequest);
 }

@@ -18,6 +18,11 @@ public class UserServiceFake: IUserService
         throw new NotImplementedException();
     }
 
+    public Task<User> RegisterUser(UserRequest userRequest)
+    {
+        throw new NotImplementedException();
+    }
+
     public void UpdateUser(User user)
     {
         User oldUser = Users.SingleOrDefault(x => x.Id == user.Id);
