@@ -6,5 +6,5 @@ public interface ITrackService
 {
     Task<Track> GetTrack(int trackId);
     Task<List<Track>> GetTracks();
-    void AddTrack(Track track);
+    Task<List<Track>> GetTopTracks(int userId);
 }

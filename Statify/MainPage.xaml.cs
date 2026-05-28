@@ -60,7 +60,7 @@ namespace Statify
                 TrackSeries[i] = new PieSeries<int>()
                 {
                     Name = tracks[i].Name,
-                    Values = new int[1] {tracks[i].Id},
+                    Values = new int[1] {tracks[i].PlayCount},
                     // Hue, Saturation, Lightness
                     Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f)) 
                 };
