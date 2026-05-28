@@ -46,14 +46,14 @@ namespace Statify
 
             List<Track> tracks = await trackService.GetTopTracks(1);
             TopTracks = new ObservableCollection<Track>(tracks);
-            
+
             TrackSeries = new ISeries[]
             {    
                 new LineSeries<int>()
                 {
                     Name = "Plays",
                     // TODO: hier muss der Playcount hin !!
-                    Values = tracks.Select(t => t.Id).ToArray()
+                    Values = tracks.Select(t=>t.PlayCount).ToList()
                 }
             };
         }
