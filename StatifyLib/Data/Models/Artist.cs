@@ -7,7 +7,7 @@ public class Artist: SpotifyItem
     
     public Artist () {}
     
-    public Artist (int id, string spotifyId, string name) 
+    public Artist (int id, string name) 
     {
         Id = id;
         Name = name;

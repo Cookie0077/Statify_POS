@@ -8,7 +8,7 @@ public class Track: SpotifyItem
     
     public Track () {}
 
-    public Track(int id, string spotifyId, string name)
+    public Track(int id, string name)
     {
         Id = id;
         Name = name;
