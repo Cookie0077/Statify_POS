@@ -19,14 +19,16 @@ public class TrackServiceFake: ITrackService
     {
         return Task.FromResult(Tracks.FirstOrDefault(x => x.Id == trackId));
     }
+    
 
     public Task<List<Track>> GetTracks()
     {
         return  Task.FromResult(Tracks.OrderBy(x => x.Id).ToList());
     }
 
-    public void AddTrack(Track track)
+
+    public Task<List<Track>> GetTopTracks(int userId)
     {
-        Tracks.Add(track);
+        return Task.FromResult(Tracks.Where(t => t.Id == userId).ToList());
     }
 }

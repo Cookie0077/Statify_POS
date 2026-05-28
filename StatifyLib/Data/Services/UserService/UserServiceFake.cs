@@ -12,6 +12,20 @@ public class UserServiceFake: IUserService
         new User(){Id = 3, Name = "Jerry Doe"}
     };
 
+    private List<Track> Tracks = new List<Track>()
+    {
+        new Track() { Id = 1, Name = "Track 1" },
+        new Track() { Id = 1, Name = "Track 2" },
+        new Track() { Id = 2, Name = "Track 3" },
+        new Track() { Id = 3, Name = "Track 4" }
+    };
+
+    private List<Artist> Artists = new List<Artist>()
+    {
+        new Artist() { Id = 1, Name = "Artist 1" },
+        new Artist() { Id = 2, Name = "Artist 2" }
+    };
+
     public Task<List<Artist>> GetTopArtists(int userId)
     {
         throw new NotImplementedException();
@@ -19,7 +33,7 @@ public class UserServiceFake: IUserService
 
     public Task<List<Track>> GetTopTracks(int userId)
     {
-        throw new NotImplementedException();
+        return Task.FromResult(Tracks.Where(t => t.Id== userId).ToList());
     }
 
     public Task<User> LoginUser(UserRequest user)
