@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StatifyLib.Data.Models;
 
 namespace Statify
 {
@@ -29,7 +30,10 @@ namespace Statify
     private AppController appController = new AppController();
 
     public ObservableCollection<Artist> Topartists { get; private set; } 
-    public ObservableCollection<Track> TopTracks { get; private set; } 
+    
+    // Now with the Placount and stuff its "TrackRecord"
+    public ObservableCollection<TrackRecord> TopTracks { get; private set; } 
+    //public ObservableCollection<Track> TopTracks { get; private set; } 
 
     public ISeries[] TrackSeries { get; set; }
     private int UserId;
@@ -40,8 +44,8 @@ namespace Statify
     {
         InitializeComponent();
         DataContext = this;
-        UserId = userId;
         InitUI();
+        UserId = userId;
         appController.SyncTracks(userId);
     }
 
@@ -49,11 +53,11 @@ namespace Statify
     {
         // TODO: Top Artists and Tracks considering the User
         List<Artist> artists = await appController.GetArtists();
-        List<Track> tracks = await appController.GetTracks();
-        //List<Track> tracks = await appController.GetTopTracks(UserId);
+        //List<Track> tracks = await appController.GetTracks();
+        List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
         
         Topartists = new ObservableCollection<Artist>(artists);
-        TopTracks = new ObservableCollection<Track>(tracks);
+        TopTracks = new ObservableCollection<TrackRecord>(tracks);
 
         TrackSeries= new ISeries[tracks.Count];
 

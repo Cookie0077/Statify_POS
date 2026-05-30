@@ -16,6 +16,7 @@ using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
 using Statifylib.Data.Models;
+using StatifyLib.Data.Models;
 using Statifylib.Data.Services.TrackService;
 using Statifylib.Data.Services.UserService;
 
@@ -28,7 +29,7 @@ namespace Statify
     {
         private ITrackService trackService;
         
-        public ObservableCollection<Track> TopTracks { get; private set; }
+        public ObservableCollection<TrackRecord> TopTracks { get; private set; }
 
         public ISeries[] TrackSeries  { get; set; }
 
@@ -47,8 +48,8 @@ namespace Statify
         {
             trackService = new TrackServiceFake();
 
-            List<Track> tracks = await trackService.GetTopTracks(1);
-            TopTracks = new ObservableCollection<Track>(tracks);
+            List<TrackRecord> tracks = await trackService.GetTopTracks(1);
+            TopTracks = new ObservableCollection<TrackRecord>(tracks);
 
             TrackSeries = new ISeries[]
             {    

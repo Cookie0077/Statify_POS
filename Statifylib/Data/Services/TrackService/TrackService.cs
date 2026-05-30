@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Json;
 using System.Text;
 using Statifylib.Data.Models;
+using StatifyLib.Data.Models;
 using Statifylib.Data.Services.TrackService;
 
 namespace StatifyLib.Data.Services.TrackService
@@ -15,11 +16,11 @@ namespace StatifyLib.Data.Services.TrackService
         {
             this.client = client;
         }
-        public Task<List<Track>> GetTopTracks(int userId)
+        public async Task<List<TrackRecord>> GetTopTracks(int userId)
         {
-            List<Track> tracks = client.GetFromJsonAsync<List<Track>>($"track_record/{userId}").Result;
+            List<TrackRecord> tracks = await client.GetFromJsonAsync<List<TrackRecord>>($"track_record/{userId}");
             
-            return Task.FromResult(tracks);
+            return tracks;
         }
 
         public async Task SyncTracks(int userId)

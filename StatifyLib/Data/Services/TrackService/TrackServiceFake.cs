@@ -1,16 +1,18 @@
 ﻿using Statifylib.Data.Models;
+using StatifyLib.Data.Models;
 
 namespace Statifylib.Data.Services.TrackService;
 
 public class TrackServiceFake: ITrackService
 {
-    private List<Track> Tracks = new List<Track>();
+    private List<TrackRecord> trackRecords = new List<TrackRecord>();
+    private List<Track> tracks = new List<Track>();
 
     public TrackServiceFake()
     {
         for (int i = 1;  i < 10; i++)
         {
-            Tracks.Add(new Track()
+            trackRecords.Add(new TrackRecord()
             {
                 Id = i,
                 Name = $"Track {i}",
@@ -20,24 +22,30 @@ public class TrackServiceFake: ITrackService
                 PlayCount = i,
                 
             });
+
+            tracks.Add(new Track()
+            {
+                Id = i,
+                Name = $"Track {i}",
+            });
         }
     }
     
     public Task<Track> GetTrack(int trackId)
     {
-        return Task.FromResult(new Track());
+        return Task.FromResult(tracks.Find(x => x.Id == trackId));
     }
     
 
     public Task<List<Track>> GetTracks()
     {
-        return Task.FromResult(Tracks);
+        return Task.FromResult(tracks);
     }
 
 
-    public Task<List<Track>> GetTopTracks(int userId)
+    public Task<List<TrackRecord>> GetTopTracks(int userId)
     {
-        return Task.FromResult(Tracks);
+        return Task.FromResult(trackRecords);
     }
 
     public Task SyncTracks(int userId)
