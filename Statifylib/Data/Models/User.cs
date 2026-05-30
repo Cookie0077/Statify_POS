@@ -8,9 +8,8 @@ public class User: SpotifyItem
     {
         Name = name;
     }
-    public User(string name, int id)
+    public User(string name, int id): this(name)
     {
-        Name = name;
         Id = id;
     }
 }

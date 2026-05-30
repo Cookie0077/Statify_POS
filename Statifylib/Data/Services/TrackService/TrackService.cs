@@ -17,7 +17,15 @@ namespace StatifyLib.Data.Services.TrackService
         }
         public Task<List<Track>> GetTopTracks(int userId)
         {
-            throw new NotImplementedException();
+            List<Track> tracks = client.GetFromJsonAsync<List<Track>>($"track_record/{userId}").Result;
+            
+            return Task.FromResult(tracks);
+        }
+
+        public async Task SyncTracks(int userId)
+        {
+            HttpResponseMessage result = await client.PostAsync($"track_record/sync/{userId}", null);
+            result.EnsureSuccessStatusCode();
         }
 
         public Task<Track> GetTrack(int trackId)

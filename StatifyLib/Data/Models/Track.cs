@@ -8,9 +8,9 @@ public class Track: SpotifyItem
     
     [JsonIgnore]
     public string Artist { get; set; }
-    [JsonIgnore]
+    [JsonPropertyName("Duration")]
     public int Duration { get; set; }
-    [JsonIgnore]
+    [JsonPropertyName("Timestamp")]
     public DateTime LastPlayed { get; set; }
     [JsonIgnore]
     public int PlayCount { get; set; }

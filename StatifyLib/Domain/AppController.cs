@@ -17,7 +17,7 @@ public class AppController
     private IPlaylistService playlistService;
     private IArtistService artistService;
 
-    private bool usefakeservice = false;
+    private bool usefakeservice = true;
 
     public AppController() {
         HttpClient client = new HttpClient()
@@ -51,6 +51,18 @@ public class AppController
     {
         List<Track> Tracks = await trackService.GetTracks();
 
+        return Tracks;
+    }
+
+    public async void SyncTracks(int userId)
+    {
+        await trackService.SyncTracks(userId);
+    }
+    
+    public async Task<List<Track>> GetTopTracks(int userId)
+    {
+        List<Track> Tracks = await trackService.GetTopTracks(userId);
+        
         return Tracks;
     }
 

@@ -28,8 +28,8 @@ namespace Statify
     {
     private AppController appController = new AppController();
 
-    public ObservableCollection<Artist> Topartists { get; private set; } = new ObservableCollection<Artist>();
-    public ObservableCollection<Track> TopTracks { get; private set; } = new ObservableCollection<Track>();
+    public ObservableCollection<Artist> Topartists { get; private set; } 
+    public ObservableCollection<Track> TopTracks { get; private set; } 
 
     public ISeries[] TrackSeries { get; set; }
     private int UserId;
@@ -42,7 +42,7 @@ namespace Statify
         DataContext = this;
         UserId = userId;
         InitUI();
-
+        appController.SyncTracks(userId);
     }
 
     public async void InitUI()
@@ -50,9 +50,10 @@ namespace Statify
         // TODO: Top Artists and Tracks considering the User
         List<Artist> artists = await appController.GetArtists();
         List<Track> tracks = await appController.GetTracks();
-
-        foreach (var artist in artists) Topartists.Add(artist);
-        foreach (var track in tracks) TopTracks.Add(track);
+        //List<Track> tracks = await appController.GetTopTracks(UserId);
+        
+        Topartists = new ObservableCollection<Artist>(artists);
+        TopTracks = new ObservableCollection<Track>(tracks);
 
         TrackSeries= new ISeries[tracks.Count];
 
@@ -63,8 +64,8 @@ namespace Statify
             TrackSeries[i] = new PieSeries<int>()
             {
                 Name = tracks[i].Name,
-                // PlayCount ist 0
-                Values = new int[1] { tracks[i].PlayCount },
+                // TODO: Playcount implement as its 0 - Id for now
+                Values = new int[1] { tracks[i].Id },
                 // Hue, Saturation, Lightness
                 Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f))
             };

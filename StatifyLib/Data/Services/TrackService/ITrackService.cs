@@ -7,4 +7,5 @@ public interface ITrackService
     Task<Track> GetTrack(int trackId);
     Task<List<Track>> GetTracks();
     Task<List<Track>> GetTopTracks(int userId);
+    Task SyncTracks(int userId);
 }

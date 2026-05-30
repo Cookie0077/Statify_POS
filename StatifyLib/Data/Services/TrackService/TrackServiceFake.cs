@@ -12,6 +12,7 @@ public class TrackServiceFake: ITrackService
         {
             Tracks.Add(new Track()
             {
+                Id = i,
                 Name = $"Track {i}",
                 Artist = $"Artist {i}",
                 Duration = 12,
@@ -37,5 +38,10 @@ public class TrackServiceFake: ITrackService
     public Task<List<Track>> GetTopTracks(int userId)
     {
         return Task.FromResult(Tracks);
+    }
+
+    public Task SyncTracks(int userId)
+    {
+        return Task.CompletedTask;
     }
 }
