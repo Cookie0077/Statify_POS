@@ -16,13 +16,18 @@ public class ArtistServiceFake: IArtistService
         return Task.FromResult(Artists.Find(x => x.Id == artistId));
     }
 
-    public Task<List<Artist>> GetArtists()
-    {
-        return Task.FromResult(Artists.OrderBy(x => x.Id).ToList());
-    }
-
     public void AddArtist(Artist artist)
     {
         Artists.Add(artist);
+    }
+
+    public Task<List<Artist>> GetArtists(int User_id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<Artist>> GetTopArtists(int User_id)
+    {
+        throw new NotImplementedException();
     }
 }

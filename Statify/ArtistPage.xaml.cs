@@ -43,7 +43,7 @@ namespace Statify
 
         public async void InitUI()
         {
-            List<Artist> artists = await appController.GetArtists();
+            List<Artist> artists = await appController.GetTopArtists(UserId);
 
             TopArtists = new ObservableCollection<Artist>(artists);
 

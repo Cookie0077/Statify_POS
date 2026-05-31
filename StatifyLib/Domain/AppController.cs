@@ -6,6 +6,7 @@ using Statifylib.Data.Services.UserService;
 using StatifyLib.Data.Models;
 using StatifyLib.Data.Services.UserService;
 using System.Net.Http.Headers;
+using StatifyLib.Data.Services.ArtistService;
 using StatifyLib.Data.Services.TrackService;
 
 namespace Statifylib.Domain;
@@ -33,16 +34,24 @@ public class AppController
         }
         else
         {
-            artistService = new ArtistServiceFake();
+            artistService = new ArtistService(client);
             trackService = new TrackService(client);
             userService = new UserService(client);
         }
     }
 
-
+    /*
     public async Task<List<Artist>> GetArtists()
     { 
          List<Artist> artists = await artistService.GetArtists();
+
+        return artists;
+    }
+    */
+
+    public async Task<List<Artist>> GetTopArtists(int User_id)
+    {
+        List<Artist> artists = await artistService.GetTopArtists(User_id);
 
         return artists;
     }

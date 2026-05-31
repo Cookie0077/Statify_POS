@@ -29,10 +29,10 @@ namespace Statify
     {
     private AppController appController = new AppController();
 
-    public ObservableCollection<Artist> Topartists { get; private set; } 
+    public ObservableCollection<Artist> Topartists { get; private set; } = new ObservableCollection<Artist>();
     
     // Now with the Placount and stuff its "TrackRecord"
-    public ObservableCollection<TrackRecord> TopTracks { get; private set; } 
+    public ObservableCollection<TrackRecord> TopTracks { get; private set; } = new ObservableCollection<TrackRecord>();
     //public ObservableCollection<Track> TopTracks { get; private set; } 
 
     public ISeries[] TrackSeries { get; set; }
@@ -43,21 +43,29 @@ namespace Statify
         public MainPage(int userId)
     {
         InitializeComponent();
+        UserId = userId;
         DataContext = this;
         InitUI();
-        UserId = userId;
+      
         appController.SyncTracks(userId);
     }
 
     public async void InitUI()
     {
         // TODO: Top Artists and Tracks considering the User
-        List<Artist> artists = await appController.GetArtists();
+        List<Artist> artists = await appController.GetTopArtists(UserId);
         //List<Track> tracks = await appController.GetTracks();
         List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
         
-        Topartists = new ObservableCollection<Artist>(artists);
-        TopTracks = new ObservableCollection<TrackRecord>(tracks);
+     
+        foreach (Artist artist in artists)
+        {
+            Topartists.Add(artist);
+        }
+        foreach (TrackRecord track in tracks)
+        {
+            TopTracks.Add(track);
+        }
 
         TrackSeries= new ISeries[tracks.Count];
 
@@ -69,7 +77,7 @@ namespace Statify
             {
                 Name = tracks[i].Name,
                 // TODO: Playcount implement as its 0 - Id for now
-                Values = new int[1] { tracks[i].Id },
+                Values = new int[1] { tracks[i].PlayCount },
                 // Hue, Saturation, Lightness
                 Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f))
             };

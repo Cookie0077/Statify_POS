@@ -18,12 +18,12 @@ namespace StatifyLib.Data.Services.TrackService
         }
         public async Task<List<TrackRecord>> GetTopTracks(int userId)
         {
-            List<TrackRecord> tracks = await client.GetFromJsonAsync<List<TrackRecord>>($"track_record/{userId}");
+            List<TrackRecord> tracks = await client.GetFromJsonAsync<List<TrackRecord>>($"track_record/{userId}?limit=10");
             
             return tracks;
         }
 
-        public async Task SyncTracks(int userId)
+        public async Task SyncTracks(int userId)    
         {
             HttpResponseMessage result = await client.PostAsync($"track_record/sync/{userId}", null);
             result.EnsureSuccessStatusCode();

@@ -22,12 +22,12 @@ public class TrackRecord: SpotifyItem
     [JsonPropertyName("Artist_Name")]
     public string Artist { get; set; }
     
-    // TODO: Implement the Playcount in the Backend 
-    [JsonIgnore]
+  
+    [JsonPropertyName("Playcount")]
     public int PlayCount { get; set; }
 
     public override string ToString()
     {
-        return $"{Name} - {Artist}";
+        return $"{Name} - {Artist} - {PlayCount}";
     }
 }
