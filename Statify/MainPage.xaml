@@ -9,11 +9,20 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage">
 
-    <DockPanel Background="AliceBlue" >
+    <DockPanel Background="AliceBlue">
 
-        <ListView DockPanel.Dock="Left"  Width="200" Padding="10" Margin=" 20 50"  ItemsSource="{Binding Topartists}" />
-        
-        <lvc:PieChart x:Name="TrackChart"  Width="250" Height="300"/>
-        <ListView DockPanel.Dock="Right" Width="150" Margin="20 50" Padding="10" HorizontalAlignment="Right" ItemsSource="{Binding TopTracks}" />
+        <ListView DockPanel.Dock="Left"
+                  Width="Auto" MinWidth="150" MaxWidth="250"
+                  Padding="10" Margin="20 50"
+                  ItemsSource="{Binding Topartists}" />
+
+        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+            <!--> Temporäre Lösung muss, da zu wenig UI erfahrung <!-->
+            <ListView HorizontalAlignment="Right" Padding="10" ItemsSource="{Binding Track_Images}" Margin="0 50" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+            <ListView Margin="0 50 5 50" MinWidth="150" MaxWidth="220" Padding="10" HorizontalAlignment="Right" ItemsSource="{Binding TopTracks}" />
+        </StackPanel>
+
+        <lvc:PieChart x:Name="TrackChart" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20"/>
+
     </DockPanel>
 </Page>

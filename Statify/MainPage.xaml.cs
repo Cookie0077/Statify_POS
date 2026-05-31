@@ -35,6 +35,8 @@ namespace Statify
     public ObservableCollection<TrackRecord> TopTracks { get; private set; } = new ObservableCollection<TrackRecord>();
     //public ObservableCollection<Track> TopTracks { get; private set; } 
 
+    public ObservableCollection<Image> Track_Images { get; private set; } = new ObservableCollection<Image>();
+
     public ISeries[] TrackSeries { get; set; }
     private int UserId;
 
@@ -64,7 +66,15 @@ namespace Statify
         }
         foreach (TrackRecord track in tracks)
         {
+           Image Track_image = new Image()
+            {
+                Source = new BitmapImage(new Uri(track.Image)),
+                Width = 15,
+                Height = 15,
+            };
+            Track_Images.Add(Track_image);
             TopTracks.Add(track);
+            
         }
 
         TrackSeries= new ISeries[tracks.Count];
@@ -76,8 +86,7 @@ namespace Statify
             TrackSeries[i] = new PieSeries<int>()
             {
                 Name = tracks[i].Name,
-                // TODO: Playcount implement as its 0 - Id for now
-                Values = new int[1] { tracks[i].PlayCount },
+                Values = new int[1] { tracks[i].PlayCount},
                 // Hue, Saturation, Lightness
                 Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f))
             };
