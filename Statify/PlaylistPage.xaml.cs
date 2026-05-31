@@ -26,6 +26,7 @@ namespace Statify
         private AppController appController = new AppController();
 
         public ObservableCollection<Playlist> TopPlaylists { get; set; } = new ObservableCollection<Playlist>();
+        public ObservableCollection<Track> Tracks { get; set; } = new ObservableCollection<Track>();
         
         
         public PlaylistPage(int UserId)
@@ -43,6 +44,17 @@ namespace Statify
             foreach (Playlist playlist in playlists)
             {
                 TopPlaylists.Add(playlist);
+            }
+        }
+
+        private async void  Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Tracks.Clear();
+            Playlist curPlaylist = (Playlist)ListViewPlaylists.SelectedItem;
+            List<Track> tracks = await appController.GetTracksByPlaylist(curPlaylist.Id);
+            foreach (Track track in tracks)
+            {
+                Tracks.Add(track);
             }
         }
     }

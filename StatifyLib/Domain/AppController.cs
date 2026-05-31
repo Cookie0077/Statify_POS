@@ -57,9 +57,9 @@ public class AppController
         return artists;
     }
 
-    public async Task<List<Track>> GetTracks()
+    public async Task<List<Track>> GetTracksByPlaylist(int playlistId)
     {
-        List<Track> Tracks = await trackService.GetTracks();
+        List<Track> Tracks = await playlistService.GetTracks(playlistId);
 
         return Tracks;
     }
