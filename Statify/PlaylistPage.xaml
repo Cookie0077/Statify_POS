@@ -9,6 +9,12 @@
       Title="PlaylistPage">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <ListView Grid.Column="0" ItemsSource="{Binding TopPlaylists}" ></ListView>
         
     </Grid>
 </Page>

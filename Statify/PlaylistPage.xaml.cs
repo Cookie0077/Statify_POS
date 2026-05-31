@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,6 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Statifylib.Data.Models;
+using Statifylib.Data.Services.PlaylistService;
+using Statifylib.Domain;
 
 namespace Statify
 {
@@ -19,11 +23,27 @@ namespace Statify
     public partial class PlaylistPage : Page
     {
         private int UserId;
-        public PlaylistPage(int UserID)
+        private AppController appController = new AppController();
+
+        public ObservableCollection<Playlist> TopPlaylists { get; set; } = new ObservableCollection<Playlist>();
+        
+        
+        public PlaylistPage(int UserId)
         {
             InitializeComponent();
-            this.UserId = UserID;
+            this.UserId = UserId;
             DataContext = this;
+            InitUI();
+        }
+
+        public async void InitUI()
+        {
+            List<Playlist> playlists = await appController.GetPlaylists(UserId);
+
+            foreach (Playlist playlist in playlists)
+            {
+                TopPlaylists.Add(playlist);
+            }
         }
     }
 }

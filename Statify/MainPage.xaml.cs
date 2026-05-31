@@ -66,14 +66,18 @@ namespace Statify
         }
         foreach (TrackRecord track in tracks)
         {
-           Image Track_image = new Image()
+            TopTracks.Add(track);
+
+            if (track.Image == null)
+                continue;
+            
+            Image Track_image = new Image()
             {
                 Source = new BitmapImage(new Uri(track.Image)),
                 Width = 15,
                 Height = 15,
             };
             Track_Images.Add(Track_image);
-            TopTracks.Add(track);
             
         }
 

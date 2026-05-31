@@ -18,7 +18,7 @@ public class AppController
     private IPlaylistService playlistService;
     private IArtistService artistService;
 
-    private bool usefakeservice = false;
+    private bool usefakeservice = true;
 
     public AppController() {
         HttpClient client = new HttpClient()
@@ -30,6 +30,7 @@ public class AppController
         {
             artistService = new ArtistServiceFake();
             trackService = new TrackServiceFake();
+            playlistService = new PlaylistServiceFake();
             
         }
         else
@@ -89,6 +90,12 @@ public class AppController
         return RegisteredUser;
     }
 
+    public async Task<List<Playlist>> GetPlaylists(int userId)
+    {
+        List<Playlist> playlists = await playlistService.GetPlaylists();
+        
+        return playlists;
+    }
 
 
 

@@ -19,7 +19,7 @@ public class TrackServiceFake: ITrackService
                 Artist = $"Artist {i}",
                 Duration = 12,
                 LastPlayed = DateTime.Today,
-                PlayCount = i,
+                PlayCount =  i * 9,
                 
             });
 

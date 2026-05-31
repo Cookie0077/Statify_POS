@@ -6,10 +6,19 @@ public class PlaylistServiceFake: IPlaylistService
 {
     private List<Playlist> Playlists = new List<Playlist>()
     {
-        new Playlist() {Id = 1,  Name = "My First Playlist"},
-        new Playlist() {Id = 2,  Name = "My Second Playlist"},
-        new Playlist() {Id = 3,  Name = "My Third Playlist"},
+        new Playlist() {Id = 1,  Name = "My First Playlist", FollowerCount = 100, Owner = "me"},
+        new Playlist() {Id = 2,  Name = "My Second Playlist", FollowerCount = 201, Owner = "him"},
+        new Playlist() {Id = 3,  Name = "My Third Playlist", FollowerCount = 302, Owner = "her"},
         
+    };
+
+    private List<Track> Tracks = new List<Track>()
+    {
+        new Track() { Id = 1, Name = "Track 1" },
+        new Track() { Id = 1, Name = "Track 2" },
+        new Track() { Id = 2, Name = "Track 3" },
+        new Track() { Id = 2, Name = "Track 4" },
+        new Track() { Id = 1, Name = "Track 5" }
     };
     
     public Task<Playlist> GetPlaylist(int playlistId)
@@ -25,5 +34,10 @@ public class PlaylistServiceFake: IPlaylistService
     public void AddPlaylist(Playlist playlist)
     {
         Playlists.Add(playlist);
+    }
+
+    public Task<List<Track>> GetTracks(int playlistId)
+    {
+        return Task.FromResult(Tracks.Where(t => t.Id == playlistId).ToList());
     }
 }

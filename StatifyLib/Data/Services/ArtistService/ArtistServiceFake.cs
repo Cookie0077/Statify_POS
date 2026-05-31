@@ -28,6 +28,6 @@ public class ArtistServiceFake: IArtistService
 
     public Task<List<Artist>> GetTopArtists(int User_id)
     {
-        throw new NotImplementedException();
+        return Task.FromResult(Artists);
     }
 }
