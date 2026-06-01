@@ -56,7 +56,6 @@ namespace Statify
                 new LineSeries<int>()
                 {
                     Name = "Plays",
-                    // TODO: hier muss der Playcount hin !!
                     Values = tracks.Select(t=>t.PlayCount).ToList()
                 }
             };

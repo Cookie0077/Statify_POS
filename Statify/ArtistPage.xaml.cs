@@ -57,7 +57,7 @@ namespace Statify
                     Name = "Plays",
                     // TODO: hier muss die playtime hin !!
                     Values = artists.Select(t => t.Id).ToArray(),
-                    Fill = new SolidColorPaint(SKColors.Green)
+                    Fill = new SolidColorPaint(SKColors.Red)
                 }
 
 
@@ -68,7 +68,7 @@ namespace Statify
                 new Axis
                 {
                     Labels = artists.Select(t => t.Name).ToArray(),
-                    LabelsRotation = 45
+                    LabelsRotation = 60
                 }
             };
             }
