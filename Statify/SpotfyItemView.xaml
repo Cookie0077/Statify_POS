@@ -5,17 +5,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Statify"
              mc:Ignorable="d" d:DesignHeight="550" d:DesignWidth="200">
-    <Grid  Background="">
+    <Grid  Background="Transparent">
 
         <Grid.RowDefinitions>
-            
+            <RowDefinition Height="500"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" ></ColumnDefinition>
             <ColumnDefinition Width="4*" ></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" HorizontalAlignment="Right" Padding="10" ItemsSource="{Binding Track_Images}" Margin="0 50" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
-        <ListView Grid.Column="1" Margin="0 50 5 50" MinWidth="150" MaxWidth="220" Padding="10" HorizontalAlignment="Left" ItemsSource="{Binding TopTracks}" />
+
+
+        <ListView x:Name="ListViewImages" Grid.Column="0" HorizontalAlignment="Right" Padding="10" ItemsSource="{Binding Item_Images}" Width="50"  ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+        <ListView Grid.Column="1" Width="300" Padding="10" HorizontalAlignment="Left" ItemsSource="{Binding SpotifyItems}" />
     </Grid>
 </UserControl>

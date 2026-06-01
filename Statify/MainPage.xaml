@@ -10,19 +10,13 @@
       Title="MainPage">
 
     <DockPanel Background="AliceBlue">
-
-        <ListView DockPanel.Dock="Left"
-                  Width="Auto" MinWidth="150" MaxWidth="250"
-                  Padding="10" Margin="20 50"
-                  ItemsSource="{Binding Topartists}" />
-
-        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
-            <!--> Temporäre Lösung muss, da zu wenig UI erfahrung <!-->
-            <ListView HorizontalAlignment="Right" Padding="10" ItemsSource="{Binding Track_Images}" Margin="0 50" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
-            <ListView Margin="0 50 5 50" MinWidth="150" MaxWidth="220" Padding="10" HorizontalAlignment="Right" ItemsSource="{Binding TopTracks}" />
+      
+        <local:SpotfyItemView x:Name="SpotfyItemViewTopArtists" DockPanel.Dock="Left" Margin="0 10" Width="250"></local:SpotfyItemView>
+        <StackPanel x:Name="StackPanelTopTracks" DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+            <local:SpotfyItemView x:Name="SpotfyItemViewTopTracks"></local:SpotfyItemView>
         </StackPanel>
 
-        <lvc:PieChart Background="Transparent" x:Name="TrackChart" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20"/>
+        <lvc:PieChart Background="Transparent" x:Name="TrackChart" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" Width="150" Height="150"/>
 
     </DockPanel>
 </Page>

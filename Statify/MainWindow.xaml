@@ -16,7 +16,7 @@
 
     
         <DockPanel Grid.Row="0">
-            <TabControl x:Name="MainTabControl" 
+            <TabControl x:Name="MainTabControl" Background="Transparent"
                         SelectionChanged="TabControl_SelectionChanged"
                         >
                 <TabItem Header="Home"      x:Name="TabHome"   Height="50"    Width="150"/>
@@ -24,12 +24,11 @@
                 <TabItem Header="Songs"     x:Name="SongTabs"            Width="100"/>
                 <TabItem Header="Playlists" x:Name="PlaylistTab"         Width="100"/>
             </TabControl>
-
+    
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
                         VerticalAlignment="Top" Margin="50 0 0 0">
-                <Image Width="50" Height="50" Margin="10 0"/>
                 <Label Content="Username" x:Name="Labelusername"
-                       Height="35" Padding="10" VerticalContentAlignment="Center" Margin="20 0"/>
+                       Height="50" Padding="10" VerticalContentAlignment="Center" Margin="20 0"/>
                 <Button x:Name="ButtonUserSettings" Content="Settings"
                         Padding="10" Margin="20 0"/>
             </StackPanel>

@@ -1,11 +1,14 @@
-﻿namespace Statifylib.Data.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace Statifylib.Data.Models;
 
 public class Artist: SpotifyItem
 {
-    public List<string> Images { get; set; }
     public int FollowerCount { get; set; }
-
-    
+   /* TODO: Implement in API
+    [JsonPropertyName("Artist_image")] 
+    public override string Image { get; set; }
+    */
     public Artist () {}
     
     public Artist (int id, string name) 

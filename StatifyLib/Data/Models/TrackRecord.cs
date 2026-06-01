@@ -16,13 +16,12 @@ public class TrackRecord: SpotifyItem
     [JsonPropertyName("Track_Name")]
     public string Name { get; set; }
     
-    [JsonPropertyName("Track_Image")]
-    public string Image { get; set; }
     
     [JsonPropertyName("Artist_Name")]
     public string Artist { get; set; }
-    
-  
+
+    [JsonPropertyName("Track_image")]
+    public override string Image { get; set; }
     [JsonPropertyName("Playcount")]
     public int PlayCount { get; set; }
 

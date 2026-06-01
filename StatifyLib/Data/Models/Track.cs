@@ -4,21 +4,19 @@ namespace Statifylib.Data.Models;
 
 public class Track: SpotifyItem
 {
-    public string Image { get; set; }
-    
-    
     
     public Track () {}
 
-    public Track(int id, string name)
+    public Track(int id, string name,string image)
     {
         Id = id;
         Name = name;
+        this.Image = image;
     }
 
 
     public override string ToString()
     {
-        return $"{Name}";
+        return $"{Name} {Image}";
     }
 }

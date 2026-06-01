@@ -57,36 +57,20 @@ namespace Statify
         List<Artist> artists = await appController.GetTopArtists(UserId);
         //List<Track> tracks = await appController.GetTracks();
         List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
-        
-     
-        foreach (Artist artist in artists)
-        {
-            Topartists.Add(artist);
-        }
-        foreach (TrackRecord track in tracks)
-        {
-            TopTracks.Add(track);
 
-            if (track.Image == null)
-                continue;
-            
-            Image Track_image = new Image()
-            {
-                Source = new BitmapImage(new Uri(track.Image)),
-                Width = 15,
-                Height = 15,
-            };
-            Track_Images.Add(Track_image);
-            
-        }
 
-        TrackSeries= new ISeries[tracks.Count];
+        SpotfyItemViewTopArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList());
+
+        SpotfyItemViewTopTracks.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList());
+
+        TrackSeries = new ISeries[tracks.Count];
 
         for (int i = 0; i < tracks.Count; i++)
         {
             float hue = (i * 65f) % 360f;
 
-            TrackSeries[i] = new PieSeries<int>()
+
+        TrackSeries[i] = new PieSeries<int>()
             {
                 Name = tracks[i].Name,
                 Values = new int[1] { tracks[i].PlayCount},
