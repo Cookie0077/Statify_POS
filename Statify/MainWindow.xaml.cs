@@ -40,6 +40,7 @@ public partial class MainWindow : Window
                 artistPage = new ArtistPage(CurentUser.Id);
                 trackPage = new TrackPage(CurentUser.Id);
                 playlistPage = new PlaylistPage(CurentUser.Id);
+                Labelusername.Content = CurentUser.Name;
             }
 
         }
