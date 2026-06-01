@@ -24,7 +24,7 @@ public partial class MainWindow : Window
     private PlaylistPage playlistPage;
     private User CurentUser;
 
-    private bool loginwindooff = true;
+    private bool loginwindooff = false;
 
     public MainWindow()
     {

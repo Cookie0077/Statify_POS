@@ -18,7 +18,7 @@ public class AppController
     private IPlaylistService playlistService;
     private IArtistService artistService;
 
-    private bool usefakeservice = true;
+    private bool usefakeservice = false;
 
     public AppController() {
         HttpClient client = new HttpClient()
@@ -38,6 +38,7 @@ public class AppController
             artistService = new ArtistService(client);
             trackService = new TrackService(client);
             userService = new UserService(client);
+            playlistService = new PlaylistServiceFake();
         }
     }
 
