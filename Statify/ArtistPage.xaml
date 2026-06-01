@@ -9,10 +9,15 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ArtistPage">
 
-    <DockPanel Background="AliceBlue">
-        <ListView DockPanel.Dock="Left" ItemsSource="{Binding TopArtists}"></ListView>
-        <wpf:CartesianChart Series="{Binding ArtistSeries}" Width="250"
+    <Grid Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <ListView Grid.Column="0"  ItemsSource="{Binding TopArtists}"></ListView>
+        <wpf:CartesianChart Grid.Column="1" Series="{Binding ArtistSeries}"
                             XAxes="{Binding XAxes}"
-                            Height="300"/>
-    </DockPanel>
+                            Height="300" Background="LightCyan"/>
+    </Grid>
 </Page>

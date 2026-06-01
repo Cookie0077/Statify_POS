@@ -30,6 +30,7 @@ public class AppController
         {
             artistService = new ArtistServiceFake();
             trackService = new TrackServiceFake();
+            playlistService = new PlaylistServiceFake();
             
         }
         else
@@ -37,6 +38,7 @@ public class AppController
             artistService = new ArtistService(client);
             trackService = new TrackService(client);
             userService = new UserService(client);
+            playlistService = new PlaylistServiceFake();
         }
     }
 
@@ -56,9 +58,9 @@ public class AppController
         return artists;
     }
 
-    public async Task<List<Track>> GetTracks()
+    public async Task<List<Track>> GetTracksByPlaylist(int playlistId)
     {
-        List<Track> Tracks = await trackService.GetTracks();
+        List<Track> Tracks = await playlistService.GetTracks(playlistId);
 
         return Tracks;
     }
@@ -89,6 +91,12 @@ public class AppController
         return RegisteredUser;
     }
 
+    public async Task<List<Playlist>> GetPlaylists(int userId)
+    {
+        List<Playlist> playlists = await playlistService.GetPlaylists();
+        
+        return playlists;
+    }
 
 
 

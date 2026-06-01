@@ -6,4 +6,9 @@ public class Playlist: SpotifyItem
     public string Owner { get; set; }
     
     public Playlist () {}
+
+    public override string ToString()
+    {
+        return $"{Name}";
+    }
 }

@@ -19,6 +19,7 @@ using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
 using Statifylib.Data.Services.TrackService;
 using Statifylib.Data.Services.UserService;
+using Statifylib.Domain;
 
 namespace Statify
 {
@@ -27,7 +28,7 @@ namespace Statify
     /// </summary>
     public partial class TrackPage : Page
     {
-        private ITrackService trackService;
+        private AppController appController = new();
         
         public ObservableCollection<TrackRecord> TopTracks { get; private set; }
 
@@ -46,17 +47,15 @@ namespace Statify
 
         private async void InitUI()
         {
-            trackService = new TrackServiceFake();
-
-            List<TrackRecord> tracks = await trackService.GetTopTracks(1);
+            List<TrackRecord> tracks = await appController.GetTopTracks(1);
             TopTracks = new ObservableCollection<TrackRecord>(tracks);
+            TrackGrid.ItemsSource = TopTracks;
 
             TrackSeries = new ISeries[]
             {    
                 new LineSeries<int>()
                 {
                     Name = "Plays",
-                    // TODO: hier muss der Playcount hin !!
                     Values = tracks.Select(t=>t.PlayCount).ToList()
                 }
             };

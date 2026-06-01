@@ -22,7 +22,7 @@
             <ListView Margin="0 50 5 50" MinWidth="150" MaxWidth="220" Padding="10" HorizontalAlignment="Right" ItemsSource="{Binding TopTracks}" />
         </StackPanel>
 
-        <lvc:PieChart x:Name="TrackChart" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20"/>
+        <lvc:PieChart Background="Transparent" x:Name="TrackChart" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20"/>
 
     </DockPanel>
 </Page>

@@ -24,13 +24,13 @@ public partial class MainWindow : Window
     private PlaylistPage playlistPage;
     private User CurentUser;
 
-    private bool loginwindooff = true;
+    private bool loginwindowoff = true;
 
     public MainWindow()
     {
         InitializeComponent();
 
-        if (!loginwindooff)
+        if (!loginwindowoff)
         {
             LoginWindow loginWindow = new LoginWindow();
             if (loginWindow.ShowDialog() == true)

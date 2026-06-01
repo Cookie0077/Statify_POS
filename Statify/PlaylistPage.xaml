@@ -9,6 +9,13 @@
       Title="PlaylistPage">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <ListView Grid.Column="0" ItemsSource="{Binding TopPlaylists}" SelectionChanged="Selector_OnSelectionChanged" x:Name="ListViewPlaylists"></ListView>
+        <ListView Grid.Column="1" ItemsSource="{Binding Tracks}"></ListView>
         
     </Grid>
 </Page>

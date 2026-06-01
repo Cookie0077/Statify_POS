@@ -54,7 +54,6 @@ namespace Statify
 
     public async void InitUI()
     {
-        // TODO: Top Artists and Tracks considering the User
         List<Artist> artists = await appController.GetTopArtists(UserId);
         //List<Track> tracks = await appController.GetTracks();
         List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
@@ -66,14 +65,18 @@ namespace Statify
         }
         foreach (TrackRecord track in tracks)
         {
-           Image Track_image = new Image()
+            TopTracks.Add(track);
+
+            if (track.Image == null)
+                continue;
+            
+            Image Track_image = new Image()
             {
                 Source = new BitmapImage(new Uri(track.Image)),
                 Width = 15,
                 Height = 15,
             };
             Track_Images.Add(Track_image);
-            TopTracks.Add(track);
             
         }
 
