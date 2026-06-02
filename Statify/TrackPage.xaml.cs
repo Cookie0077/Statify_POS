@@ -47,9 +47,12 @@ namespace Statify
 
         private async void InitUI()
         {
-            List<TrackRecord> tracks = await appController.GetTopTracks(1);
+            List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
             TopTracks = new ObservableCollection<TrackRecord>(tracks);
             TrackGrid.ItemsSource = TopTracks;
+            
+            foreach(TrackRecord track in TopTracks)
+                Console.WriteLine(track.Name, ": ", track.PlayCount);
 
             TrackSeries = new ISeries[]
             {    

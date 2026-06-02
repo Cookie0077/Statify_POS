@@ -17,13 +17,8 @@
         
         <ListView Grid.Column="0" x:Name="ListViewTracks"  ItemsSource="{Binding TopTracks}"></ListView>
         <lvc:CartesianChart Grid.Column="1" Background="MediumAquamarine" Series="{Binding TrackSeries}" Width="250" Height="300"/>
-        <DataGrid Name="TrackGrid" 
-                  AutoGenerateColumns="False"
-                  HeadersVisibility="Column"
-                  GridLinesVisibility="Horizontal"
-                  Background="Gray"
-                  RowBackground="LightCyan"
-                  AlternatingRowBackground="AntiqueWhite">
+        <DataGrid Grid.Column="0" Name="TrackGrid" AutoGenerateColumns="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal" 
+                  Background="Gray" RowBackground="LightCyan" AlternatingRowBackground="AntiqueWhite">
             
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Cover" Width="60">

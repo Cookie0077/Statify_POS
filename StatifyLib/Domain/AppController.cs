@@ -38,6 +38,7 @@ public class AppController
             artistService = new ArtistService(client);
             trackService = new TrackService(client);
             userService = new UserService(client);
+            // TODO: Implement real PlaylistService
             playlistService = new PlaylistServiceFake();
         }
     }
