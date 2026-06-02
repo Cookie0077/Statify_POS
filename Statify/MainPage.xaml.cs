@@ -62,7 +62,7 @@ namespace Statify
             float hue = (i * 65f) % 360f;
 
 
-        TrackSeries[i] = new PieSeries<int>()
+            TrackSeries[i] = new PieSeries<int>()
             {
                 Name = tracks[i].Name,
                 Values = new int[1] { tracks[i].PlayCount},

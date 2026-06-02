@@ -32,6 +32,7 @@ namespace Statify
         public LoginWindow()
         {
             InitializeComponent();
+            TextBoxName.Focus();
 
         }
 

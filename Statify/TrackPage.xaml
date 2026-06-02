@@ -15,35 +15,18 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-        <ListView Grid.Column="0" x:Name="ListViewTracks"  ItemsSource="{Binding TopTracks}"></ListView>
-        <lvc:CartesianChart Grid.Column="1" Background="MediumAquamarine" Series="{Binding TrackSeries}" Width="250" Height="300"/>
-        <DataGrid Name="TrackGrid" 
-                  AutoGenerateColumns="False"
-                  HeadersVisibility="Column"
-                  GridLinesVisibility="Horizontal"
-                  Background="Gray"
-                  RowBackground="LightCyan"
-                  AlternatingRowBackground="AntiqueWhite">
-            
-            <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Cover" Width="60">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Image}" Width="40" Height="40" Margin="5"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTextColumn Header="Track Name" Binding="{Binding Name}" Width="2*" FontWeight="Bold"/>
-
-                <DataGridTextColumn Header="Artist" Binding="{Binding Artist}" Width="1.5*"/>
-
-                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="0.8*"/>
-
-                <DataGridTextColumn Header="Plays" Binding="{Binding PlayCount}" Width="0.5*"/>
-
-                <DataGridTextColumn Header="Last Played" Binding="{Binding LastPlayed, StringFormat=\{0:yyyy-MM-dd HH:mm\}}" Width="1.5*"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListView Grid.Column="0" x:Name="ListViewTracks"  ItemsSource="{Binding TopTracks}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Track Name" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                    <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding Artist}"></GridViewColumn>
+                    <GridViewColumn Header="Duration" DisplayMemberBinding="{Binding Duration}"></GridViewColumn>
+                    <GridViewColumn Header="Plays" DisplayMemberBinding="{Binding PlayCount}"></GridViewColumn>
+                    <GridViewColumn Header="Last Played" DisplayMemberBinding="{Binding LastPlayed, StringFormat=\{0:yyyy-MM-dd HH:mm\}}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <lvc:CartesianChart Grid.Column="1" x:Name="TrackChart" Background="MediumAquamarine" Series="{Binding TrackSeries}" Width="250" Height="300"/>
+        
     </Grid>
 </Page>

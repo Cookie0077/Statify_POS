@@ -68,7 +68,7 @@ namespace Statify
                 new Axis
                 {
                     Labels = artists.Select(t => t.Name).ToArray(),
-                    LabelsRotation = 60
+                    LabelsRotation = 270
                 }
             };
             }

@@ -26,6 +26,7 @@ namespace Statify
         public RegisterWindow()
         {
             InitializeComponent();
+            TextBoxName.Focus();
         }
 
         private async void ButtonRegister_Click(object sender, RoutedEventArgs e)

@@ -29,8 +29,8 @@ namespace Statify
     public partial class TrackPage : Page
     {
         private AppController appController = new();
-        
-        public ObservableCollection<TrackRecord> TopTracks { get; private set; }
+
+        public ObservableCollection<TrackRecord> TopTracks { get; private set; } = new ObservableCollection<TrackRecord>();
 
         public ISeries[] TrackSeries  { get; set; }
 
@@ -47,15 +47,20 @@ namespace Statify
 
         private async void InitUI()
         {
-            List<TrackRecord> tracks = await appController.GetTopTracks(1);
-            TopTracks = new ObservableCollection<TrackRecord>(tracks);
-            TrackGrid.ItemsSource = TopTracks;
+            List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
+
+            foreach (TrackRecord track in tracks)
+            {
+                TopTracks.Add(track);
+                Console.WriteLine($"{track.Name} - {track.PlayCount}");
+            }
+
 
             TrackSeries = new ISeries[]
             {    
                 new LineSeries<int>()
                 {
-                    Name = "Plays",
+                    Name = "Songs",
                     Values = tracks.Select(t=>t.PlayCount).ToList()
                 }
             };
