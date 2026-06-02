@@ -7,7 +7,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TrackDetailPage">
-    <DockPanel LastChildFill="True">
+    <DockPanel >
+
+        <Button x:Name="ButtonBack"
+                DockPanel.Dock="Top"
+                HorizontalAlignment="Left"
+                Width="80" Height="28"
+                Margin="12 10 0 10"
+                Content="← Back" Click="ButtonBack_Click" />
 
         <Image x:Name="ImageTrack"
                DockPanel.Dock="Left"

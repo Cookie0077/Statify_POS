@@ -32,5 +32,11 @@ namespace Statify
 
 
         }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.NavigationService?.CanGoBack == true)
+                this.NavigationService.GoBack();
+        }
     }
 }
