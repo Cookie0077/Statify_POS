@@ -49,7 +49,6 @@ namespace Statify
         {
             List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
             TopTracks = new ObservableCollection<TrackRecord>(tracks);
-            TrackGrid.ItemsSource = TopTracks;
             
             foreach(TrackRecord track in TopTracks)
                 Console.WriteLine(track.Name, ": ", track.PlayCount);
