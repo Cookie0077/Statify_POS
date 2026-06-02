@@ -21,7 +21,7 @@
                 <Label Content="Reenter Password:" VerticalAlignment="Center" Margin="5"  Padding="4"/>
                 <PasswordBox x:Name="PasswordBoxPWRE"  Margin="10" Padding="5" HorizontalAlignment="Center" />
             </StackPanel>
-            <Button x:Name="ButtonRegister" Content="Register" Margin="10" Padding="5" Width="100" Click="ButtonRegister_Click" />
+            <Button x:Name="ButtonRegister" IsDefault="true" Content="Register" Margin="10" Padding="5" Width="100" Click="ButtonRegister_Click" />
         </StackPanel>
     </DockPanel>
 
