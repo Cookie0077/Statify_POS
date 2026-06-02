@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StatifyLib.Data.Models;
+using Track = Statifylib.Data.Models.Track;
 
 namespace Statify
 {
@@ -26,14 +28,17 @@ namespace Statify
       
         public ObservableCollection<Image> Item_Images { get; private set; } = new ObservableCollection<Image>();
 
+        private NavigationService _navigationService;
+
         public SpotfyItemView()
         {
             InitializeComponent();
             DataContext = this;
         }
 
-        public void GetSpotifyItemList(List<SpotifyItem> spotifyItems)
+        public void GetSpotifyItemList(List<SpotifyItem> spotifyItems,NavigationService parenNavigationService)
         {
+            _navigationService = parenNavigationService;
             foreach (SpotifyItem item in spotifyItems)
             {
                 SpotifyItems.Add(item);
@@ -55,6 +60,18 @@ namespace Statify
             } 
                 
             
+        }
+
+        private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {  
+            SpotifyItem item = ListviewItems.SelectedItem as SpotifyItem;
+            if (_navigationService == null) return;
+
+            if (item is TrackRecord)
+            {
+                _navigationService.Navigate(new TrackDetailPage(item as TrackRecord));
+            }
+
         }
     }
 }

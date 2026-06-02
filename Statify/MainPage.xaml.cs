@@ -29,14 +29,6 @@ namespace Statify
     {
     private AppController appController = new AppController();
 
-    public ObservableCollection<Artist> Topartists { get; private set; } = new ObservableCollection<Artist>();
-    
-    // Now with the Placount and stuff its "TrackRecord"
-    public ObservableCollection<TrackRecord> TopTracks { get; private set; } = new ObservableCollection<TrackRecord>();
-    //public ObservableCollection<Track> TopTracks { get; private set; } 
-
-    public ObservableCollection<Image> Track_Images { get; private set; } = new ObservableCollection<Image>();
-
     public ISeries[] TrackSeries { get; set; }
     private int UserId;
 
@@ -47,21 +39,21 @@ namespace Statify
         InitializeComponent();
         UserId = userId;
         DataContext = this;
+        appController.SyncTracks(userId);
         InitUI();
       
-        appController.SyncTracks(userId);
+       
     }
 
     public async void InitUI()
     {
         List<Artist> artists = await appController.GetTopArtists(UserId);
-        //List<Track> tracks = await appController.GetTracks();
         List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
 
 
-        SpotfyItemViewTopArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList());
+        SpotfyItemViewTopArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(),this.NavigationService);
 
-        SpotfyItemViewTopTracks.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList());
+        SpotfyItemViewTopTracks.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(),this.NavigationService);
 
         TrackSeries = new ISeries[tracks.Count];
 

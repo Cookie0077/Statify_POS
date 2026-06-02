@@ -18,6 +18,6 @@
 
 
         <ListView x:Name="ListViewImages" Grid.Column="0" HorizontalAlignment="Right" Padding="10" ItemsSource="{Binding Item_Images}" Width="50"  ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
-        <ListView Grid.Column="1" Width="300" Padding="10" HorizontalAlignment="Left" ItemsSource="{Binding SpotifyItems}" />
+        <ListView x:Name="ListviewItems" Grid.Column="1" Width="300" Padding="10" HorizontalAlignment="Left" ItemsSource="{Binding SpotifyItems}" SelectionChanged="Selector_OnSelectionChanged"/>
     </Grid>
 </UserControl>

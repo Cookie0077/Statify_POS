@@ -1,0 +1,45 @@
+﻿<Page x:Class="Statify.TrackDetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Statify"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TrackDetailPage">
+    <DockPanel LastChildFill="True">
+
+        <Image x:Name="ImageTrack"
+               DockPanel.Dock="Left"
+               Width="150" Height="150"
+               Margin="20 20 16 20"
+               VerticalAlignment="Top" />
+
+        <StackPanel DockPanel.Dock="Right"
+                    Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    Margin="0 20 20 20">
+
+            <Label x:Name="LabelTitel"
+                   Height="32"
+                   Margin="0 0 0 2" />
+
+            <Label x:Name="LabelArtistName"
+                   Height="28"
+                   Margin="0 0 0 16" />
+
+            <Label x:Name="LabelDuration"
+                   Height="26"
+                   Margin="0 0 0 4" />
+
+            <Label x:Name="LabelPlaycount"
+                   Height="26"
+                   Margin="0 0 0 4" />
+
+            <Label x:Name="LabelLastplayed"
+                   Height="26" />
+
+        </StackPanel>
+
+    </DockPanel>
+</Page>
