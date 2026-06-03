@@ -34,11 +34,12 @@ namespace StatifyLib.Data.Services.TrackService
             throw new NotImplementedException();
         }
 
-        public async Task<List<Track>> GetTracks()
+        public async Task<List<TrackRecord>> GetTracks(int userId)
         {
-            List<Track> tracks = await client.GetFromJsonAsync<List<Track>>("track");
+            List<TrackRecord> tracks = await client.GetFromJsonAsync<List<TrackRecord>>($"track_record/{userId}");
 
             return tracks;
         }
+
     }
 }

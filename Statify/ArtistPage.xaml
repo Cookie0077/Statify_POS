@@ -12,10 +12,10 @@
     <Grid Background="AliceBlue">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Column="0" ItemsSource="{Binding TopArtists}" FontSize="22" Margin="20"/>
+        <local:SpotfyItemView x:Name="SpotfyItemViewArtists" Width="450"/>
         <wpf:CartesianChart Grid.Column="1" x:Name="ArtistChart" Background="LightCyan" Margin="20"/>
     </Grid>
 

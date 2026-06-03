@@ -30,7 +30,6 @@ namespace Statify
         public ISeries[] ArtistSeries { get; set; }
         public Axis[] XAxes { get; set; }
 
-        public ObservableCollection<Artist> TopArtists { get; private set; } = new ObservableCollection<Artist>();
         private int UserId;
         
         public ArtistPage(int UserId)
@@ -45,10 +44,7 @@ namespace Statify
         {
             List<Artist> artists = await appController.GetTopArtists(UserId);
 
-            foreach (Artist artis in artists )
-            {
-                TopArtists.Add(artis);
-            }
+            SpotfyItemViewArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(), this.NavigationService);
 
             ArtistSeries = new ISeries[]
             {    

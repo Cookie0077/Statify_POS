@@ -52,4 +52,9 @@ public class TrackServiceFake: ITrackService
     {
         return Task.CompletedTask;
     }
+
+    public Task<List<TrackRecord>> GetTracks(int UserId)
+    {
+        throw new NotImplementedException();
+    }
 }

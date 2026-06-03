@@ -72,6 +72,12 @@ public class AppController
     {
         await trackService.SyncTracks(userId);
     }
+
+    public async Task<List<TrackRecord>> GetTracks(int userId)
+    {
+        List<TrackRecord> Tracks = await trackService.GetTracks(userId);
+        return Tracks;
+    }
     
     public async Task<List<TrackRecord>> GetTopTracks(int userId)
     {

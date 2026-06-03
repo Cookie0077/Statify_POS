@@ -47,7 +47,7 @@ namespace Statify
 
         private async void InitUI()
         {
-            List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
+            List<TrackRecord> tracks = await appController.GetTracks(UserId);
 
             foreach (TrackRecord track in tracks)
             {
