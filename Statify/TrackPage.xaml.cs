@@ -64,6 +64,8 @@ namespace Statify
                     Values = tracks.Select(t=>t.PlayCount).ToList()
                 }
             };
+
+            TrackChart.Series = TrackSeries;
         }
     }
 }
