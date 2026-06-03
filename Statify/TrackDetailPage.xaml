@@ -1,52 +1,25 @@
 ﻿<Page x:Class="Statify.TrackDetailPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Statify"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
+      d:DesignHeight="900" d:DesignWidth="1600"
       Title="TrackDetailPage">
-    <DockPanel >
 
-        <Button x:Name="ButtonBack"
-                DockPanel.Dock="Top"
-                HorizontalAlignment="Left"
-                Width="80" Height="28"
-                Margin="12 10 0 10"
-                Content="← Back" Click="ButtonBack_Click" />
+    <DockPanel>
+        <Button x:Name="ButtonBack" DockPanel.Dock="Top" HorizontalAlignment="Left" Width="160" Height="60" Margin="24 20 0 20" FontSize="22" Content="← Back" Click="ButtonBack_Click"/>
 
-        <Image x:Name="ImageTrack"
-               DockPanel.Dock="Left"
-               Width="150" Height="150"
-               Margin="20 20 16 20"
-               VerticalAlignment="Top" />
+        <Image x:Name="ImageTrack" DockPanel.Dock="Left" Width="350" Height="350" Margin="40 40 32 40" VerticalAlignment="Top"/>
 
-        <StackPanel DockPanel.Dock="Right"
-                    Orientation="Vertical"
-                    VerticalAlignment="Center"
-                    Margin="0 20 20 20">
-
-            <Label x:Name="LabelTitel"
-                   Height="32"
-                   Margin="0 0 0 2" />
-
-            <Label x:Name="LabelArtistName"
-                   Height="28"
-                   Margin="0 0 0 16" />
-
-            <Label x:Name="LabelDuration"
-                   Height="26"
-                   Margin="0 0 0 4" />
-
-            <Label x:Name="LabelPlaycount"
-                   Height="26"
-                   Margin="0 0 0 4" />
-
-            <Label x:Name="LabelLastplayed"
-                   Height="26" />
-
+        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" VerticalAlignment="Center" Margin="0 40 40 40">
+            <Label x:Name="LabelTitel" Height="70" FontSize="36" Margin="0 0 0 6"/>
+            <Label x:Name="LabelArtistName" Height="60" FontSize="28" Margin="0 0 0 32"/>
+            <Label x:Name="LabelDuration" Height="54" FontSize="24" Margin="0 0 0 8"/>
+            <Label x:Name="LabelPlaycount" Height="54" FontSize="24" Margin="0 0 0 8"/>
+            <Label x:Name="LabelLastplayed" Height="54" FontSize="24"/>
         </StackPanel>
-
     </DockPanel>
+
 </Page>

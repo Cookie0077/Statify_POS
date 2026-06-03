@@ -5,37 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Statify"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        WindowStyle="None">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-          
-        </Grid.RowDefinitions>
+        Title="MainWindow" WindowState="Maximized" MinWidth="400" MinHeight="300" WindowStyle="None">
 
-    
-        <DockPanel Grid.Row="0">
-            <TabControl x:Name="MainTabControl" Background="Transparent"
-                        SelectionChanged="TabControl_SelectionChanged"
-                        >
-                <TabItem Header="Home"      x:Name="TabHome"   Height="50"    Width="150"/>
-                <TabItem Header="Artists"   x:Name="ArtistTab"           Width="100"/>
-                <TabItem Header="Songs"     x:Name="SongTabs"            Width="100"/>
-                <TabItem Header="Playlists" x:Name="PlaylistTab"         Width="100"/>
-            </TabControl>
-    
-            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
-                        VerticalAlignment="Top" Margin="50 0 0 0">
-                <Label Content="Username" x:Name="Labelusername"
-                       Height="50" Padding="10" VerticalContentAlignment="Center" Margin="20 0"/>
-                <Button x:Name="ButtonUserSettings" Content="Settings"
-                        Padding="10" Margin="20 0"/>
-            </StackPanel>
-        </DockPanel>
+    <Viewbox Stretch="Uniform">
+        <Grid Width="1600" Height="900">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-      
-        <Frame x:Name="Mainframe" Grid.Row="1"
-               NavigationUIVisibility="Hidden"/>
-    </Grid>
+            <DockPanel Grid.Row="0">
+                <TabControl x:Name="MainTabControl" Background="Transparent" SelectionChanged="TabControl_SelectionChanged">
+                    <TabItem Header="Home" x:Name="TabHome" Height="80" Width="250" FontSize="22"/>
+                    <TabItem Header="Artists" x:Name="ArtistTab" Height="80" Width="200" FontSize="22"/>
+                    <TabItem Header="Songs" x:Name="SongTabs" Height="80" Width="200" FontSize="22"/>
+                    <TabItem Header="Playlists" x:Name="PlaylistTab" Height="80" Width="200" FontSize="22"/>
+                </TabControl>
+
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Top" Margin="50 0 0 0">
+                    <Label Content="Username" x:Name="Labelusername" Height="80" Padding="20" FontSize="22" VerticalContentAlignment="Center" Margin="20 0"/>
+                    <Button x:Name="ButtonUserSettings" Content="Settings" Padding="20 10" FontSize="22" Margin="20 0"/>
+                </StackPanel>
+            </DockPanel>
+
+            <Frame x:Name="Mainframe" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Viewbox>
+
 </Window>
