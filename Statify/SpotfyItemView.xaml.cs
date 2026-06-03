@@ -48,8 +48,9 @@ namespace Statify
                 Image Track_image = new Image()
                 {
                     Source = new BitmapImage(new Uri(item.Image)),
-                    Width = 15,
-                    Height = 15,
+                    Width = 16,
+                    Height = 16,
+                    
                 };
                 Item_Images.Add(Track_image);
             }

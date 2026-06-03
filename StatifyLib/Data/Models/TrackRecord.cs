@@ -27,6 +27,6 @@ public class TrackRecord: SpotifyItem
 
     public override string ToString()
     {
-        return $"{Name} - {Artist} - {PlayCount}";
+        return $"{Name} - {Artist}";
     }
 }

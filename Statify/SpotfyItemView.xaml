@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Statify"
-             mc:Ignorable="d" d:DesignHeight="550" d:DesignWidth="200">
+             mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="200">
     <Grid  Background="Transparent">
 
         <Grid.RowDefinitions>
@@ -18,6 +18,6 @@
 
 
         <ListView x:Name="ListViewImages" Grid.Column="0" HorizontalAlignment="Right" Padding="10" ItemsSource="{Binding Item_Images}" Width="50"  ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
-        <ListView x:Name="ListviewItems" Grid.Column="1" Width="300" Padding="10" HorizontalAlignment="Left" ItemsSource="{Binding SpotifyItems}" SelectionChanged="Selector_OnSelectionChanged"/>
+        <ListView x:Name="ListviewItems" Grid.Column="1" Width="300" Padding="10" HorizontalAlignment="Left" ItemsSource="{Binding SpotifyItems}" SelectionChanged="Selector_OnSelectionChanged" />
     </Grid>
 </UserControl>

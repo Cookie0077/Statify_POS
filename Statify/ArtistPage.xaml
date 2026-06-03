@@ -16,8 +16,7 @@
         </Grid.ColumnDefinitions>
         
         <ListView Grid.Column="0"  ItemsSource="{Binding TopArtists}"></ListView>
-        <wpf:CartesianChart Grid.Column="1" Series="{Binding ArtistSeries}"
-                            XAxes="{Binding XAxes}"
+        <wpf:CartesianChart Grid.Column="1" x:Name="ArtistChart" 
                             Height="300" Background="LightCyan"/>
     </Grid>
 </Page>

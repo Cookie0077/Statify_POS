@@ -5,24 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Statify"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="450" Width="800">
-    <DockPanel>
-        <Label Content="Welcome to Statify" HorizontalAlignment="Center" DockPanel.Dock="Top" FontSize="40" Margin="10"/>
-        <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center"  Width="200" Height="300">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" >
-                <Label Content="Username:" VerticalAlignment="Center" Margin="5" Padding="4" />
-                <TextBox x:Name="TextBoxName"  Margin="10" Padding="5" HorizontalAlignment="Center" />
+        Title="RegisterWindow" WindowState="Maximized" MinWidth="400" MinHeight="300">
+
+    <Viewbox Stretch="Uniform">
+        <DockPanel Width="1600" Height="900">
+            <Label Content="Welcome to Statify" HorizontalAlignment="Center" DockPanel.Dock="Top" FontSize="80" Margin="20"/>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Height="500">
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="450">
+                    <Label Content="Username:" VerticalAlignment="Center" Margin="10" Padding="8" FontSize="22" Width="180"/>
+                    <TextBox x:Name="TextBoxName" Margin="10" Padding="10" FontSize="22" Width="220" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="450">
+                    <Label Content="Password:" VerticalAlignment="Center" Margin="10" Padding="8" FontSize="22" Width="180" HorizontalAlignment="Left"/>
+                    <PasswordBox x:Name="PasswordBoxPW" Margin="10" Padding="10" FontSize="22" Width="220" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="450">
+                    <Label Content="Repeat:" VerticalAlignment="Center" Margin="10" Padding="8" FontSize="22" Width="180"/>
+                    <PasswordBox x:Name="PasswordBoxPWRE" Margin="10" Padding="10" FontSize="22" Width="220" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <Button x:Name="ButtonRegister" IsDefault="true" Content="Register" Margin="20" Padding="12 8" FontSize="24" Width="200" Click="ButtonRegister_Click"/>
+
             </StackPanel>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150">
-                <Label Content="Password:" VerticalAlignment="Center" Margin="5"  Padding="4" HorizontalAlignment="Center" />
-                <PasswordBox x:Name="PasswordBoxPW"  Margin="10" Padding="5" HorizontalAlignment="Center"  />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" >
-                <Label Content="Reenter Password:" VerticalAlignment="Center" Margin="5"  Padding="4"/>
-                <PasswordBox x:Name="PasswordBoxPWRE"  Margin="10" Padding="5" HorizontalAlignment="Center" />
-            </StackPanel>
-            <Button x:Name="ButtonRegister" IsDefault="true" Content="Register" Margin="10" Padding="5" Width="100" Click="ButtonRegister_Click" />
-        </StackPanel>
-    </DockPanel>
+        </DockPanel>
+    </Viewbox>
 
 </Window>

@@ -71,7 +71,13 @@ namespace Statify
                     LabelsRotation = 270
                 }
             };
-            }
+
+            ArtistChart.Series = ArtistSeries;
+            ArtistChart.XAxes = XAxes;
+        }
+            
+
+            
 
         }
     }
