@@ -23,9 +23,10 @@ public class AppController
     public AppController() {
         HttpClient client = new HttpClient()
         {
-            BaseAddress = new Uri("http://127.0.0.1:8888")
+            BaseAddress = new Uri("http://127.0.0.1:8888"),
         };
 
+       
         if (usefakeservice)
         {
             artistService = new ArtistServiceFake();
@@ -35,6 +36,7 @@ public class AppController
         }
         else
         {
+            client.DefaultRequestHeaders.Add("A-API-Key", "STATIKEY");
             artistService = new ArtistService(client);
             trackService = new TrackService(client);
             userService = new UserService(client);
