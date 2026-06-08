@@ -7,6 +7,7 @@ using StatifyLib.Data.Models;
 using StatifyLib.Data.Services.UserService;
 using System.Net.Http.Headers;
 using StatifyLib.Data.Services.ArtistService;
+using StatifyLib.Data.Services.PlaylistService;
 using StatifyLib.Data.Services.TrackService;
 
 namespace Statifylib.Domain;
@@ -40,8 +41,7 @@ public class AppController
             artistService = new ArtistService(client);
             trackService = new TrackService(client);
             userService = new UserService(client);
-            // TODO: Implement real PlaylistService
-            playlistService = new PlaylistServiceFake();
+            playlistService = new PlaylistService(client);
         }
     }
 
@@ -102,7 +102,7 @@ public class AppController
 
     public async Task<List<Playlist>> GetPlaylists(int userId)
     {
-        List<Playlist> playlists = await playlistService.GetPlaylists();
+        List<Playlist> playlists = await playlistService.GetPlaylists(userId);
         
         return playlists;
     }

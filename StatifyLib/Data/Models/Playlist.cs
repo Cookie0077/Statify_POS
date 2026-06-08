@@ -4,14 +4,15 @@ namespace Statifylib.Data.Models;
 
 public class Playlist: SpotifyItem
 {
-    public int FollowerCount { get; set; }
-    public string Owner { get; set; }
 
-    /* TODO: Implement in API
-   [JsonPropertyName("Playlist_image")]
-   public override string Image { get; set; }
-   */
     public Playlist () {}
+
+    public Playlist(int id, string name, string image)
+    {
+        this.Id = id;
+        this.Image = image;
+        this.Name = name;
+    }
 
     public override string ToString()
     {

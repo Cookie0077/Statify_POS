@@ -6,9 +6,9 @@ public class PlaylistServiceFake: IPlaylistService
 {
     private List<Playlist> Playlists = new List<Playlist>()
     {
-        new Playlist() {Id = 1,  Name = "My First Playlist", FollowerCount = 100, Owner = "me"},
-        new Playlist() {Id = 2,  Name = "My Second Playlist", FollowerCount = 201, Owner = "him"},
-        new Playlist() {Id = 3,  Name = "My Third Playlist", FollowerCount = 302, Owner = "her"},
+        new Playlist() {Id = 1,  Name = "My First Playlist"},
+        new Playlist() {Id = 2,  Name = "My Second Playlist"},
+        new Playlist() {Id = 3,  Name = "My Third Playlist"},
         
     };
 
@@ -39,5 +39,10 @@ public class PlaylistServiceFake: IPlaylistService
     public Task<List<Track>> GetTracks(int playlistId)
     {
         return Task.FromResult(Tracks.Where(t => t.Id == playlistId).ToList());
+    }
+
+    public Task<List<Playlist>> GetPlaylists(int userId)
+    {
+        throw new NotImplementedException();
     }
 }
