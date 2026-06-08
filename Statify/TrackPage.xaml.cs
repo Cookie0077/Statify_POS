@@ -52,7 +52,6 @@ namespace Statify
             foreach (TrackRecord track in tracks)
             {
                 TopTracks.Add(track);
-                Console.WriteLine($"{track.Name} - {track.PlayCount}");
             }
 
 

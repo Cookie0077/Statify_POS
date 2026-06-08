@@ -28,7 +28,7 @@ namespace Statify
             LabelArtistName.Content = $"Artist: {track.Name}";
             LabelDuration.Content = $"Duration: {track.Duration}";
             LabelLastplayed.Content = $"Last Played: {track.LastPlayed}";
-            LabelPlaycount.Content = $"Played {track.PlayCount}X";
+            LabelPlaycount.Content = $"Played: {track.PlayCount}x";
 
 
         }
