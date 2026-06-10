@@ -19,7 +19,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Track Name" DisplayMemberBinding="{Binding Name}" Width="300"/>
-                    <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding Artist}" Width="220"/>
+                    <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding Artist}" Width="220"/>   
                     <GridViewColumn Header="Duration" DisplayMemberBinding="{Binding Duration}" Width="160"/>
                     <GridViewColumn Header="Plays" DisplayMemberBinding="{Binding PlayCount}" Width="140"/>
                     <GridViewColumn Header="Last Played" DisplayMemberBinding="{Binding LastPlayed, StringFormat=\{0:yyyy-MM-dd HH:mm\}}" Width="260"/>
