@@ -55,6 +55,6 @@ public class TrackServiceFake: ITrackService
 
     public Task<List<TrackRecord>> GetTracks(int UserId)
     {
-        throw new NotImplementedException();
+        return Task.FromResult(trackRecords);
     }
 }

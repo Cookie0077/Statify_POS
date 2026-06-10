@@ -43,7 +43,7 @@ public class PlaylistServiceFake: IPlaylistService
 
     public Task<List<Playlist>> GetPlaylists(int userId)
     {
-        throw new NotImplementedException();
+        return Task.FromResult(Playlists);
     }
 
     public Task SyncPlaylist(int UserID)
