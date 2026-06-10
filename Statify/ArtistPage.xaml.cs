@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -51,8 +52,7 @@ namespace Statify
                 new ColumnSeries<int>
                 {
                     Name = "Plays",
-                    // TODO: hier muss die playtime hin !!
-                    Values = artists.Select(t => t.Id).ToArray(),
+                    Values = artists.Select(t => t.Playtime).ToArray(),
                     Fill = new SolidColorPaint(SKColors.Red)
                 }
 
@@ -76,4 +76,5 @@ namespace Statify
             
 
         }
+    
     }
