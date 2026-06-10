@@ -39,7 +39,7 @@ namespace Statify
         InitializeComponent();
         UserId = userId;
         DataContext = this;
-        appController.SyncTracks(userId);
+        appController.SyncUser(userId);
         InitUI();
       
        

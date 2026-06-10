@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http.Json;
 using System.Text;
+using Microsoft.VisualBasic;
 using Statifylib.Data.Models;
 using Statifylib.Data.Services.PlaylistService;
 
@@ -33,9 +34,17 @@ namespace StatifyLib.Data.Services.PlaylistService
             return playlists;
         }
 
-        public Task<List<Track>> GetTracks(int playlistId)
+        public async Task<List<Track>> GetTracks(int playlistId)
         {
-            throw new NotImplementedException();
+            List<Track> tracks = await client.GetFromJsonAsync<List<Track>>($"playlist/{playlistId}/tracks");
+
+            return tracks;
+        }
+
+        public async Task SyncPlaylist(int userID)
+        {
+            HttpResponseMessage result = await client.PostAsync($"playlist/sync/{userID}", null);
+            result.EnsureSuccessStatusCode();
         }
     }
 }

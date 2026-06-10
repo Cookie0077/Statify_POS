@@ -41,21 +41,9 @@ namespace Statify
         {
             List<Playlist> playlists = await appController.GetPlaylists(UserId);
 
-            foreach (Playlist playlist in playlists)
-            {
-                TopPlaylists.Add(playlist);
-            }
+            PlaylistView.GetSpotifyItemList(playlists.Cast<SpotifyItem>().ToList(),this.NavigationService);
         }
 
-        private async void  Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Tracks.Clear();
-            Playlist curPlaylist = (Playlist)ListViewPlaylists.SelectedItem;
-            List<Track> tracks = await appController.GetTracksByPlaylist(curPlaylist.Id);
-            foreach (Track track in tracks)
-            {
-                Tracks.Add(track);
-            }
-        }
+        
     }
 }

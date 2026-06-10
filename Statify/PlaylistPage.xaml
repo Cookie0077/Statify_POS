@@ -14,8 +14,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Column="0" x:Name="ListViewPlaylists" ItemsSource="{Binding TopPlaylists}" SelectionChanged="Selector_OnSelectionChanged" FontSize="22" Margin="20"/>
-        <ListView Grid.Column="1" ItemsSource="{Binding Tracks}" FontSize="22" Margin="20"/>
+        <local:SpotfyItemView Grid.Column="0" x:Name="PlaylistView" Margin="10"></local:SpotfyItemView>
     </Grid>
 
 </Page>

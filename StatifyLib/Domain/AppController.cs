@@ -19,7 +19,7 @@ public class AppController
     private IPlaylistService playlistService;
     private IArtistService artistService;
 
-    private bool usefakeservice = false;
+    private bool usefakeservice = true;
 
     public AppController() {
         HttpClient client = new HttpClient()
@@ -45,18 +45,18 @@ public class AppController
         }
     }
 
-    /*
-    public async Task<List<Artist>> GetArtists()
+    
+    public async Task<List<Artist>> GetArtists(int userId)
     { 
-         List<Artist> artists = await artistService.GetArtists();
+         List<Artist> artists = await artistService.GetArtists(userId);
 
         return artists;
     }
-    */
+    
 
-    public async Task<List<Artist>> GetTopArtists(int User_id)
+    public async Task<List<Artist>> GetTopArtists(int userId)
     {
-        List<Artist> artists = await artistService.GetTopArtists(User_id);
+        List<Artist> artists = await artistService.GetTopArtists(userId);
 
         return artists;
     }
@@ -68,9 +68,10 @@ public class AppController
         return Tracks;
     }
 
-    public async void SyncTracks(int userId)
+    public async void SyncUser(int userId)
     {
         await trackService.SyncTracks(userId);
+        await playlistService.SyncPlaylist(userId);
     }
 
     public async Task<List<TrackRecord>> GetTracks(int userId)

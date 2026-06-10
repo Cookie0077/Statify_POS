@@ -21,9 +21,11 @@ namespace StatifyLib.Data.Services.ArtistService
             throw new NotImplementedException();
         }
 
-        public Task<List<Artist>> GetArtists(int User_id)
+        public async Task<List<Artist>> GetArtists(int User_id)
         {
-            throw new NotImplementedException();
+            List<Artist> artists = await client.GetFromJsonAsync<List<Artist>>($"artist/{User_id}");
+
+            return artists;
         }
 
         public async Task<List<Artist>> GetTopArtists(int User_id)

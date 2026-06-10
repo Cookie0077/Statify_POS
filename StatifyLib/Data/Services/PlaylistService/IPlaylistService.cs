@@ -8,4 +8,6 @@ public interface IPlaylistService
     Task<List<Playlist>> GetPlaylists(int userId);
     void AddPlaylist(Playlist playlist);
     Task<List<Track>> GetTracks(int playlistId);
+
+    Task SyncPlaylist(int userID);
 }

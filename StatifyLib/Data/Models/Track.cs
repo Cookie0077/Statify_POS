@@ -17,6 +17,6 @@ public class Track: SpotifyItem
 
     public override string ToString()
     {
-        return $"{Name} {Image}";
+        return $"{Name}";
     }
 }

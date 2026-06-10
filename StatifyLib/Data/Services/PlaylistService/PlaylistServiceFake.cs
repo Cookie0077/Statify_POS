@@ -45,4 +45,9 @@ public class PlaylistServiceFake: IPlaylistService
     {
         throw new NotImplementedException();
     }
+
+    public Task SyncPlaylist(int UserID)
+    {
+        throw new NotImplementedException();
+    }
 }
