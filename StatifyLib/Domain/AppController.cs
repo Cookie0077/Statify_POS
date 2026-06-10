@@ -108,6 +108,11 @@ public class AppController
         return playlists;
     }
 
+    public async void AddTracksfromPlaylist(int playlistId)
+    {
+        await playlistService.SyncTrackToPlaylist(playlistId);
+    } 
+
 
 
 }

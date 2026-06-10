@@ -46,5 +46,12 @@ namespace StatifyLib.Data.Services.PlaylistService
             HttpResponseMessage result = await client.PostAsync($"playlist/sync/{userID}", null);
             result.EnsureSuccessStatusCode();
         }
+
+        public async Task SyncTrackToPlaylist(int playlistId)
+        {
+            HttpResponseMessage result = await client.PostAsync($"playlist/sync/{playlistId}/tracks", null);
+
+            result.EnsureSuccessStatusCode();
+        }
     }
 }

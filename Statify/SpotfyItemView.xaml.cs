@@ -74,6 +74,11 @@ namespace Statify
                 _navigationService.Navigate(new TrackDetailPage(item as TrackRecord));
             }
 
+            if (item is Artist)
+            {
+                _navigationService.Navigate(new ArtistDetailPage(item as Artist));
+            }
+
         }
     }
 }

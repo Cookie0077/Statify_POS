@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Statify"
+      xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="1600"
       Title="ArtistDetailPage">
@@ -11,13 +12,18 @@
     <DockPanel>
         <Button x:Name="ButtonBack" DockPanel.Dock="Top" HorizontalAlignment="Left" Width="160" Height="60" Margin="24 20 0 20" FontSize="22" Content="← Back" Click="ButtonBack_Click"/>
 
-        <Image x:Name="ImageTrack" DockPanel.Dock="Left" Width="350" Height="350" Margin="40 40 32 40" VerticalAlignment="Top"/>
+        <Image x:Name="ImageArtist" DockPanel.Dock="Left" Width="350" Height="350" Margin="40 40 32 40" VerticalAlignment="Top"/>
 
         <StackPanel DockPanel.Dock="Right" Orientation="Vertical" VerticalAlignment="Center" Margin="0 40 40 40">
             <Label x:Name="LabelArtistName" Height="60" FontSize="28" Margin="0 0 0 32"/>
-            <Label x:Name="LabelDuration" Height="54" FontSize="24" Margin="0 0 0 8"/>
-            <Label x:Name="LabelPlaycount" Height="54" FontSize="24" Margin="0 0 0 8"/>
-            <Label x:Name="LabelLastplayed" Height="54" FontSize="24"/>
+            <Label x:Name="LabelPlaytime" Height="54" FontSize="24" Margin="0 0 0 8"/>
+            <Button Content="View on Spotify" Height="80"  Margin=" 10" Name="ButtonViewOnSpotify" ></Button>
         </StackPanel>
+
+        <lvc:CartesianChart x:Name="TopTracksChart" Series="{Binding TrackSeries}"></lvc:CartesianChart>
+
+        
+
+        
     </DockPanel>
 </Page>

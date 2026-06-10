@@ -19,6 +19,7 @@
             <Label x:Name="LabelDuration" Height="54" FontSize="24" Margin="0 0 0 8"/>
             <Label x:Name="LabelPlaycount" Height="54" FontSize="24" Margin="0 0 0 8"/>
             <Label x:Name="LabelLastplayed" Height="54" FontSize="24"/>
+            <Button Content="View on Spotify" Height="80"  Margin=" 10" Name="ButtonViewOnSpotify" ></Button>
         </StackPanel>
     </DockPanel>
 

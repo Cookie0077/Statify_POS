@@ -48,6 +48,11 @@ public class PlaylistServiceFake: IPlaylistService
 
     public Task SyncPlaylist(int UserID)
     {
+        return Task.CompletedTask;
+    }
+
+    public Task SyncTrackToPlaylist(int playlistId)
+    {
         throw new NotImplementedException();
     }
 }

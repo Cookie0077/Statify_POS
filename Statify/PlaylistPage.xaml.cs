@@ -41,7 +41,7 @@ namespace Statify
         {
             List<Playlist> playlists = await appController.GetPlaylists(UserId);
 
-            PlaylistView.GetSpotifyItemList(playlists.Cast<SpotifyItem>().ToList(),this.NavigationService);
+            PlaylistView.GetSpotifyItemList(playlists.Cast<SpotifyItem>().ToList(),PlaylistPageFrame.NavigationService);
         }
 
         
