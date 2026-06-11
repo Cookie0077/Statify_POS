@@ -1,4 +1,4 @@
-﻿<Page x:Class="Statify.MainPage"
+<Page x:Class="Statify.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -7,23 +7,83 @@
       xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
       mc:Ignorable="d"
       d:DesignHeight="900" d:DesignWidth="1600"
-      Title="MainPage">
+      Title="MainPage"
+      Background="Transparent">
 
-    <DockPanel Background="AliceBlue">
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="20" DockPanel.Dock="Left">
-            <Label Content="Top Artists" HorizontalAlignment="Center" FontSize="36" Background="Azure" Margin="10"/>
-            <local:SpotfyItemView x:Name="SpotfyItemViewTopArtists" Width="450"/>
-        </StackPanel>
+    <Grid Margin="32 24 32 24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <StackPanel x:Name="StackPanelTopTracks" DockPanel.Dock="Right" Orientation="Vertical" Margin="20" Width="550" Background="Transparent">
-            <Label Content="Top Tracks" HorizontalAlignment="Center" FontSize="36" Margin="10" Background="Transparent"/>
-            <local:SpotfyItemView x:Name="SpotfyItemViewTopTracks" Width="520"/>
-        </StackPanel>
+        <!-- Hero header -->
+        <Grid Grid.Row="0" Margin="6 0 6 18">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="DASHBOARD" Style="{StaticResource EyebrowTextStyle}"/>
+                <TextBlock Text="Your Music in Numbers" Style="{StaticResource HeadlineTextStyle}" Margin="0 4 0 4"/>
+                <TextBlock Text="A snapshot of what you've been listening to."
+                           Style="{StaticResource MutedTextStyle}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="14" Padding="16 8" Margin="6 0">
+                    <StackPanel>
+                        <TextBlock Text="VIEW" Style="{StaticResource EyebrowTextStyle}"/>
+                        <TextBlock Text="Last 30 days" Foreground="{StaticResource LightTextBrush}" FontWeight="SemiBold"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
 
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="400" VerticalAlignment="Top" Margin="40 30 0 0">
-            <Label Content="Dashboards" FontSize="36" Background="Azure" HorizontalAlignment="Center" Margin="10"/>
-            <lvc:PieChart x:Name="TrackChart" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="20" Width="350" Height="350" FontSize="14"/>
-        </StackPanel>
-    </DockPanel>
+        <!-- Dashboard grid -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
+            <!-- Top Artists card -->
+            <Border Grid.Column="0" Style="{StaticResource CardStyle}">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" Margin="0 0 0 14">
+                        <TextBlock Text="ARTISTS" Style="{StaticResource EyebrowTextStyle}"/>
+                        <TextBlock Text="Top Artists" Style="{StaticResource SectionTitleStyle}" Margin="0 4 0 0"/>
+                    </StackPanel>
+                    <local:SpotfyItemView x:Name="SpotfyItemViewTopArtists"/>
+                </DockPanel>
+            </Border>
+
+            <!-- Top Tracks card -->
+            <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                <DockPanel x:Name="StackPanelTopTracks">
+                    <StackPanel DockPanel.Dock="Top" Margin="0 0 0 14">
+                        <TextBlock Text="TRACKS" Style="{StaticResource EyebrowTextStyle}"/>
+                        <TextBlock Text="Top Tracks" Style="{StaticResource SectionTitleStyle}" Margin="0 4 0 0"/>
+                    </StackPanel>
+                    <local:SpotfyItemView x:Name="SpotfyItemViewTopTracks"/>
+                </DockPanel>
+            </Border>
+
+            <!-- Chart card -->
+            <Border Grid.Column="2" Style="{StaticResource CardStyle}">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" Margin="0 0 0 14">
+                        <TextBlock Text="DISTRIBUTION" Style="{StaticResource EyebrowTextStyle}"/>
+                        <TextBlock Text="Track Share" Style="{StaticResource SectionTitleStyle}" Margin="0 4 0 0"/>
+                        <TextBlock Text="Share of plays by your top tracks"
+                                   Style="{StaticResource MutedTextStyle}" Margin="0 2 0 0"/>
+                    </StackPanel>
+                    <lvc:PieChart x:Name="TrackChart"
+                                  Background="Transparent"
+                                  Margin="0 8 0 0"
+                                  MinHeight="360"/>
+                </DockPanel>
+            </Border>
+
+        </Grid>
+    </Grid>
 </Page>

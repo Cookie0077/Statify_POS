@@ -1,4 +1,4 @@
-﻿<Page x:Class="Statify.TrackPage"
+<Page x:Class="Statify.TrackPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -7,27 +7,64 @@
       xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
       mc:Ignorable="d"
       d:DesignHeight="900" d:DesignWidth="1600"
-      Title="TrackPage">
+      Title="TrackPage"
+      Background="Transparent">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <Grid Margin="32 24 32 24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <ListView Grid.Column="0" x:Name="ListViewTracks" ItemsSource="{Binding TopTracks}" FontSize="22" Margin="20">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Track Name" DisplayMemberBinding="{Binding Name}" Width="300"/>
-                    <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding Artist}" Width="220"/>   
-                    <GridViewColumn Header="Duration" DisplayMemberBinding="{Binding Duration}" Width="160"/>
-                    <GridViewColumn Header="Plays" DisplayMemberBinding="{Binding PlayCount}" Width="140"/>
-                    <GridViewColumn Header="Last Played" DisplayMemberBinding="{Binding LastPlayed, StringFormat=\{0:yyyy-MM-dd HH:mm\}}" Width="260"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="6 0 6 18">
+            <TextBlock Text="LIBRARY" Style="{StaticResource EyebrowTextStyle}"/>
+            <TextBlock Text="Songs" Style="{StaticResource HeadlineTextStyle}" Margin="0 4 0 4"/>
+            <TextBlock Text="Every track you've played, ranked and ready."
+                       Style="{StaticResource MutedTextStyle}"/>
+        </StackPanel>
 
-        <lvc:CartesianChart Grid.Column="1" x:Name="TrackChart" Background="MediumAquamarine" Margin="20"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource CardStyle}">
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top"
+                               Text="All Tracks"
+                               Style="{StaticResource SectionTitleStyle}"
+                               Margin="0 0 0 12"/>
+                    <ListView x:Name="ListViewTracks"
+                              ItemsSource="{Binding TopTracks}"
+                              FontSize="15"
+                              Background="Transparent"
+                              BorderThickness="0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Track Name" DisplayMemberBinding="{Binding Name}" Width="300"/>
+                                <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding Artist}" Width="220"/>
+                                <GridViewColumn Header="Duration" DisplayMemberBinding="{Binding Duration}" Width="120"/>
+                                <GridViewColumn Header="Plays" DisplayMemberBinding="{Binding PlayCount}" Width="100"/>
+                                <GridViewColumn Header="Last Played" DisplayMemberBinding="{Binding LastPlayed, StringFormat=\{0:yyyy-MM-dd HH:mm\}}" Width="200"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </DockPanel>
+            </Border>
+
+            <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" Margin="0 0 0 12">
+                        <TextBlock Text="TRENDS" Style="{StaticResource EyebrowTextStyle}"/>
+                        <TextBlock Text="Play Counts" Style="{StaticResource SectionTitleStyle}" Margin="0 4 0 0"/>
+                    </StackPanel>
+                    <lvc:CartesianChart x:Name="TrackChart"
+                                        Background="Transparent"
+                                        Margin="0 8 0 0"/>
+                </DockPanel>
+            </Border>
+        </Grid>
     </Grid>
-
 </Page>

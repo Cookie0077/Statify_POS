@@ -1,37 +1,89 @@
-﻿<Window x:Class="Statify.MainWindow"
+<Window x:Class="Statify.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Statify"
         mc:Ignorable="d"
-        Title="MainWindow" WindowState="Maximized" MinWidth="400" MinHeight="300" WindowStyle="None">
+        Title="Statify" WindowState="Maximized" MinWidth="400" MinHeight="300" WindowStyle="None"
+        Background="{StaticResource AppBackgroundBrush}">
 
     <Viewbox Stretch="Uniform">
-        <Grid Width="1600" Height="900">
+        <Grid Width="1600" Height="900" Background="{StaticResource AppBackgroundBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <DockPanel Grid.Row="0">
-                <TabControl x:Name="MainTabControl" Background="Transparent" SelectionChanged="TabControl_SelectionChanged">
-                    <TabItem Header="Home" x:Name="TabHome" Height="80" Width="250" FontSize="22"/>
-                    <TabItem Header="Artists" x:Name="ArtistTab" Height="80" Width="200" FontSize="22"/>
-                    <TabItem Header="Songs" x:Name="SongTabs" Height="80" Width="200" FontSize="22"/>
-                    <TabItem Header="Playlists" x:Name="PlaylistTab" Height="80" Width="200" FontSize="22"/>
-                </TabControl>
+            <!-- Top navigation bar -->
+            <Border Grid.Row="0" Background="#1f1d3a" CornerRadius="0" Padding="28 14">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="50 0 0 0">
-                    <Label Content="Username" x:Name="Labelusername" Height="80" Padding="20" FontSize="22" VerticalContentAlignment="Center" Margin="20 0"/>
-                    <Button x:Name="ButtonUserSettings" Content="Settings" Padding="20 10" FontSize="22" Margin="20 0"/>
-                    <Button x:Name="ButtonClose" Content="✕" Width="46" Height="46" FontSize="18" Margin="20 0 10 0" Padding="0" Background="Transparent" BorderThickness="0" Foreground="Gray" VerticalAlignment="Center" Click="ButtonClose_Click"/>
-                </StackPanel>
+                    <!-- Brand -->
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Border Width="44" Height="44" CornerRadius="14"
+                                Background="{StaticResource HeroAccentBrush}" Margin="0 0 14 0">
+                            <TextBlock Text="S" FontSize="24" FontWeight="Bold"
+                                       Foreground="{StaticResource LightTextBrush}"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="Statify" FontSize="22" FontWeight="Bold"
+                                       Foreground="{StaticResource LightTextBrush}"/>
+                            <TextBlock Text="Music Analytics" FontSize="11"
+                                       Foreground="{StaticResource MutedTextBrush}"
+                                       Margin="0 -2 0 0"/>
+                        </StackPanel>
+                    </StackPanel>
 
-            </DockPanel>
+                    <!-- Tabs -->
+                    <TabControl Grid.Column="1"
+                                x:Name="MainTabControl"
+                                Background="Transparent"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                SelectionChanged="TabControl_SelectionChanged">
+                        <TabItem Header="Home"      x:Name="TabHome"/>
+                        <TabItem Header="Artists"   x:Name="ArtistTab"/>
+                        <TabItem Header="Songs"     x:Name="SongTabs"/>
+                        <TabItem Header="Playlists" x:Name="PlaylistTab"/>
+                    </TabControl>
 
+                    <!-- User actions -->
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Border Background="{StaticResource SurfaceBrush}" CornerRadius="22" Padding="18 8" Margin="0 0 14 0">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Ellipse Width="26" Height="26" Margin="0 0 10 0">
+                                    <Ellipse.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#c69fa5" Offset="0"/>
+                                            <GradientStop Color="#8b6d9c" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <Label Content="Username" x:Name="Labelusername"
+                                       FontSize="15" Padding="0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                        <Button x:Name="ButtonUserSettings"
+                                Content="Settings"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                Margin="0 0 12 0"/>
+                        <Button x:Name="ButtonClose"
+                                Content="✕"
+                                Style="{StaticResource IconButtonStyle}"
+                                Click="ButtonClose_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
 
-            <Frame x:Name="Mainframe" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+            <!-- Content frame -->
+            <Frame x:Name="Mainframe" Grid.Row="1" NavigationUIVisibility="Hidden" Background="Transparent"/>
 
         </Grid>
     </Viewbox>
