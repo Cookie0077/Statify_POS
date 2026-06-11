@@ -42,7 +42,7 @@ namespace Statify
             InitializeComponent();
             DataContext = this;
 
-            InitUI();
+            Loaded += (sender, args) => InitUI();
         }
 
         private async void InitUI()

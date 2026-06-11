@@ -35,9 +35,8 @@ namespace Statify
             this.UserId = UserId;
             DataContext = this;
             // TODO: Add Loading Screen as the Playlist Sync takes longer than the GetPlaylists 
-            // InitUI();
-            
-            //Loaded += (sender, args) => InitUI();
+            Loaded += (sender, args) => InitUI();
+
         }
 
         public async void InitUI()

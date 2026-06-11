@@ -24,7 +24,7 @@ public partial class MainWindow : Window
     private PlaylistPage playlistPage;
     private User CurentUser;
 
-    private bool loginwindowoff = false;
+    private bool loginwindowoff = true;
 
     public MainWindow()
     {
@@ -41,6 +41,7 @@ public partial class MainWindow : Window
                 trackPage = new TrackPage(CurentUser.Id);
                 playlistPage = new PlaylistPage(CurentUser.Id);
                 Labelusername.Content = CurentUser.Name;
+                ImageProfile.Source = new BitmapImage(new Uri(CurentUser.Image));
             }
 
         }

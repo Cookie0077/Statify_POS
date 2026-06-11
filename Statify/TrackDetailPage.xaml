@@ -76,7 +76,7 @@
                             Style="{StaticResource AccentButtonStyle}"
                             HorizontalAlignment="Left"
                             MinWidth="220"
-                            Height="56"/>
+                            Height="56" Click="ButtonViewOnSpotify_Click"/>
                 </StackPanel>
             </Grid>
         </Border>
