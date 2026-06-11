@@ -10,4 +10,6 @@ public abstract class SpotifyItem
     public string Name { get; set; }
     
     public virtual string Image { get; set; }
+    public string URL { get; set; }
+
 }

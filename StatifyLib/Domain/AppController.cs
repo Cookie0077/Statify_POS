@@ -62,7 +62,7 @@ public class AppController
     }
     
 
-    public async void SyncUser(int userId)
+    public async Task SyncUser(int userId)
     {
         await trackService.SyncTracks(userId);
         await playlistService.SyncPlaylist(userId);

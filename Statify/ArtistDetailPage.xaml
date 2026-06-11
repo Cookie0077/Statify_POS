@@ -51,7 +51,7 @@
                         Style="{StaticResource AccentButtonStyle}"
                         VerticalAlignment="Center"
                         MinWidth="200"
-                        Height="56"/>
+                        Height="56" Click="ButtonViewOnSpotify_Click"/>
             </Grid>
         </Border>
 

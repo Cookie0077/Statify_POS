@@ -58,14 +58,13 @@
                     <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
                         <Border Background="{StaticResource SurfaceBrush}" CornerRadius="22" Padding="18 8" Margin="0 0 14 0">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <Ellipse Width="26" Height="26" Margin="0 0 10 0">
-                                    <Ellipse.Fill>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="#c69fa5" Offset="0"/>
-                                            <GradientStop Color="#8b6d9c" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Ellipse.Fill>
-                                </Ellipse>
+                                <Border Width="26" Height="26" CornerRadius="13" Margin="0 0 10 0" ClipToBounds="True">
+                                    <Image x:Name="ImageProfile" Width="26" Height="26" Stretch="UniformToFill">
+                                        <Image.Clip>
+                                            <EllipseGeometry Center="13,13" RadiusX="13" RadiusY="13"/>
+                                        </Image.Clip>
+                                    </Image>
+                                </Border>
                                 <Label Content="Username" x:Name="Labelusername"
                                        FontSize="15" Padding="0" VerticalAlignment="Center"/>
                             </StackPanel>

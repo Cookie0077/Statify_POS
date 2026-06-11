@@ -1,5 +1,6 @@
 ﻿using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
+using static System.Net.WebRequestMethods;
 
 namespace Statifylib.Data.Services.TrackService;
 
@@ -19,6 +20,8 @@ public class TrackServiceFake: ITrackService
                 Artist = $"Artist {i}",
                 Duration = 12,
                 LastPlayed = DateTime.Today,
+                Image = "https://i.scdn.co/image/ab67616d0000b27330a635de2bb0caa4e26f6abb",
+                URL = "https://open.spotify.com/track/1hz7SRTGUNAtIQ46qiNv2p",
                 PlayCount =  i * 9,
                 
             });

@@ -10,12 +10,32 @@
       Background="Transparent">
 
     <Border Style="{StaticResource CardStyle}" Margin="6">
-        <DockPanel>
-            <TextBlock DockPanel.Dock="Top"
-                       Text="Tracks"
-                       Style="{StaticResource SectionTitleStyle}"
-                       Margin="0 0 0 12"/>
-            <local:SpotfyItemView x:Name="TrackView"/>
-        </DockPanel>
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Titel + Button oben -->
+            <Grid Grid.Row="0">
+                <TextBlock Text="Tracks"
+                           Style="{StaticResource SectionTitleStyle}"
+                           Margin="0 0 0 12"
+                           HorizontalAlignment="Left"/>
+
+                <Button Content="View on Spotify"
+                        Name="ButtonViewOnSpotify"
+                        Style="{StaticResource AccentButtonStyle}"
+                        HorizontalAlignment="Right"
+                        MinWidth="220"
+                        Height="56"
+                        Click="ButtonViewOnSpotify_Click"/>
+            </Grid>
+
+            <local:SpotfyItemView x:Name="TrackView"
+                                  Grid.Row="1"/>
+
+        </Grid>
     </Border>
 </Page>

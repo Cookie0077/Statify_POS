@@ -27,26 +27,26 @@ namespace Statify
     /// </summary>
     public partial class MainPage : Page
     {
-        private AppController appController = new AppController();
+    private AppController appController = new AppController();
 
-        public ISeries[] TrackSeries { get; set; }
-        private int UserId;
+    public ISeries[] TrackSeries { get; set; }
+    private int UserId;
 
-       
+   
 
             public MainPage(int userId)
         {
             InitializeComponent();
             UserId = userId;
             DataContext = this;
-            appController.SyncUser(userId);
-            InitUI();
-          
-           
+
+            Loaded += (sender, args) => InitUI();
+
         }
 
         public async void InitUI()
         {
+            appController.SyncUser(UserId);
             List<Artist> artists = await appController.GetTopArtists(UserId);
             List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
 
@@ -72,6 +72,9 @@ namespace Statify
 
                 TrackChart.Series = TrackSeries;
             }
+
+
+
+        }
         }
     }
-}

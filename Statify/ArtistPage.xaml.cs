@@ -38,7 +38,7 @@ namespace Statify
             InitializeComponent();
             DataContext = this;
             this.UserId = UserId;
-            InitUI();
+            Loaded += (sender, args) => InitUI();
         }
 
         public async void InitUI()

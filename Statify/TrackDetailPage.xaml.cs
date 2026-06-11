@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,9 +20,11 @@ namespace Statify
     /// </summary>
     public partial class TrackDetailPage : Page
     {
+        private TrackRecord track;
         public TrackDetailPage(TrackRecord track)
         {
             InitializeComponent();
+            this.track = track;
 
             ImageTrack.Source = new BitmapImage(new Uri(track.Image));
             LabelTitel.Content = track.Name;
@@ -37,6 +40,15 @@ namespace Statify
         {
             if (this.NavigationService?.CanGoBack == true)
                 this.NavigationService.GoBack();
+        }
+
+        private void ButtonViewOnSpotify_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo()
+            {
+                FileName =track.URL,
+                UseShellExecute = true
+            });
         }
     }
 }
