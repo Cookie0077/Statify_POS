@@ -48,3 +48,5 @@ desktop.ini
 *.log
 *.tmp
 *.temp
+/Statify/MainWindow.xaml.cs
+/Statify/PlaylistPage.xaml.cs

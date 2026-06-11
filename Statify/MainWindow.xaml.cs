@@ -35,7 +35,7 @@ public partial class MainWindow : Window
             LoginWindow loginWindow = new LoginWindow();
             if (loginWindow.ShowDialog() == true)
             {
-                CurentUser = loginWindow.UserAPI;
+                CurentUser = loginWindow.UserAPI; 
                 mainPage = new MainPage(CurentUser.Id);
                 artistPage = new ArtistPage(CurentUser.Id);
                 trackPage = new TrackPage(CurentUser.Id);

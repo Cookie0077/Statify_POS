@@ -39,7 +39,7 @@ namespace Statify
 
         public async void InitUI()
         {
-            List<Playlist> playlists = await appController.GetPlaylists(UserId);
+            List<Playlist> playlists = await appController.GetPlaylists(UserId);    
 
             PlaylistView.GetSpotifyItemList(playlists.Cast<SpotifyItem>().ToList(),PlaylistPageFrame.NavigationService);
         }
