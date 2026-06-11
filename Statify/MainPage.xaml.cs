@@ -27,54 +27,51 @@ namespace Statify
     /// </summary>
     public partial class MainPage : Page
     {
-    private AppController appController = new AppController();
+        private AppController appController = new AppController();
 
-    public ISeries[] TrackSeries { get; set; }
-    private int UserId;
+        public ISeries[] TrackSeries { get; set; }
+        private int UserId;
 
-   
-
-        public MainPage(int userId)
-    {
-        InitializeComponent();
-        UserId = userId;
-        DataContext = this;
-        appController.SyncUser(userId);
-        InitUI();
-      
        
-    }
 
-    public async void InitUI()
-    {
-        List<Artist> artists = await appController.GetTopArtists(UserId);
-        List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
-
-
-        SpotfyItemViewTopArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(),this.NavigationService);
-
-        SpotfyItemViewTopTracks.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(),this.NavigationService);
-
-        TrackSeries = new ISeries[tracks.Count];
-
-        for (int i = 0; i < tracks.Count; i++)
+            public MainPage(int userId)
         {
-            float hue = (i * 65f) % 360f;
-
-
-            TrackSeries[i] = new PieSeries<int>()
-            {
-                Name = tracks[i].Name,
-                Values = new int[1] { tracks[i].PlayCount},
-                // Hue, Saturation, Lightness
-                Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f))
-            };
-
-            TrackChart.Series = TrackSeries;
+            InitializeComponent();
+            UserId = userId;
+            DataContext = this;
+            appController.SyncUser(userId);
+            InitUI();
+          
+           
         }
 
+        public async void InitUI()
+        {
+            List<Artist> artists = await appController.GetTopArtists(UserId);
+            List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
 
 
-    }
+            SpotfyItemViewTopArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(),this.NavigationService);
+
+            SpotfyItemViewTopTracks.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(),this.NavigationService);
+
+            TrackSeries = new ISeries[tracks.Count];
+
+            for (int i = 0; i < tracks.Count; i++)
+            {
+                float hue = (i * 65f) % 360f;
+
+
+                TrackSeries[i] = new PieSeries<int>()
+                {
+                    Name = tracks[i].Name,
+                    Values = new int[1] { tracks[i].PlayCount},
+                    // Hue, Saturation, Lightness
+                    Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f))
+                };
+
+                TrackChart.Series = TrackSeries;
+            }
+        }
     }
 }

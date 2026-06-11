@@ -19,7 +19,7 @@ public class AppController
     private IPlaylistService playlistService;
     private IArtistService artistService;
 
-    private bool usefakeservice = false;
+    private bool usefakeservice = true;
 
     public AppController() {
         HttpClient client = new HttpClient()

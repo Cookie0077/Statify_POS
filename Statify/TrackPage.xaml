@@ -60,9 +60,10 @@
                         <TextBlock Text="TRENDS" Style="{StaticResource EyebrowTextStyle}"/>
                         <TextBlock Text="Play Counts" Style="{StaticResource SectionTitleStyle}" Margin="0 4 0 0"/>
                     </StackPanel>
-                    <lvc:CartesianChart x:Name="TrackChart"
-                                        Background="Transparent"
-                                        Margin="0 8 0 0"/>
+                    <lvc:PieChart x:Name="TrackChart"
+                                  Background="Transparent"
+                                  Margin="0 8 0 0"
+                                  MinHeight="360"/>
                 </DockPanel>
             </Border>
         </Grid>

@@ -38,6 +38,7 @@ namespace Statify
             // InitUI();
             
             //Loaded += (sender, args) => InitUI();
+            
         }
 
         public async void InitUI()

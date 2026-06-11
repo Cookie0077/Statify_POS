@@ -55,16 +55,23 @@ namespace Statify
             }
 
 
-            TrackSeries = new ISeries[]
-            {    
-                new LineSeries<int>()
-                {
-                    Name = "Songs",
-                    Values = tracks.Select(t=>t.PlayCount).ToList()
-                }
-            };
+            TrackSeries = new ISeries[tracks.Count];
 
-            TrackChart.Series = TrackSeries;
+            for (int i = 0; i < tracks.Count; i++)
+            {
+                float hue = (i * 65f) % 360f;
+
+
+                TrackSeries[i] = new PieSeries<int>()
+                {
+                    Name = tracks[i].Name,
+                    Values = new int[1] { tracks[i].PlayCount},
+                    // Hue, Saturation, Lightness
+                    Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f))
+                };
+
+                TrackChart.Series = TrackSeries;
+            }
         }
     }
 }
