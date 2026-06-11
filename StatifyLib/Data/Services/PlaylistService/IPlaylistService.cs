@@ -4,10 +4,10 @@ namespace Statifylib.Data.Services.PlaylistService;
 
 public interface IPlaylistService
 {
+    void AddPlaylist(Playlist playlist);
     Task<Playlist> GetPlaylist(int playlistId);
     Task<List<Playlist>> GetPlaylists(int userId);
-    void AddPlaylist(Playlist playlist);
     Task<List<Track>> GetTracks(int playlistId);
-    Task SyncTrackToPlaylist(int playlistId);
     Task SyncPlaylist(int userID);
+    Task SyncTrackToPlaylist(int playlistId);
 }

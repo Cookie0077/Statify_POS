@@ -1,4 +1,4 @@
-﻿<Page x:Class="Statify.TrackDetailPage"
+<Page x:Class="Statify.TrackDetailPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -6,21 +6,79 @@
       xmlns:local="clr-namespace:Statify"
       mc:Ignorable="d"
       d:DesignHeight="900" d:DesignWidth="1600"
-      Title="TrackDetailPage">
+      Title="TrackDetailPage"
+      Background="Transparent">
 
-    <DockPanel>
-        <Button x:Name="ButtonBack" DockPanel.Dock="Top" HorizontalAlignment="Left" Width="160" Height="60" Margin="24 20 0 20" FontSize="22" Content="← Back" Click="ButtonBack_Click"/>
+    <Grid Margin="32 24 32 24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <Image x:Name="ImageTrack" DockPanel.Dock="Left" Width="350" Height="350" Margin="40 40 32 40" VerticalAlignment="Top"/>
+        <!-- Back button -->
+        <Button x:Name="ButtonBack"
+                Grid.Row="0"
+                HorizontalAlignment="Left"
+                Style="{StaticResource BackButtonStyle}"
+                Content="← Back"
+                Click="ButtonBack_Click"
+                Margin="6 0 0 18"/>
 
-        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" VerticalAlignment="Center" Margin="0 40 40 40">
-            <Label x:Name="LabelTitel" Height="70" FontSize="36" Margin="0 0 0 6"/>
-            <Label x:Name="LabelArtistName" Height="60" FontSize="28" Margin="0 0 0 32"/>
-            <Label x:Name="LabelDuration" Height="54" FontSize="24" Margin="0 0 0 8"/>
-            <Label x:Name="LabelPlaycount" Height="54" FontSize="24" Margin="0 0 0 8"/>
-            <Label x:Name="LabelLastplayed" Height="54" FontSize="24"/>
-            <Button Content="View on Spotify" Height="80"  Margin=" 10" Name="ButtonViewOnSpotify" ></Button>
-        </StackPanel>
-    </DockPanel>
+        <Border Grid.Row="1" Style="{StaticResource CardStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
+                <Border Grid.Column="0"
+                        CornerRadius="14"
+                        ClipToBounds="True"
+                        Width="320" Height="320"
+                        VerticalAlignment="Top">
+                    <Image x:Name="ImageTrack" Stretch="UniformToFill"/>
+                </Border>
+
+                <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="36 0 0 0">
+                    <TextBlock Text="TRACK" Style="{StaticResource EyebrowTextStyle}"/>
+                    <Label x:Name="LabelTitel" Style="{StaticResource DetailTitleLabelStyle}" Margin="0 4 0 4"/>
+                    <Label x:Name="LabelArtistName" Style="{StaticResource DetailValueLabelStyle}" Margin="0 0 0 18"/>
+
+                    <Grid Margin="0 0 0 22" MaxWidth="700" HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Style="{StaticResource ElevatedCardStyle}" Padding="18 14" Margin="0 0 8 0">
+                            <StackPanel>
+                                <TextBlock Text="DURATION" Style="{StaticResource EyebrowTextStyle}"/>
+                                <Label x:Name="LabelDuration" Style="{StaticResource DetailValueLabelStyle}"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Column="1" Style="{StaticResource ElevatedCardStyle}" Padding="18 14" Margin="4 0">
+                            <StackPanel>
+                                <TextBlock Text="PLAYS" Style="{StaticResource EyebrowTextStyle}"/>
+                                <Label x:Name="LabelPlaycount" Style="{StaticResource DetailValueLabelStyle}"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Column="2" Style="{StaticResource ElevatedCardStyle}" Padding="18 14" Margin="8 0 0 0">
+                            <StackPanel>
+                                <TextBlock Text="LAST PLAYED" Style="{StaticResource EyebrowTextStyle}"/>
+                                <Label x:Name="LabelLastplayed" Style="{StaticResource DetailValueLabelStyle}"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <Button Content="View on Spotify"
+                            Name="ButtonViewOnSpotify"
+                            Style="{StaticResource AccentButtonStyle}"
+                            HorizontalAlignment="Left"
+                            MinWidth="220"
+                            Height="56"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
 </Page>

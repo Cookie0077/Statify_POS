@@ -78,6 +78,11 @@ namespace Statify
             {
                 _navigationService.Navigate(new ArtistDetailPage(item as Artist));
             }
+            
+            if (item is Playlist)
+            {
+                _navigationService.Navigate(new PlaylistDetailPage(item as Playlist));
+            }
 
         }
     }

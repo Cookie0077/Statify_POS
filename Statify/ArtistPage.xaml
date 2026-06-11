@@ -1,4 +1,4 @@
-﻿<Page x:Class="Statify.ArtistPage"
+<Page x:Class="Statify.ArtistPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -7,16 +7,51 @@
       xmlns:wpf="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
       mc:Ignorable="d"
       d:DesignHeight="900" d:DesignWidth="1600"
-      Title="ArtistPage">
+      Title="ArtistPage"
+      Background="Transparent">
 
-    <Grid Background="AliceBlue">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
+    <Grid Margin="32 24 32 24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <local:SpotfyItemView x:Name="SpotfyItemViewArtists" Width="450"/>
-        <wpf:CartesianChart Grid.Column="1" x:Name="ArtistChart" Background="LightCyan" Margin="20"/>
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="6 0 6 18">
+            <TextBlock Text="LIBRARY" Style="{StaticResource EyebrowTextStyle}"/>
+            <TextBlock Text="Artists" Style="{StaticResource HeadlineTextStyle}" Margin="0 4 0 4"/>
+            <TextBlock Text="Browse your top artists and listening trends."
+                       Style="{StaticResource MutedTextStyle}"/>
+        </StackPanel>
+
+        <!-- Two-column content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource CardStyle}" MinWidth="500">
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top"
+                               Text="Top Artists"
+                               Style="{StaticResource SectionTitleStyle}"
+                               Margin="0 0 0 12"/>
+                    <local:SpotfyItemView x:Name="SpotfyItemViewArtists"/>
+                </DockPanel>
+            </Border>
+
+            <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" Margin="0 0 0 12">
+                        <TextBlock Text="ANALYTICS" Style="{StaticResource EyebrowTextStyle}"/>
+                        <TextBlock Text="Plays per Artist" Style="{StaticResource SectionTitleStyle}" Margin="0 4 0 0"/>
+                    </StackPanel>
+                    <wpf:CartesianChart x:Name="ArtistChart"
+                                        Background="Transparent"
+                                        Margin="0 8 0 0"/>
+                </DockPanel>
+            </Border>
+        </Grid>
     </Grid>
-
 </Page>

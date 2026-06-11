@@ -1,29 +1,72 @@
-﻿<Page x:Class="Statify.ArtistDetailPage"
+<Page x:Class="Statify.ArtistDetailPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Statify"
       xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="900" d:DesignWidth="1600"
-      Title="ArtistDetailPage">
+      Title="ArtistDetailPage"
+      Background="Transparent">
 
-    <DockPanel>
-        <Button x:Name="ButtonBack" DockPanel.Dock="Top" HorizontalAlignment="Left" Width="160" Height="60" Margin="24 20 0 20" FontSize="22" Content="← Back" Click="ButtonBack_Click"/>
+    <Grid Margin="32 24 32 24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <Image x:Name="ImageArtist" DockPanel.Dock="Left" Width="350" Height="350" Margin="40 40 32 40" VerticalAlignment="Top"/>
+        <!-- Back button -->
+        <Button x:Name="ButtonBack"
+                Grid.Row="0"
+                HorizontalAlignment="Left"
+                Style="{StaticResource BackButtonStyle}"
+                Content="← Back"
+                Click="ButtonBack_Click"
+                Margin="6 0 0 18"/>
 
-        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" VerticalAlignment="Center" Margin="0 40 40 40">
-            <Label x:Name="LabelArtistName" Height="60" FontSize="28" Margin="0 0 0 32"/>
-            <Label x:Name="LabelPlaytime" Height="54" FontSize="24" Margin="0 0 0 8"/>
-            <Button Content="View on Spotify" Height="80"  Margin=" 10" Name="ButtonViewOnSpotify" ></Button>
-        </StackPanel>
+        <!-- Hero card -->
+        <Border Grid.Row="1" Style="{StaticResource CardStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-        <lvc:CartesianChart x:Name="TopTracksChart" Series="{Binding TrackSeries}"></lvc:CartesianChart>
+                <Border Grid.Column="0" CornerRadius="14" ClipToBounds="True" Width="220" Height="220">
+                    <Image x:Name="ImageArtist" Stretch="UniformToFill"/>
+                </Border>
 
-        
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="32 0 32 0">
+                    <TextBlock Text="ARTIST" Style="{StaticResource EyebrowTextStyle}"/>
+                    <Label x:Name="LabelArtistName" Style="{StaticResource DetailTitleLabelStyle}" Margin="0 4 0 12"/>
+                    <Label x:Name="LabelPlaytime" Style="{StaticResource DetailValueLabelStyle}"/>
+                </StackPanel>
 
-        
-    </DockPanel>
+                <Button Grid.Column="2"
+                        Content="View on Spotify"
+                        Name="ButtonViewOnSpotify"
+                        Style="{StaticResource AccentButtonStyle}"
+                        VerticalAlignment="Center"
+                        MinWidth="200"
+                        Height="56"/>
+            </Grid>
+        </Border>
+
+        <!-- Chart card -->
+        <Border Grid.Row="2" Style="{StaticResource CardStyle}">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top" Margin="0 0 0 12">
+                    <TextBlock Text="ANALYTICS" Style="{StaticResource EyebrowTextStyle}"/>
+                    <TextBlock Text="Top Tracks" Style="{StaticResource SectionTitleStyle}" Margin="0 4 0 0"/>
+                </StackPanel>
+                <lvc:CartesianChart x:Name="TopTracksChart"
+                                    Series="{Binding TrackSeries}"
+                                    Background="Transparent"
+                                    Margin="0 8 0 0"/>
+            </DockPanel>
+        </Border>
+    </Grid>
 </Page>
