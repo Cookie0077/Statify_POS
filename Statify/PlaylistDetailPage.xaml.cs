@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Track = Statifylib.Data.Models.Track;
 
 namespace Statify
 {
@@ -28,14 +29,15 @@ namespace Statify
         {
             InitializeComponent();
             this.playlist = playlist;
+            TextBlockPlaylistName.Text = playlist.Name;
             
             Loaded += (sender, args) => InitUI();
         }
         
         public async void InitUI()
         {
-            appController.AddTracksfromPlaylist(playlist.Id);
-            List<Statifylib.Data.Models.Track> tracks = await appController.GetTracksByPlaylist(playlist.Id);
+            await appController.AddTracksfromPlaylist(playlist.Id);
+            List<Track> tracks = await appController.GetTracksFromPlaylist(playlist.Id);
             TrackView.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(),this.NavigationService);
         }
 

@@ -36,10 +36,6 @@ public class PlaylistServiceFake: IPlaylistService
         Playlists.Add(playlist);
     }
 
-    public Task<List<Track>> GetTracks(int playlistId)
-    {
-        return Task.FromResult(Tracks.Where(t => t.Id == playlistId).ToList());
-    }
 
     public Task<List<Playlist>> GetPlaylists(int userId)
     {
@@ -54,5 +50,10 @@ public class PlaylistServiceFake: IPlaylistService
     public Task SyncTrackToPlaylist(int playlistId)
     {
         return Task.CompletedTask;
+    }
+
+    public Task<List<Track>> GetTracksfomPlaylist(int playlistId)
+    {
+        return Task.FromResult(Tracks.Where(t => t.Id == playlistId).ToList());
     }
 }

@@ -19,7 +19,7 @@ public class AppController
     private IPlaylistService playlistService;
     private IArtistService artistService;
 
-    private bool usefakeservice = true;
+    private bool usefakeservice = false;
 
     public AppController() {
         HttpClient client = new HttpClient()
@@ -102,16 +102,15 @@ public class AppController
         return playlists;
     }
     
-    public async Task<List<Track>> GetTracksByPlaylist(int playlistId)
-    {
-        List<Track> Tracks = await playlistService.GetTracks(playlistId);
-
-        return Tracks;
-    }
-
     public async Task AddTracksfromPlaylist(int playlistId)
     {
         await playlistService.SyncTrackToPlaylist(playlistId);
+    }
+
+    public async Task<List<Track>> GetTracksFromPlaylist(int playlistId)
+    {
+        List<Track> tracks = await playlistService.GetTracksfomPlaylist(playlistId);
+        return tracks;
     }
     
 

@@ -30,6 +30,7 @@ namespace Statify
 
         private NavigationService _navigationService;
 
+
         public SpotfyItemView()
         {
             InitializeComponent();
@@ -48,8 +49,8 @@ namespace Statify
                 Image Track_image = new Image()
                 {
                     Source = new BitmapImage(new Uri(item.Image)),
-                    Width = 30,
-                    Height = 30,
+                    Width = 40,
+                    Height = 40,
                     Stretch = Stretch.Uniform,
 
                 };

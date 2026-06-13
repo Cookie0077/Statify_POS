@@ -9,31 +9,58 @@
              Background="Transparent"
              Foreground="{StaticResource LightTextBrush}">
 
-    <Grid Background="Transparent">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                   HorizontalScrollBarVisibility="Disabled">
+        <Grid Background="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <ListView x:Name="ListViewImages"
-                  Grid.Column="0"
-                  Style="{StaticResource ImageListViewStyle}"
-                  ItemsSource="{Binding Item_Images}"
-                  Width="60"
-                  FontSize="14"
-                  Padding="0 4"
-                  HorizontalAlignment="Left"
-                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+            <ListView x:Name="ListViewImages"
+                      Grid.Column="0"
+                      Style="{StaticResource ImageListViewStyle}"
+                      ItemsSource="{Binding Item_Images}"
+                      Width="60"
+                      FontSize="14"
+                      Padding="0 4"
+                      HorizontalAlignment="Left"
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ScrollViewer.CanContentScroll="False"
+                      VirtualizingPanel.IsVirtualizing="False">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Height" Value="48"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
 
-        <ListView x:Name="ListviewItems"
-                  Grid.Column="1"
-                  Style="{StaticResource SidebarListViewStyle}"
-                  ItemsSource="{Binding SpotifyItems}"
-                  Padding="6 4"
-                  FontSize="16"
-                  Margin="6 0 0 0"
-                  HorizontalAlignment="Stretch"
-                  SelectionChanged="Selector_OnSelectionChanged"/>
-    </Grid>
+            <ListView x:Name="ListviewItems"
+                      Grid.Column="1"
+                      Style="{StaticResource SidebarListViewStyle}"
+                      ItemsSource="{Binding SpotifyItems}"
+                      Padding="6 0"
+                      FontSize="20"
+                      FontFamily="Segoe UI Semibold"
+                      FontWeight="SemiBold"
+                      Margin="6 0 0 0"
+                      HorizontalAlignment="Stretch"
+                      SelectionChanged="Selector_OnSelectionChanged"
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ScrollViewer.CanContentScroll="False"
+                      VirtualizingPanel.IsVirtualizing="False">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Height" Value="48"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

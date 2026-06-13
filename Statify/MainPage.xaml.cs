@@ -46,7 +46,7 @@ namespace Statify
 
         public async void InitUI()
         {
-            appController.SyncUser(UserId);
+            await appController.SyncUser(UserId);
             List<Artist> artists = await appController.GetTopArtists(UserId);
             List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
 
