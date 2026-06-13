@@ -36,13 +36,24 @@ namespace Statify
 
         private int UserId;
 
+        private bool _initialized = false;
+
         public TrackPage(int UserID)
         {
             this.UserId = UserID;
             InitializeComponent();
             DataContext = this;
 
-            Loaded += (sender, args) => InitUI();
+            Loaded += Page_Loaded;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (_initialized) return;
+            _initialized = true;
+
+            Loaded -= Page_Loaded;
+            InitUI();
         }
 
         private async void InitUI()

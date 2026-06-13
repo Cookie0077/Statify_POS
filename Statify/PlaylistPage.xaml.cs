@@ -27,17 +27,28 @@ namespace Statify
 
         public ObservableCollection<Playlist> TopPlaylists { get; set; } = new ObservableCollection<Playlist>();
         public ObservableCollection<Track> Tracks { get; set; } = new ObservableCollection<Track>();
-        
-        
+
+        private bool _initialized = false;
+
+
         public PlaylistPage(int UserId)
         {
             InitializeComponent();
             this.UserId = UserId;
             DataContext = this;
             // TODO: Add Loading Screen as the Playlist Sync takes longer than the GetPlaylists 
-            Loaded += (sender, args) => InitUI();
+            Loaded += Page_Loaded;
 
         }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (_initialized) return;
+            _initialized = true;
+
+            Loaded -= Page_Loaded;
+            InitUI();
+        }
+
 
         public async void InitUI()
         {

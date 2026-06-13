@@ -25,15 +25,25 @@ namespace Statify
     {
         private AppController appController = new AppController();
         private Playlist playlist;
+
+        private bool _initialized= false;
         public PlaylistDetailPage(Playlist playlist)
         {
             InitializeComponent();
             this.playlist = playlist;
             TextBlockPlaylistName.Text = playlist.Name;
             
-            Loaded += (sender, args) => InitUI();
+            Loaded += Page_Loaded;
         }
-        
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (_initialized) return;
+            _initialized = true;
+
+            Loaded -= Page_Loaded;
+            InitUI();
+        }
+
         public async void InitUI()
         {
             await appController.AddTracksfromPlaylist(playlist.Id);

@@ -32,14 +32,26 @@ namespace Statify
         public Axis[] XAxes { get; set; }
 
         private int UserId;
-        
+
+        private bool _initialized = false;
+
+
         public ArtistPage(int UserId)
         {
             InitializeComponent();
             DataContext = this;
             this.UserId = UserId;
-            Loaded += (sender, args) => InitUI();
+            Loaded += Page_Loaded;
         }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (_initialized) return;
+            _initialized = true;
+
+            Loaded -= Page_Loaded;
+            InitUI();
+        }
+
 
         public async void InitUI()
         {
