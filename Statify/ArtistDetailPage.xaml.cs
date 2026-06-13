@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Statify.Converters;
 using Track = Statifylib.Data.Models.Track;
 
 namespace Statify
@@ -37,7 +38,7 @@ namespace Statify
             List<Track> tracks = new List<Track>();
             ImageArtist.Source = new BitmapImage(new Uri(artist.Image));
             LabelArtistName.Content = artist.Name;
-            LabelPlaytime.Content = artist.Playtime;
+            LabelPlaytime.Content = $"{MsToDurationConverter.Convert(artist.Playtime)} Playtime";
 
             TrackSeries = new ISeries[tracks.Count];
 

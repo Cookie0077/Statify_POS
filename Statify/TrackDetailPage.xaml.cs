@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Statify.Converters;
 using StatifyLib.Data.Models;
 
 namespace Statify
@@ -29,9 +30,9 @@ namespace Statify
             ImageTrack.Source = new BitmapImage(new Uri(track.Image));
             LabelTitel.Content = track.Name;
             LabelArtistName.Content = $"Artist: {track.Name}";
-            LabelDuration.Content = $"Duration: {track.Duration}";
+            LabelDuration.Content = $"Duration: {MsToDurationConverter.Convert(track.Duration)}";
             LabelLastplayed.Content = $"Last Played: {track.LastPlayed}";
-            LabelPlaycount.Content = $"Played: {track.PlayCount}x";
+            LabelPlaycount.Content = $"Played: {track.PlayCount} Times";
 
             
             LoadingOverlay.Visibility = Visibility.Collapsed;

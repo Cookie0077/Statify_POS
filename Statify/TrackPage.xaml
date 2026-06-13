@@ -47,7 +47,7 @@
                                     <GridViewColumn Header="Track Name" DisplayMemberBinding="{Binding Name}"
                                                     Width="300" />
                                     <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding Artist}" Width="220" />
-                                    <GridViewColumn Header="Duration" DisplayMemberBinding="{Binding Duration}"
+                                    <GridViewColumn Header="Duration" DisplayMemberBinding="{Binding Duration, Converter={StaticResource MsToDuration}}"
                                                     Width="120" />
                                     <GridViewColumn Header="Plays" DisplayMemberBinding="{Binding PlayCount}"
                                                     Width="100" />

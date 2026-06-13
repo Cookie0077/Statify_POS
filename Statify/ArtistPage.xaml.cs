@@ -55,6 +55,12 @@ namespace Statify
 
         public async void InitUI()
         {
+            ArtistChart.TooltipTextPaint = new SolidColorPaint(SKColors.White);
+            ArtistChart.TooltipBackgroundPaint = new SolidColorPaint(new SKColor(0x31, 0x2F, 0x54)); // matches your SurfaceColor
+            ArtistChart.LegendTextPaint = new SolidColorPaint(SKColors.White);
+            // TODO: Make the Artist names the right color
+            
+            
             List<Artist> artists = await appController.GetTopArtists(UserId);
 
             SpotfyItemViewArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(), this.NavigationService);
@@ -63,8 +69,8 @@ namespace Statify
             {    
                 new ColumnSeries<int>
                 {
-                    Name = "Plays",
-                    Values = artists.Select(t => t.Playtime).ToArray(),
+                    Name = "Playtime in minutes: ",
+                    Values = artists.Select(t => t.Playtime/60000).ToArray(),
                     Fill = new SolidColorPaint(SKColors.Red)
                 }
 

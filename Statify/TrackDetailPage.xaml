@@ -46,7 +46,7 @@
                         <Label x:Name="LabelArtistName" Style="{StaticResource DetailValueLabelStyle}"
                                Margin="0 0 0 18" />
 
-                        <Grid Margin="0 0 0 22" MaxWidth="700" HorizontalAlignment="Left">
+                        <Grid Margin="0 0 0 22" MaxWidth="1200" HorizontalAlignment="Left">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
