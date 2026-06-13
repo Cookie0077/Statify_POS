@@ -16,4 +16,9 @@
       <ProjectReference Include="..\StatifyLib\StatifyLib.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Assets\user.png" />
+      <Resource Include="Assets\user.png" />
+    </ItemGroup>
+
 </Project>

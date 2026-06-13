@@ -41,7 +41,11 @@ public partial class MainWindow : Window
                 trackPage = new TrackPage(CurentUser.Id);
                 playlistPage = new PlaylistPage(CurentUser.Id);
                 Labelusername.Content = CurentUser.Name;
-                ImageProfile.Source = new BitmapImage(new Uri(CurentUser.Image));
+                if (CurentUser.Image == null)
+                    ImageProfile.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/user.png"));
+                
+                else
+                    ImageProfile.Source = new BitmapImage(new Uri(CurentUser.Image));
             }
 
         }
