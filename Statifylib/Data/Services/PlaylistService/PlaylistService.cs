@@ -34,9 +34,9 @@ namespace StatifyLib.Data.Services.PlaylistService
             return playlists;
         }
 
-        public async Task<List<Track>> GetTracksfomPlaylist(int playlistId)
+        public async Task<List<Track>> GetTracksfomPlaylist(int playlistId,int offset)
         {
-            List<Track> playlistTracks = await client.GetFromJsonAsync<List<Track>>($"playlist/{playlistId}/tracks");
+            List<Track> playlistTracks = await client.GetFromJsonAsync<List<Track>>($"playlist/{playlistId}/tracks?offset={offset}");
             return playlistTracks;
         }
 

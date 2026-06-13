@@ -107,9 +107,9 @@ public class AppController
         await playlistService.SyncTrackToPlaylist(playlistId);
     }
 
-    public async Task<List<Track>> GetTracksFromPlaylist(int playlistId)
+    public async Task<List<Track>> GetTracksFromPlaylist(int playlistId,int offset)
     {
-        List<Track> tracks = await playlistService.GetTracksfomPlaylist(playlistId);
+        List<Track> tracks = await playlistService.GetTracksfomPlaylist(playlistId,offset);
         return tracks;
     }
     

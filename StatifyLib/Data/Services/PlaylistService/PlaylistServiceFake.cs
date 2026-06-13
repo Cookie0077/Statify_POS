@@ -52,7 +52,7 @@ public class PlaylistServiceFake: IPlaylistService
         return Task.CompletedTask;
     }
 
-    public Task<List<Track>> GetTracksfomPlaylist(int playlistId)
+    public Task<List<Track>> GetTracksfomPlaylist(int playlistId,int offset)
     {
         return Task.FromResult(Tracks.Where(t => t.Id == playlistId).ToList());
     }

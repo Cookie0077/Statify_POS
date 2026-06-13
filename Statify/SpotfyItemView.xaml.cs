@@ -86,5 +86,13 @@ namespace Statify
             }
 
         }
+
+        public void Clear()
+        {
+            Item_Images.Clear();
+            SpotifyItems.Clear();
+        }
+
+      
     }
 }

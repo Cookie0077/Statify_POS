@@ -27,6 +27,10 @@ namespace Statify
         private Playlist playlist;
 
         private bool _initialized= false;
+
+        private int offset;
+
+        
         public PlaylistDetailPage(Playlist playlist)
         {
             InitializeComponent();
@@ -44,11 +48,23 @@ namespace Statify
             InitUI();
         }
 
+
+
         public async void InitUI()
         {
+            // redundanter call 
             await appController.AddTracksfromPlaylist(playlist.Id);
-            List<Track> tracks = await appController.GetTracksFromPlaylist(playlist.Id);
-            TrackView.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(),this.NavigationService);
+            List<Track> tracks = await appController.GetTracksFromPlaylist(playlist.Id,offset);
+            if (tracks.Count <= 0 && offset >0)
+            {
+                offset -= 50;
+                InitUI();
+            }
+            else
+            {
+                TrackView.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(), this.NavigationService);
+            }
+            
         }
 
         private void ButtonViewOnSpotify_Click(object sender, RoutedEventArgs e)
@@ -58,6 +74,25 @@ namespace Statify
                 FileName = playlist.URL,
                 UseShellExecute = true
             });
+        }
+
+        private void ButtonNext_OnClick(object sender, RoutedEventArgs e)
+        {
+          
+            offset += 50;
+            TrackView.Clear();
+            InitUI();
+        }
+
+        private void ButtonBack_OnClick(object sender, RoutedEventArgs e)
+        {
+            offset -= 50;
+            if (offset < 0)
+            {
+                offset = 0;
+            }
+            TrackView.Clear();
+            InitUI();
         }
     }
 }
