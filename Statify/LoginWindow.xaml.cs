@@ -79,5 +79,14 @@ namespace Statify
                 this.DialogResult = true;
             }
         }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+            // Close the application
+            
+            // With this.Close() the application would not entirely close,
+            // and you would get into the App without logging in
+        }
     }
 }

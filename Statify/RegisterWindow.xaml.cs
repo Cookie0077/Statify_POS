@@ -59,5 +59,14 @@ namespace Statify
             NewUser =  await appController.GetUserRegister(userrequest);
             this.DialogResult = true;
         }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            // Close the application
+            this.Close();
+            
+            // With this.Close() the application will not close
+            // And you would get into the App without logging in
+        }
     }
 }

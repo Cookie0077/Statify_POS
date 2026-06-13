@@ -1,33 +1,73 @@
-﻿<Window x:Class="Statify.LoginWindow"
+﻿<!--
+prompt: Restyle my Login & Register Window with our theme
+-->
+
+<Window x:Class="Statify.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Statify"
         mc:Ignorable="d"
-        Title="LoginWindow" WindowState="Maximized" MinWidth="400" MinHeight="300" WindowStyle="None">
+        Title="LoginWindow" WindowState="Maximized" MinWidth="400" MinHeight="300" WindowStyle="None"
+        Background="{StaticResource AppBackgroundBrush}">
 
     <Viewbox Stretch="Uniform">
-        <DockPanel Width="1600" Height="900">
-            <Label Content="Welcome Back" HorizontalAlignment="Center" DockPanel.Dock="Top" FontSize="80" Margin="20"/>
+        <Grid Width="1600" Height="900">
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Height="450">
+            <!-- Decorative accent shape -->
+            <Border Width="700" Height="700" CornerRadius="350"
+                    Background="{StaticResource HeroAccentBrush}"
+                    Opacity="0.15"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Margin="-200 -250 0 0"/>
 
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="450">
-                    <Label Content="Username:" VerticalAlignment="Center" Margin="10" Padding="8" FontSize="22" Width="180"/>
-                    <TextBox x:Name="TextBoxName" Margin="10" Padding="10" FontSize="22" Width="220" HorizontalAlignment="Center"/>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="520">
+
+                <!-- Logo / brand -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 40">
+                    <Border Width="56" Height="56" CornerRadius="14" Background="{StaticResource PrimaryBrush}" Margin="0 0 16 0">
+                        <TextBlock Text="S" FontSize="28" FontWeight="Bold"
+                                   Foreground="{StaticResource LightTextBrush}"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Statify" Style="{StaticResource SectionTitleStyle}"/>
+                        <TextBlock Text="Music Analytics" Style="{StaticResource MutedTextStyle}"/>
+                    </StackPanel>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="450">
-                    <Label Content="Password:" VerticalAlignment="Center" Margin="10" Padding="8" FontSize="22" Width="180"/>
-                    <PasswordBox x:Name="PasswordBoxPW" Margin="10" Padding="10" FontSize="22" Width="220" HorizontalAlignment="Center"/>
-                </StackPanel>
+                <!-- Card -->
+                <Border Style="{StaticResource CardStyle}" Padding="40">
+                    <StackPanel>
+                        <TextBlock Text="WELCOME BACK" Style="{StaticResource EyebrowTextStyle}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Sign in to your account" Style="{StaticResource HeadlineTextStyle}"
+                                   FontSize="28" HorizontalAlignment="Center" Margin="0 4 0 32"/>
 
-                <Button x:Name="ButtonLogin" IsDefault="True" Content="Login" Margin="20 20 20 10" Padding="12 8" FontSize="24" Width="200" Click="ButtonLogin_Click"/>
-                <Button x:Name="ButtonRegister" Content="New Account" Margin="20 10 20 20" Padding="12 8" FontSize="24" Width="200" Click="ButtonRegister_Click"/>
+                        <TextBlock Text="Username" Style="{StaticResource MutedTextStyle}" Margin="2 0 0 6"/>
+                        <TextBox x:Name="TextBoxName" Margin="0 0 0 18"/>
+
+                        <TextBlock Text="Password" Style="{StaticResource MutedTextStyle}" Margin="2 0 0 6"/>
+                        <PasswordBox x:Name="PasswordBoxPW" Margin="0 0 0 28"/>
+
+                        <Button x:Name="ButtonLogin" IsDefault="True" Content="Log in"
+                                Style="{StaticResource AccentButtonStyle}"
+                                FontSize="18" Margin="0 0 0 12" Click="ButtonLogin_Click"/>
+
+                        <Button x:Name="ButtonRegister" Content="Create new account"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                FontSize="16" Click="ButtonRegister_Click"/>
+                    </StackPanel>
+                </Border>
 
             </StackPanel>
-        </DockPanel>
+            
+            <Button Content="✕" 
+                    Style="{StaticResource IconButtonStyle}"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Margin="24"
+                    Click="ButtonClose_Click"/>
+        </Grid>
     </Viewbox>
 
 </Window>
