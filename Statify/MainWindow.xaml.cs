@@ -67,7 +67,7 @@ public partial class MainWindow : Window
         {
             TabItem selectedTab = tabControl.SelectedItem as TabItem;
 
-           switch(selectedTab.Name)
+            switch(selectedTab.Name)
             {
                 case "TabHome":
                     Mainframe.Navigate(mainPage);
@@ -84,8 +84,8 @@ public partial class MainWindow : Window
 
 
                 case "PlaylistTab":
-                   Mainframe.Navigate(playlistPage);
-                   break;
+                    Mainframe.Navigate(playlistPage);
+                    break;
 
 
 

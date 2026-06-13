@@ -1,3 +1,8 @@
+<!--
+prompt: (Claude Code) Can you refactor our design using this colorpallet and ONLY the Design on the pages
+yeah so that goes for every page 
+-->
+
 <Window x:Class="Statify.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

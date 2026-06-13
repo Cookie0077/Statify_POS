@@ -11,62 +11,66 @@
       Background="Transparent">
 
     <Grid Margin="32 24 32 24">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid x:Name="ContentGrid" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <!-- Back button -->
-        <Button x:Name="ButtonBack"
-                Grid.Row="0"
-                HorizontalAlignment="Left"
-                Style="{StaticResource BackButtonStyle}"
-                Content="← Back"
-                Click="ButtonBack_Click"
-                Margin="6 0 0 18"/>
+            <!-- Back button -->
+            <Button x:Name="ButtonBack"
+                    Grid.Row="0"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource BackButtonStyle}"
+                    Content="← Back"
+                    Click="ButtonBack_Click"
+                    Margin="6 0 0 18" />
 
-        <!-- Hero card -->
-        <Border Grid.Row="1" Style="{StaticResource CardStyle}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+            <!-- Hero card -->
+            <Border Grid.Row="1" Style="{StaticResource CardStyle}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-                <Border Grid.Column="0" CornerRadius="14" ClipToBounds="True" Width="220" Height="220">
-                    <Image x:Name="ImageArtist" Stretch="UniformToFill"/>
-                </Border>
+                    <Border Grid.Column="0" CornerRadius="14" ClipToBounds="True" Width="220" Height="220">
+                        <Image x:Name="ImageArtist" Stretch="UniformToFill" />
+                    </Border>
 
-                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="32 0 32 0">
-                    <TextBlock Text="ARTIST" Style="{StaticResource EyebrowTextStyle}"/>
-                    <Label x:Name="LabelArtistName" Style="{StaticResource DetailTitleLabelStyle}" Margin="0 4 0 12"/>
-                    <Label x:Name="LabelPlaytime" Style="{StaticResource DetailValueLabelStyle}"/>
-                </StackPanel>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="32 0 32 0">
+                        <TextBlock Text="ARTIST" Style="{StaticResource EyebrowTextStyle}" />
+                        <Label x:Name="LabelArtistName" Style="{StaticResource DetailTitleLabelStyle}"
+                               Margin="0 4 0 12" />
+                        <Label x:Name="LabelPlaytime" Style="{StaticResource DetailValueLabelStyle}" />
+                    </StackPanel>
 
-                <Button Grid.Column="2"
-                        Content="View on Spotify"
-                        Name="ButtonViewOnSpotify"
-                        Style="{StaticResource AccentButtonStyle}"
-                        VerticalAlignment="Center"
-                        MinWidth="200"
-                        Height="56" Click="ButtonViewOnSpotify_Click"/>
-            </Grid>
-        </Border>
+                    <Button Grid.Column="2"
+                            Content="View on Spotify"
+                            Name="ButtonViewOnSpotify"
+                            Style="{StaticResource AccentButtonStyle}"
+                            VerticalAlignment="Center"
+                            MinWidth="200"
+                            Height="56" Click="ButtonViewOnSpotify_Click" />
+                </Grid>
+            </Border>
 
-        <!-- Chart card -->
-        <Border Grid.Row="2" Style="{StaticResource CardStyle}">
-            <DockPanel>
-                <StackPanel DockPanel.Dock="Top" Margin="0 0 0 12">
-                    <TextBlock Text="ANALYTICS" Style="{StaticResource EyebrowTextStyle}"/>
-                    <TextBlock Text="Top Tracks" Style="{StaticResource SectionTitleStyle}" Margin="0 4 0 0"/>
-                </StackPanel>
-                <lvc:CartesianChart x:Name="TopTracksChart"
-                                    Series="{Binding TrackSeries}"
-                                    Background="Transparent"
-                                    Margin="0 8 0 0"/>
-            </DockPanel>
-        </Border>
+            <!-- Chart card -->
+            <Border Grid.Row="2" Style="{StaticResource CardStyle}">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" Margin="0 0 0 12">
+                        <TextBlock Text="ANALYTICS" Style="{StaticResource EyebrowTextStyle}" />
+                        <TextBlock Text="Top Tracks" Style="{StaticResource SectionTitleStyle}" Margin="0 4 0 0" />
+                    </StackPanel>
+                    <lvc:CartesianChart x:Name="TopTracksChart"
+                                        Series="{Binding TrackSeries}"
+                                        Background="Transparent"
+                                        Margin="0 8 0 0" />
+                </DockPanel>
+            </Border>
+        </Grid>
+        <local:LoadingOverlay x:Name="LoadingOverlay"/>
     </Grid>
 </Page>

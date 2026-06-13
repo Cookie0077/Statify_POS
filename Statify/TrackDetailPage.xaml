@@ -10,75 +10,82 @@
       Background="Transparent">
 
     <Grid Margin="32 24 32 24">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid x:Name="ContentGrid" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <!-- Back button -->
-        <Button x:Name="ButtonBack"
-                Grid.Row="0"
-                HorizontalAlignment="Left"
-                Style="{StaticResource BackButtonStyle}"
-                Content="← Back"
-                Click="ButtonBack_Click"
-                Margin="6 0 0 18"/>
+            <!-- Back button -->
+            <Button x:Name="ButtonBack"
+                    Grid.Row="0"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource BackButtonStyle}"
+                    Content="← Back"
+                    Click="ButtonBack_Click"
+                    Margin="6 0 0 18" />
 
-        <Border Grid.Row="1" Style="{StaticResource CardStyle}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <Border Grid.Row="1" Style="{StaticResource CardStyle}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                <Border Grid.Column="0"
-                        CornerRadius="14"
-                        ClipToBounds="True"
-                        Width="320" Height="320"
-                        VerticalAlignment="Top">
-                    <Image x:Name="ImageTrack" Stretch="UniformToFill"/>
-                </Border>
+                    <Border Grid.Column="0"
+                            CornerRadius="14"
+                            ClipToBounds="True"
+                            Width="320" Height="320"
+                            VerticalAlignment="Top">
+                        <Image x:Name="ImageTrack" Stretch="UniformToFill" />
+                    </Border>
 
-                <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="36 0 0 0">
-                    <TextBlock Text="TRACK" Style="{StaticResource EyebrowTextStyle}"/>
-                    <Label x:Name="LabelTitel" Style="{StaticResource DetailTitleLabelStyle}" Margin="0 4 0 4"/>
-                    <Label x:Name="LabelArtistName" Style="{StaticResource DetailValueLabelStyle}" Margin="0 0 0 18"/>
+                    <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="36 0 0 0">
+                        <TextBlock Text="TRACK" Style="{StaticResource EyebrowTextStyle}" />
+                        <Label x:Name="LabelTitel" Style="{StaticResource DetailTitleLabelStyle}" Margin="0 4 0 4" />
+                        <Label x:Name="LabelArtistName" Style="{StaticResource DetailValueLabelStyle}"
+                               Margin="0 0 0 18" />
 
-                    <Grid Margin="0 0 0 22" MaxWidth="700" HorizontalAlignment="Left">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                        <Grid Margin="0 0 0 22" MaxWidth="700" HorizontalAlignment="Left">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-                        <Border Grid.Column="0" Style="{StaticResource ElevatedCardStyle}" Padding="18 14" Margin="0 0 8 0">
-                            <StackPanel>
-                                <TextBlock Text="DURATION" Style="{StaticResource EyebrowTextStyle}"/>
-                                <Label x:Name="LabelDuration" Style="{StaticResource DetailValueLabelStyle}"/>
-                            </StackPanel>
-                        </Border>
-                        <Border Grid.Column="1" Style="{StaticResource ElevatedCardStyle}" Padding="18 14" Margin="4 0">
-                            <StackPanel>
-                                <TextBlock Text="PLAYS" Style="{StaticResource EyebrowTextStyle}"/>
-                                <Label x:Name="LabelPlaycount" Style="{StaticResource DetailValueLabelStyle}"/>
-                            </StackPanel>
-                        </Border>
-                        <Border Grid.Column="2" Style="{StaticResource ElevatedCardStyle}" Padding="18 14" Margin="8 0 0 0">
-                            <StackPanel>
-                                <TextBlock Text="LAST PLAYED" Style="{StaticResource EyebrowTextStyle}"/>
-                                <Label x:Name="LabelLastplayed" Style="{StaticResource DetailValueLabelStyle}"/>
-                            </StackPanel>
-                        </Border>
-                    </Grid>
+                            <Border Grid.Column="0" Style="{StaticResource ElevatedCardStyle}" Padding="18 14"
+                                    Margin="0 0 8 0">
+                                <StackPanel>
+                                    <TextBlock Text="DURATION" Style="{StaticResource EyebrowTextStyle}" />
+                                    <Label x:Name="LabelDuration" Style="{StaticResource DetailValueLabelStyle}" />
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="1" Style="{StaticResource ElevatedCardStyle}" Padding="18 14"
+                                    Margin="4 0">
+                                <StackPanel>
+                                    <TextBlock Text="PLAYS" Style="{StaticResource EyebrowTextStyle}" />
+                                    <Label x:Name="LabelPlaycount" Style="{StaticResource DetailValueLabelStyle}" />
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="2" Style="{StaticResource ElevatedCardStyle}" Padding="18 14"
+                                    Margin="8 0 0 0">
+                                <StackPanel>
+                                    <TextBlock Text="LAST PLAYED" Style="{StaticResource EyebrowTextStyle}" />
+                                    <Label x:Name="LabelLastplayed" Style="{StaticResource DetailValueLabelStyle}" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
 
-                    <Button Content="View on Spotify"
-                            Name="ButtonViewOnSpotify"
-                            Style="{StaticResource AccentButtonStyle}"
-                            HorizontalAlignment="Left"
-                            MinWidth="220"
-                            Height="56" Click="ButtonViewOnSpotify_Click"/>
-                </StackPanel>
-            </Grid>
-        </Border>
+                        <Button Content="View on Spotify"
+                                Name="ButtonViewOnSpotify"
+                                Style="{StaticResource AccentButtonStyle}"
+                                HorizontalAlignment="Left"
+                                MinWidth="220"
+                                Height="56" Click="ButtonViewOnSpotify_Click" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+        <local:LoadingOverlay x:Name="LoadingOverlay"/>
     </Grid>
 </Page>

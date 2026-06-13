@@ -33,6 +33,9 @@ namespace Statify
             LabelLastplayed.Content = $"Last Played: {track.LastPlayed}";
             LabelPlaycount.Content = $"Played: {track.PlayCount}x";
 
+            
+            LoadingOverlay.Visibility = Visibility.Collapsed;
+            ContentGrid.Visibility = Visibility.Visible;
 
         }
 

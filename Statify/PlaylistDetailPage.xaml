@@ -11,49 +11,52 @@
 
     <Border Style="{StaticResource CardStyle}" Margin="6">
         <Grid>
+            <Grid x:Name="ContentGrid" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+                <!-- Titel + Button oben -->
+                <Grid Grid.Row="0">
+                    <TextBlock x:Name="TextBlockPlaylistName" Text="Tracks"
+                               Style="{StaticResource SectionTitleStyle}"
+                               Margin="0 0 0 12"
+                               HorizontalAlignment="Left" />
 
-            <!-- Titel + Button oben -->
-            <Grid Grid.Row="0">
-                <TextBlock x:Name="TextBlockPlaylistName"  Text="Tracks"
-                           Style="{StaticResource SectionTitleStyle}"
-                           Margin="0 0 0 12"
-                           HorizontalAlignment="Left"/>
+                    <Button Content="View on Spotify"
+                            Name="ButtonViewOnSpotify"
+                            Style="{StaticResource AccentButtonStyle}"
+                            HorizontalAlignment="Right"
+                            MinWidth="220"
+                            Height="56"
+                            Click="ButtonViewOnSpotify_Click" />
+                </Grid>
 
-                <Button Content="View on Spotify"
-                        Name="ButtonViewOnSpotify"
-                        Style="{StaticResource AccentButtonStyle}"
-                        HorizontalAlignment="Right"
-                        MinWidth="220"
-                        Height="56"
-                        Click="ButtonViewOnSpotify_Click"/>
+                <local:SpotfyItemView x:Name="TrackView"
+                                      Grid.Row="1" />
+
+                <Grid Grid.Row="2" Margin="0 12 0 0">
+                    <Button Content="Back"
+                            Name="ButtonBack"
+                            Style="{StaticResource AccentButtonStyle}"
+                            HorizontalAlignment="Left"
+                            MinWidth="120"
+                            Height="44"
+                            Click="ButtonBack_OnClick" />
+
+                    <Button Content="Next"
+                            Name="ButtonNext"
+                            Style="{StaticResource AccentButtonStyle}"
+                            HorizontalAlignment="Right"
+                            MinWidth="120"
+                            Height="44"
+                            Click="ButtonNext_OnClick" />
+                </Grid>
             </Grid>
-
-            <local:SpotfyItemView x:Name="TrackView"
-                                  Grid.Row="1"/>
-
-            <Grid Grid.Row="2" Margin="0 12 0 0">
-                <Button Content="Back"
-                        Name="ButtonBack"
-                        Style="{StaticResource AccentButtonStyle}"
-                        HorizontalAlignment="Left"
-                        MinWidth="120"
-                        Height="44"
-                        Click="ButtonBack_OnClick"/>
-
-                <Button Content="Next"
-                        Name="ButtonNext"
-                        Style="{StaticResource AccentButtonStyle}"
-                        HorizontalAlignment="Right"
-                        MinWidth="120"
-                        Height="44"
-                        Click="ButtonNext_OnClick"/>
-            </Grid>
+            
+            <local:LoadingOverlay x:Name="LoadingOverlay"/>
 
         </Grid>
     </Border>

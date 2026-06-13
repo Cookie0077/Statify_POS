@@ -41,6 +41,8 @@ namespace Statify
 
             TrackSeries = new ISeries[tracks.Count];
 
+            LoadingOverlay.Visibility = Visibility.Collapsed;
+            ContentGrid.Visibility = Visibility.Visible;
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)

@@ -83,6 +83,9 @@ namespace Statify
 
                 TrackChart.Series = TrackSeries;
             }
+            
+            LoadingOverlay.Visibility = Visibility.Collapsed;
+            ContentGrid.Visibility = Visibility.Visible;
         }
     }
 }

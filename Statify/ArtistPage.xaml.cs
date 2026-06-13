@@ -82,6 +82,9 @@ namespace Statify
 
             ArtistChart.Series = ArtistSeries;
             ArtistChart.XAxes = XAxes;
+            
+            LoadingOverlay.Visibility = Visibility.Collapsed;
+            ContentGrid.Visibility = Visibility.Visible;
         }
             
 

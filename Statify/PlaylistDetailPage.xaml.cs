@@ -65,6 +65,8 @@ namespace Statify
                 TrackView.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(), this.NavigationService);
             }
             
+            LoadingOverlay.Visibility = Visibility.Collapsed;
+            ContentGrid.Visibility = Visibility.Visible;
         }
 
         private void ButtonViewOnSpotify_Click(object sender, RoutedEventArgs e)
