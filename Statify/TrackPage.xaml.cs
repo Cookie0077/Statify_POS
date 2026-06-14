@@ -58,8 +58,6 @@ namespace Statify
 
         private async void InitUI()
         {
-            
-            // TODO: Image of the track in the Gridview
             List<TrackRecord> tracks = await appController.GetTracks(UserId);
 
             foreach (TrackRecord track in tracks)
