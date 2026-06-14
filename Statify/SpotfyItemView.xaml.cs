@@ -93,6 +93,15 @@ namespace Statify
             SpotifyItems.Clear();
         }
 
-      
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            var scrollViewer = sender as ScrollViewer;
+            if (scrollViewer == null) return;
+
+            // Adjust vertical offset based on delta
+            scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset - e.Delta);
+            e.Handled = true; // Prevent default behavior
+        }   
     }
 }

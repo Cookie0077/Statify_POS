@@ -10,7 +10,8 @@
              Foreground="{StaticResource LightTextBrush}">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto"
-                   HorizontalScrollBarVisibility="Disabled">
+                   HorizontalScrollBarVisibility="Disabled"
+                   PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
         <Grid Background="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
