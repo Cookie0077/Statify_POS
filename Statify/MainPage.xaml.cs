@@ -28,9 +28,11 @@ namespace Statify
     /// </summary>
     public partial class MainPage : Page
     {
-    private AppController appController = new AppController();
+        private AppController appController = new AppController();
 
         public ISeries[] TrackSeries { get; set; }
+        
+        
         private int UserId;
 
         private bool _initialized;
@@ -60,33 +62,50 @@ namespace Statify
             List<Artist> artists = await appController.GetTopArtists(UserId);
             List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
 
+            SpotfyItemViewTopArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(), this.NavigationService);
+            SpotfyItemViewTopTracks.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(), this.NavigationService);
 
-            SpotfyItemViewTopArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(),this.NavigationService);
+            double[] values = tracks.Select(t => (double)t.PlayCount).ToArray();
+            // Cuts the track name to 18 characters
+            string[] labels = tracks.Select(t => 
+                t.Name.Length > 18 ? t.Name.Substring(0, 16) + "…" : t.Name
+            ).ToArray();
+            
+            values = values.Reverse().ToArray();
+            labels = labels.Reverse().ToArray();
 
-            SpotfyItemViewTopTracks.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(),this.NavigationService);
-
-            TrackSeries = new ISeries[tracks.Count];
-
-            for (int i = 0; i < tracks.Count; i++)
+            TrackSeries = new ISeries[]
             {
-                float hue = (i * 65f) % 360f;
-
-
-                TrackSeries[i] = new PieSeries<int>()
+                new RowSeries<double>
                 {
-                    Name = tracks[i].Name,
-                    Values = new int[1] { tracks[i].PlayCount},
-                    // Hue, Saturation, Lightness
-                    Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f))
-                };
+                    Values = values,
+                    Fill = new SolidColorPaint(new SKColor(242, 211, 171))
+                }
+            };
 
-                TrackChart.Series = TrackSeries;
-            }
+            TrackChart.Series = TrackSeries;
+            TrackChart.YAxes = new Axis[]
+            {
+                new Axis
+                {
+                    Labels = labels,
+                    TextSize = 13,
+                    LabelsPaint = new SolidColorPaint(SKColors.LightGray)
+                }
+            };
+            TrackChart.XAxes = new Axis[]
+            {
+                new Axis
+                {
+                    TextSize = 12,
+                    LabelsPaint = new SolidColorPaint(SKColors.LightGray),
+                    SeparatorsPaint = new SolidColorPaint(new SKColor(255,255,255,40)),
+                    MinStep = 1
+                }
+            };
 
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
-
-
-        }
         }
     }
+}

@@ -80,10 +80,11 @@
                             <TextBlock Text="Share of plays by your top tracks"
                                        Style="{StaticResource MutedTextStyle}" Margin="0 2 0 0" />
                         </StackPanel>
-                        <lvc:PieChart x:Name="TrackChart"
+                        <lvc:CartesianChart x:Name="TrackChart"
                                       Background="Transparent"
                                       Margin="0 8 0 0"
-                                      MinHeight="360" />
+                                      MinHeight="360"
+                                      TooltipPosition="Hidden"/>
                     </DockPanel>
                 </Border>
             </Grid>
