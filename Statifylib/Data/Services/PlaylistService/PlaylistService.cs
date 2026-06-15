@@ -17,16 +17,6 @@ namespace StatifyLib.Data.Services.PlaylistService
             this.client = client;
         }
 
-        public void AddPlaylist(Playlist playlist)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Playlist> GetPlaylist(int playlistId)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<List<Playlist>> GetPlaylists(int userId)
         {
             List<Playlist> playlists = await client.GetFromJsonAsync<List<Playlist>>($"playlist/{userId}");
@@ -44,7 +34,7 @@ namespace StatifyLib.Data.Services.PlaylistService
         {
             HttpResponseMessage result = await client.PostAsync($"playlist/sync/{userID}", null);
             result.EnsureSuccessStatusCode();
-        }
+        }   
 
         public async Task SyncTrackToPlaylist(int playlistId)
         {

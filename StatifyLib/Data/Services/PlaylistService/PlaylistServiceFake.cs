@@ -26,16 +26,6 @@ public class PlaylistServiceFake: IPlaylistService
         return Task.FromResult(Playlists.Find(x => x.Id == playlistId));
     }
 
-    public Task<List<Playlist>> GetPlaylists()
-    {
-        return Task.FromResult(Playlists.OrderBy(x => x.Id).ToList());
-    }
-
-    public void AddPlaylist(Playlist playlist)
-    {
-        Playlists.Add(playlist);
-    }
-
 
     public Task<List<Playlist>> GetPlaylists(int userId)
     {
