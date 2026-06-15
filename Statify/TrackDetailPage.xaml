@@ -86,6 +86,6 @@
                 </Grid>
             </Border>
         </Grid>
-        <local:LoadingOverlay x:Name="LoadingOverlay"/>
+        <local:LoadingOverlay x:Name="LoadingOverlay" />
     </Grid>
 </Page>

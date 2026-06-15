@@ -1,23 +1,19 @@
-﻿using Statifylib.Data.Models;
-using System.Text;
+﻿#region
+
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Statifylib.Data.Models;
+
+#endregion
 
 namespace Statify;
 
 /// <summary>
-/// Interaction logic for MainWindow.xaml
+///     Interaction logic for MainWindow.xaml
 /// </summary>
 public partial class MainWindow : Window
 {
-
     private MainPage mainPage;
     private ArtistPage artistPage;
     private TrackPage trackPage;
@@ -35,7 +31,7 @@ public partial class MainWindow : Window
             LoginWindow loginWindow = new LoginWindow();
             if (loginWindow.ShowDialog() == true)
             {
-                CurentUser = loginWindow.UserAPI; 
+                CurentUser = loginWindow.UserAPI;
                 mainPage = new MainPage(CurentUser.Id);
                 artistPage = new ArtistPage(CurentUser.Id);
                 trackPage = new TrackPage(CurentUser.Id);
@@ -43,15 +39,13 @@ public partial class MainWindow : Window
                 Labelusername.Content = CurentUser.Name;
                 if (CurentUser.Image == null)
                     ImageProfile.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/user.png"));
-                
+
                 else
                     ImageProfile.Source = new BitmapImage(new Uri(CurentUser.Image));
             }
-
         }
         else
         {
-          
             mainPage = new MainPage(1);
             artistPage = new ArtistPage(1);
             trackPage = new TrackPage(1);
@@ -67,7 +61,7 @@ public partial class MainWindow : Window
         {
             TabItem selectedTab = tabControl.SelectedItem as TabItem;
 
-            switch(selectedTab.Name)
+            switch (selectedTab.Name)
             {
                 case "TabHome":
                     Mainframe.Navigate(mainPage);

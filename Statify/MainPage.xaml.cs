@@ -1,38 +1,29 @@
-﻿using LiveChartsCore;
+﻿#region
+
+using System.Windows;
+using System.Windows.Controls;
+using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
 using Statifylib.Data.Models;
-using Statifylib.Domain;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.ExceptionServices;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using StatifyLib.Data.Models;
+using Statifylib.Domain;
+
+#endregion
 
 namespace Statify
 {
     /// <summary>
-    /// Interaction logic for MainPage.xaml
+    ///     Interaction logic for MainPage.xaml
     /// </summary>
     public partial class MainPage : Page
     {
         private AppController appController = new AppController();
 
         public ISeries[] TrackSeries { get; set; }
-        
-        
+
+
         private int UserId;
 
         private bool _initialized;
@@ -67,10 +58,10 @@ namespace Statify
 
             double[] values = tracks.Select(t => (double)t.PlayCount).ToArray();
             // Cuts the track name to 18 characters
-            string[] labels = tracks.Select(t => 
+            string[] labels = tracks.Select(t =>
                 t.Name.Length > 18 ? t.Name.Substring(0, 16) + "…" : t.Name
             ).ToArray();
-            
+
             values = values.Reverse().ToArray();
             labels = labels.Reverse().ToArray();
 
@@ -99,7 +90,7 @@ namespace Statify
                 {
                     TextSize = 12,
                     LabelsPaint = new SolidColorPaint(SKColors.LightGray),
-                    SeparatorsPaint = new SolidColorPaint(new SKColor(255,255,255,40)),
+                    SeparatorsPaint = new SolidColorPaint(new SKColor(255, 255, 255, 40)),
                     MinStep = 1
                 }
             };

@@ -1,13 +1,12 @@
-﻿using System.Text.Json.Serialization;
+﻿namespace Statifylib.Data.Models;
 
-namespace Statifylib.Data.Models;
-
-public class Track: SpotifyItem
+public class Track : SpotifyItem
 {
-    
-    public Track () {}
+    public Track()
+    {
+    }
 
-    public Track(int id, string name,string image)
+    public Track(int id, string name, string image)
     {
         Id = id;
         Name = name;

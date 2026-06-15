@@ -1,44 +1,38 @@
-﻿using Statifylib.Data.Models;
-using Statifylib.Domain;
-using System;
-using System.Collections.Generic;
+﻿#region
+
 using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Statifylib.Data.Models;
+using Statifylib.Domain;
 using Track = Statifylib.Data.Models.Track;
+
+#endregion
 
 namespace Statify
 {
     /// <summary>
-    /// Interaction logic for PlaylistDetailPage.xaml
+    ///     Interaction logic for PlaylistDetailPage.xaml
     /// </summary>
     public partial class PlaylistDetailPage : Page
     {
         private AppController appController = new AppController();
         private Playlist playlist;
 
-        private bool _initialized= false;
+        private bool _initialized = false;
 
         private int offset;
 
-        
+
         public PlaylistDetailPage(Playlist playlist)
         {
             InitializeComponent();
             this.playlist = playlist;
             TextBlockPlaylistName.Text = playlist.Name;
-            
+
             Loaded += Page_Loaded;
         }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (_initialized) return;
@@ -49,13 +43,12 @@ namespace Statify
         }
 
 
-
         public async void InitUI()
         {
             // redundanter call 
             await appController.AddTracksfromPlaylist(playlist.Id);
-            List<Track> tracks = await appController.GetTracksFromPlaylist(playlist.Id,offset);
-            if (tracks.Count <= 0 && offset >0)
+            List<Track> tracks = await appController.GetTracksFromPlaylist(playlist.Id, offset);
+            if (tracks.Count <= 0 && offset > 0)
             {
                 offset -= 50;
                 InitUI();
@@ -64,7 +57,7 @@ namespace Statify
             {
                 TrackView.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(), this.NavigationService);
             }
-            
+
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
         }
@@ -80,7 +73,6 @@ namespace Statify
 
         private void ButtonNext_OnClick(object sender, RoutedEventArgs e)
         {
-          
             offset += 50;
             TrackView.Clear();
             InitUI();
@@ -93,6 +85,7 @@ namespace Statify
             {
                 offset = 0;
             }
+
             TrackView.Clear();
             InitUI();
         }

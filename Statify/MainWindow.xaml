@@ -8,7 +8,6 @@ yeah so that goes for every page
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Statify"
         mc:Ignorable="d"
         Title="Statify" WindowState="Maximized" MinWidth="400" MinHeight="300" WindowStyle="None"
         Background="{StaticResource AppBackgroundBrush}">
@@ -16,17 +15,17 @@ yeah so that goes for every page
     <Viewbox Stretch="Uniform">
         <Grid Width="1600" Height="900" Background="{StaticResource AppBackgroundBrush}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <!-- Top navigation bar -->
             <Border Grid.Row="0" Background="#1f1d3a" CornerRadius="0" Padding="28 14">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
                     <!-- Brand -->
@@ -35,14 +34,14 @@ yeah so that goes for every page
                                 Background="{StaticResource HeroAccentBrush}" Margin="0 0 14 0">
                             <TextBlock Text="S" FontSize="24" FontWeight="Bold"
                                        Foreground="{StaticResource LightTextBrush}"
-                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Text="Statify" FontSize="22" FontWeight="Bold"
-                                       Foreground="{StaticResource LightTextBrush}"/>
+                                       Foreground="{StaticResource LightTextBrush}" />
                             <TextBlock Text="Music Analytics" FontSize="11"
                                        Foreground="{StaticResource MutedTextBrush}"
-                                       Margin="0 -2 0 0"/>
+                                       Margin="0 -2 0 0" />
                         </StackPanel>
                     </StackPanel>
 
@@ -53,37 +52,38 @@ yeah so that goes for every page
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 SelectionChanged="TabControl_SelectionChanged">
-                        <TabItem Header="Home"      x:Name="TabHome"/>
-                        <TabItem Header="Artists"   x:Name="ArtistTab"/>
-                        <TabItem Header="Songs"     x:Name="SongTabs"/>
-                        <TabItem Header="Playlists" x:Name="PlaylistTab"/>
+                        <TabItem Header="Home" x:Name="TabHome" />
+                        <TabItem Header="Artists" x:Name="ArtistTab" />
+                        <TabItem Header="Songs" x:Name="SongTabs" />
+                        <TabItem Header="Playlists" x:Name="PlaylistTab" />
                     </TabControl>
 
                     <!-- User actions -->
                     <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                        <Border Background="{StaticResource SurfaceBrush}" CornerRadius="22" Padding="18 8" Margin="0 0 14 0">
+                        <Border Background="{StaticResource SurfaceBrush}" CornerRadius="22" Padding="18 8"
+                                Margin="0 0 14 0">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <Border Width="26" Height="26" CornerRadius="13" Margin="0 0 10 0" ClipToBounds="True">
                                     <Image x:Name="ImageProfile" Width="26" Height="26" Stretch="UniformToFill">
                                         <Image.Clip>
-                                            <EllipseGeometry Center="13,13" RadiusX="13" RadiusY="13"/>
+                                            <EllipseGeometry Center="13,13" RadiusX="13" RadiusY="13" />
                                         </Image.Clip>
                                     </Image>
                                 </Border>
                                 <Label Content="Username" x:Name="Labelusername"
-                                       FontSize="15" Padding="0" VerticalAlignment="Center"/>
+                                       FontSize="15" Padding="0" VerticalAlignment="Center" />
                             </StackPanel>
                         </Border>
                         <Button x:Name="ButtonClose"
                                 Content="✕"
                                 Style="{StaticResource IconButtonStyle}"
-                                Click="ButtonClose_Click"/>
+                                Click="ButtonClose_Click" />
                     </StackPanel>
                 </Grid>
             </Border>
 
             <!-- Content frame -->
-            <Frame x:Name="Mainframe" Grid.Row="1" NavigationUIVisibility="Hidden" Background="Transparent"/>
+            <Frame x:Name="Mainframe" Grid.Row="1" NavigationUIVisibility="Hidden" Background="Transparent" />
 
         </Grid>
     </Viewbox>

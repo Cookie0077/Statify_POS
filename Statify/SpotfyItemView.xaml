@@ -3,19 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Statify"
              mc:Ignorable="d"
              d:DesignHeight="900" d:DesignWidth="600"
              Background="Transparent"
              Foreground="{StaticResource LightTextBrush}">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto"
-                   HorizontalScrollBarVisibility="Disabled"
-                   PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+                  HorizontalScrollBarVisibility="Disabled"
+                  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
         <Grid Background="Transparent">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <ListView x:Name="ListViewImages"
@@ -32,10 +31,10 @@
                       VirtualizingPanel.IsVirtualizing="False">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
-                        <Setter Property="Height" Value="48"/>
-                        <Setter Property="Padding" Value="0"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Height" Value="48" />
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
@@ -58,8 +57,8 @@
                       VirtualizingPanel.IsVirtualizing="False">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
-                        <Setter Property="Height" Value="48"/>
-                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Height" Value="48" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>

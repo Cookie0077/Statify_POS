@@ -1,28 +1,22 @@
-﻿using Statifylib.Data.Models;
-using Statifylib.Domain;
-using StatifyLib.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿#region
+
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Statifylib.Data.Models;
+using StatifyLib.Data.Models;
+using Statifylib.Domain;
+
+#endregion
 
 namespace Statify
 {
     /// <summary>
-    /// Interaction logic for RegisterWindow.xaml
+    ///     Interaction logic for RegisterWindow.xaml
     /// </summary>
-    /// 
     public partial class RegisterWindow : Window
     {
         public User NewUser;
-        private AppController appController = new AppController(); 
+        private AppController appController = new AppController();
+
         public RegisterWindow()
         {
             InitializeComponent();
@@ -41,6 +35,7 @@ namespace Statify
                 MessageBox.Show("Please enter a Name AND a password");
                 return;
             }
+
             if (pw.Length <= 0 || pw.Length > 72)
             {
                 MessageBox.Show("Pleas enter a valid Password");
@@ -56,7 +51,7 @@ namespace Statify
             UserRequest userrequest = new UserRequest(name, pw);
 
 
-            NewUser =  await appController.GetUserRegister(userrequest);
+            NewUser = await appController.GetUserRegister(userrequest);
             this.DialogResult = true;
         }
 
@@ -64,7 +59,7 @@ namespace Statify
         {
             // Close the application
             this.Close();
-            
+
             // With this.Close() the application will not close
             // And you would get into the App without logging in
         }

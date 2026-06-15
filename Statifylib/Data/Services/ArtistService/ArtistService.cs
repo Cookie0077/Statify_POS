@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region
+
 using System.Net.Http.Json;
-using System.Text;
 using Statifylib.Data.Models;
 using Statifylib.Data.Services.ArtistService;
+
+#endregion
 
 namespace StatifyLib.Data.Services.ArtistService
 {
     public class ArtistService : IArtistService
     {
-
         private HttpClient client;
 
         public ArtistService(HttpClient client)
         {
             this.client = client;
         }
-        public Task<Artist> GetArtist(int artistId)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public async Task<List<Artist>> GetArtists(int User_id)
         {

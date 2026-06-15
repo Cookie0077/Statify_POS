@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region
+
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Statifylib.Data.Models;
-using Statifylib.Data.Services.PlaylistService;
 using Statifylib.Domain;
+
+#endregion
 
 namespace Statify
 {
     /// <summary>
-    /// Interaction logic for PlaylistPage.xaml
+    ///     Interaction logic for PlaylistPage.xaml
     /// </summary>
     public partial class PlaylistPage : Page
     {
@@ -37,8 +30,8 @@ namespace Statify
             this.UserId = UserId;
             DataContext = this;
             Loaded += Page_Loaded;
-
         }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (_initialized) return;
@@ -51,14 +44,13 @@ namespace Statify
 
         public async void InitUI()
         {
-            List<Playlist> playlists = await appController.GetPlaylists(UserId);    
+            List<Playlist> playlists = await appController.GetPlaylists(UserId);
 
-            PlaylistView.GetSpotifyItemList(playlists.Cast<SpotifyItem>().ToList(),PlaylistPageFrame.NavigationService);
-            
+            PlaylistView.GetSpotifyItemList(playlists.Cast<SpotifyItem>().ToList(),
+                PlaylistPageFrame.NavigationService);
+
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
         }
-
-        
     }
 }

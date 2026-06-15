@@ -1,34 +1,28 @@
-﻿using LiveChartsCore;
-using Statifylib.Data.Models;
-using Statifylib.Domain;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿#region
+
 using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using LiveChartsCore;
 using Statify.Converters;
+using Statifylib.Data.Models;
+using Statifylib.Domain;
 using Track = Statifylib.Data.Models.Track;
+
+#endregion
 
 namespace Statify
 {
     /// <summary>
-    /// Interaction logic for ArtistDetailPage.xaml
+    ///     Interaction logic for ArtistDetailPage.xaml
     /// </summary>
     public partial class ArtistDetailPage : Page
     {
         public ISeries[] TrackSeries { get; set; }
         private Artist artist;
         private AppController aoAppController = new AppController();
+
         public ArtistDetailPage(Artist artist)
         {
             InitializeComponent();

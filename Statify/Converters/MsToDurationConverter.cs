@@ -1,5 +1,9 @@
-﻿using System.Globalization;
+﻿#region
+
+using System.Globalization;
 using System.Windows.Data;
+
+#endregion
 
 namespace Statify.Converters
 {
@@ -8,7 +12,7 @@ namespace Statify.Converters
         1. Before saving in the DB
         2. In the backend code in the get requests
         3. In the frontend code
-        
+
         Gave me this Converter which I can use in Bindings
      */
     {
@@ -28,6 +32,6 @@ namespace Statify.Converters
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-            =>  new object();
+            => new object();
     }
 }

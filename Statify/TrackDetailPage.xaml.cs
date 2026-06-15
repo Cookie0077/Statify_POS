@@ -1,27 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region
+
 using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Statify.Converters;
 using StatifyLib.Data.Models;
+
+#endregion
 
 namespace Statify
 {
     /// <summary>
-    /// Interaction logic for TrackDetailPage.xaml
+    ///     Interaction logic for TrackDetailPage.xaml
     /// </summary>
     public partial class TrackDetailPage : Page
     {
         private TrackRecord track;
+
         public TrackDetailPage(TrackRecord track)
         {
             InitializeComponent();
@@ -34,10 +30,9 @@ namespace Statify
             LabelLastplayed.Content = $"Last Played: {track.LastPlayed}";
             LabelPlaycount.Content = $"Played: {track.PlayCount} Times";
 
-            
+
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
-
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
@@ -50,7 +45,7 @@ namespace Statify
         {
             Process.Start(new ProcessStartInfo()
             {
-                FileName =track.URL,
+                FileName = track.URL,
                 UseShellExecute = true
             });
         }

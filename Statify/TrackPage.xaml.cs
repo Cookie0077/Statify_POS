@@ -1,38 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region
+
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
-using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
-using Statifylib.Data.Services.TrackService;
-using Statifylib.Data.Services.UserService;
 using Statifylib.Domain;
+
+#endregion
 
 namespace Statify
 {
     /// <summary>
-    /// Interaction logic for TrackPage.xaml
+    ///     Interaction logic for TrackPage.xaml
     /// </summary>
     public partial class TrackPage : Page
     {
         private AppController appController = new();
 
-        public ObservableCollection<TrackRecord> TopTracks { get; private set; } = new ObservableCollection<TrackRecord>();
+        public ObservableCollection<TrackRecord> TopTracks { get; private set; } =
+            new ObservableCollection<TrackRecord>();
 
-        public ISeries[] TrackSeries  { get; set; }
+        public ISeries[] TrackSeries { get; set; }
 
         private int UserId;
 
@@ -76,14 +68,14 @@ namespace Statify
                 TrackSeries[i] = new PieSeries<int>()
                 {
                     Name = tracks[i].Name,
-                    Values = new int[1] { tracks[i].PlayCount},
+                    Values = new int[1] { tracks[i].PlayCount },
                     // Hue, Saturation, Lightness
                     Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f))
                 };
 
                 TrackChart.Series = TrackSeries;
             }
-            
+
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
         }
