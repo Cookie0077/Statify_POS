@@ -86,11 +86,7 @@ public partial class MainWindow : Window
                 case "PlaylistTab":
                     Mainframe.Navigate(playlistPage);
                     break;
-
-
-
             }
-            
         }
     }
 

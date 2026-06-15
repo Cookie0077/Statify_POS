@@ -36,7 +36,6 @@ namespace Statify
             InitializeComponent();
             this.UserId = UserId;
             DataContext = this;
-            // TODO: Add Loading Screen as the Playlist Sync takes longer than the GetPlaylists 
             Loaded += Page_Loaded;
 
         }
