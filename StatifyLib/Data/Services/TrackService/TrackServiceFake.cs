@@ -1,17 +1,20 @@
-﻿using Statifylib.Data.Models;
+﻿#region
+
+using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
-using static System.Net.WebRequestMethods;
+
+#endregion
 
 namespace Statifylib.Data.Services.TrackService;
 
-public class TrackServiceFake: ITrackService
+public class TrackServiceFake : ITrackService
 {
     private List<TrackRecord> trackRecords = new List<TrackRecord>();
     private List<Track> tracks = new List<Track>();
 
     public TrackServiceFake()
     {
-        for (int i = 1;  i < 10; i++)
+        for (int i = 1; i < 10; i++)
         {
             trackRecords.Add(new TrackRecord()
             {
@@ -22,8 +25,7 @@ public class TrackServiceFake: ITrackService
                 LastPlayed = DateTime.Today,
                 Image = "https://i.scdn.co/image/ab67616d0000b27330a635de2bb0caa4e26f6abb",
                 URL = "https://open.spotify.com/track/1hz7SRTGUNAtIQ46qiNv2p",
-                PlayCount =  i * 9,
-                
+                PlayCount = i * 9,
             });
 
             tracks.Add(new Track()
@@ -33,12 +35,7 @@ public class TrackServiceFake: ITrackService
             });
         }
     }
-    
-    public Task<Track> GetTrack(int trackId)
-    {
-        return Task.FromResult(tracks.Find(x => x.Id == trackId));
-    }
-    
+
 
     public Task<List<Track>> GetTracks()
     {

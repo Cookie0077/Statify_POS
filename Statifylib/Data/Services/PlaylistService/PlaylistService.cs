@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region
+
 using System.Net.Http.Json;
-using System.Text;
-using Microsoft.VisualBasic;
 using Statifylib.Data.Models;
 using Statifylib.Data.Services.PlaylistService;
+
+#endregion
 
 namespace StatifyLib.Data.Services.PlaylistService
 {
@@ -24,9 +24,10 @@ namespace StatifyLib.Data.Services.PlaylistService
             return playlists;
         }
 
-        public async Task<List<Track>> GetTracksfomPlaylist(int playlistId,int offset)
+        public async Task<List<Track>> GetTracksfomPlaylist(int playlistId, int offset)
         {
-            List<Track> playlistTracks = await client.GetFromJsonAsync<List<Track>>($"playlist/{playlistId}/tracks?offset={offset}");
+            List<Track> playlistTracks =
+                await client.GetFromJsonAsync<List<Track>>($"playlist/{playlistId}/tracks?offset={offset}");
             return playlistTracks;
         }
 
@@ -34,7 +35,7 @@ namespace StatifyLib.Data.Services.PlaylistService
         {
             HttpResponseMessage result = await client.PostAsync($"playlist/sync/{userID}", null);
             result.EnsureSuccessStatusCode();
-        }   
+        }
 
         public async Task SyncTrackToPlaylist(int playlistId)
         {

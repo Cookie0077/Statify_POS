@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Uno.UI" Version="5.6.99" />
+        <PackageReference Include="Uno.UI" Version="5.6.99"/>
     </ItemGroup>
 
 </Project>

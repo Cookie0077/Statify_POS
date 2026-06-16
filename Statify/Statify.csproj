@@ -9,16 +9,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.4" />
+        <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.4"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\StatifyLib\StatifyLib.csproj" />
+        <ProjectReference Include="..\StatifyLib\StatifyLib.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Assets\user.png" />
-      <Resource Include="Assets\user.png" />
+        <None Remove="Assets\user.png"/>
+        <Resource Include="Assets\user.png"/>
     </ItemGroup>
 
 </Project>

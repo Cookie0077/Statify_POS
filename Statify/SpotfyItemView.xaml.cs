@@ -1,34 +1,32 @@
-﻿using Statifylib.Data.Models;
-using System;
-using System.Collections.Generic;
+﻿#region
+
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
-using Track = Statifylib.Data.Models.Track;
+
+#endregion
 
 namespace Statify
 {
     /// <summary>
-    /// Interaction logic for SpotfyItemView.xaml
+    ///     Interaction logic for SpotfyItemView.xaml
     /// </summary>
     public partial class SpotfyItemView : UserControl
     {
         public ObservableCollection<SpotifyItem> SpotifyItems { get; private set; } =
             new ObservableCollection<SpotifyItem>();
-      
+
         public ObservableCollection<Image> Item_Images { get; private set; } = new ObservableCollection<Image>();
 
         private NavigationService _navigationService;
+
+        private int UserId;
 
 
         public SpotfyItemView()
@@ -37,8 +35,13 @@ namespace Statify
             DataContext = this;
         }
 
-        public void GetSpotifyItemList(List<SpotifyItem> spotifyItems,NavigationService parenNavigationService)
+<<<<<<< HEAD
+        public void GetSpotifyItemList(List<SpotifyItem> spotifyItems,NavigationService parenNavigationService,int UserId)
+=======
+        public void GetSpotifyItemList(List<SpotifyItem> spotifyItems, NavigationService parenNavigationService)
+>>>>>>> 71d8dfa8b425c191f5ecf37bfc2f1e2b15932239
         {
+            this.UserId = UserId;
             _navigationService = parenNavigationService;
             foreach (SpotifyItem item in spotifyItems)
             {
@@ -52,7 +55,6 @@ namespace Statify
                     Width = 40,
                     Height = 40,
                     Stretch = Stretch.Uniform,
-
                 };
                 Item_Images.Add(Track_image);
             }
@@ -60,13 +62,11 @@ namespace Statify
             if (Item_Images.Count == 0)
             {
                 ListViewImages.Visibility = Visibility.Hidden;
-            } 
-                
-            
+            }
         }
 
         private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {  
+        {
             SpotifyItem item = ListviewItems.SelectedItem as SpotifyItem;
             if (_navigationService == null) return;
 
@@ -77,14 +77,13 @@ namespace Statify
 
             if (item is Artist)
             {
-                _navigationService.Navigate(new ArtistDetailPage(item as Artist));
-            }
-            
-            if (item is Playlist)
-            {
-                _navigationService.Navigate(new PlaylistDetailPage(item as Playlist));
+                _navigationService.Navigate(new ArtistDetailPage(item as Artist,UserId));
             }
 
+            if (item is Playlist)
+            {
+                _navigationService.Navigate(new PlaylistDetailPage(item as Playlist,UserId));
+            }
         }
 
         public void Clear()
@@ -102,6 +101,6 @@ namespace Statify
             // Adjust vertical offset based on delta
             scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset - e.Delta);
             e.Handled = true; // Prevent default behavior
-        }   
+        }
     }
 }

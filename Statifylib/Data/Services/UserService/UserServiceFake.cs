@@ -1,15 +1,22 @@
-﻿using Statifylib.Data.Models;
+﻿#region
+
+using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
+
+#endregion
 
 namespace Statifylib.Data.Services.UserService;
 
-public class UserServiceFake: IUserService
+public class UserServiceFake : IUserService
 {
     private List<User> Users = new List<User>()
     {
-        new User(){Id = 1, Name = "John Doe", Image = "https://i.scdn.co/image/ab67616d0000b27330a635de2bb0caa4e26f6abb"},
-        new User(){Id = 2, Name = "Jane Doe"},
-        new User(){Id = 3, Name = "Jerry Doe"}
+        new User()
+        {
+            Id = 1, Name = "John Doe", Image = "https://i.scdn.co/image/ab67616d0000b27330a635de2bb0caa4e26f6abb"
+        },
+        new User() { Id = 2, Name = "Jane Doe" },
+        new User() { Id = 3, Name = "Jerry Doe" }
     };
 
 
@@ -22,13 +29,4 @@ public class UserServiceFake: IUserService
     {
         throw new NotImplementedException();
     }
-
-    public void UpdateUser(User user)
-    {
-        User oldUser = Users.SingleOrDefault(x => x.Id == user.Id);
-        Users.Remove(oldUser);
-        Users.Add(user);
-    }
-
-  
 }

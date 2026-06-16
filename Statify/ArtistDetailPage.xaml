@@ -67,10 +67,11 @@
                     <lvc:CartesianChart x:Name="TopTracksChart"
                                         Series="{Binding TrackSeries}"
                                         Background="Transparent"
+                                        Height="700"
                                         Margin="0 8 0 0" />
                 </DockPanel>
             </Border>
         </Grid>
-        <local:LoadingOverlay x:Name="LoadingOverlay"/>
+        <local:LoadingOverlay x:Name="LoadingOverlay" />
     </Grid>
 </Page>

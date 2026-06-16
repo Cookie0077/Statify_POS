@@ -1,39 +1,30 @@
-﻿using Statifylib.Data.Models;
+﻿#region
+
+using System.Windows;
+using Statifylib.Data.Models;
+using StatifyLib.Data.Models;
 using Statifylib.Data.Services.UserService;
 using Statifylib.Domain;
-using StatifyLib.Data.Models;
-using StatifyLib.Data.Services.UserService;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
+#endregion
 
 namespace Statify
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    ///     Interaction logic for LoginWindow.xaml
     /// </summary>
     public partial class LoginWindow : Window
     {
-
         public User UserAPI;
         private IUserService UserService;
         private AppController appController = new AppController();
 
         private bool usefakeService = true;
+
         public LoginWindow()
         {
             InitializeComponent();
             TextBoxName.Focus();
-
         }
 
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
@@ -42,19 +33,20 @@ namespace Statify
             string pw = PasswordBoxPW.Password;
 
 
-            if(string.IsNullOrEmpty(name) == true || string.IsNullOrEmpty(pw) == true)
+            if (string.IsNullOrEmpty(name) == true || string.IsNullOrEmpty(pw) == true)
             {
                 MessageBox.Show("Please enter a Name AND a password");
                 return;
             }
-            if(pw.Length <= 0 || pw.Length > 72)
+
+            if (pw.Length <= 0 || pw.Length > 72)
             {
                 MessageBox.Show("Pleas enter a valid Password");
                 return;
             }
 
-            UserRequest userrequest = new UserRequest(name,pw);
-          
+            UserRequest userrequest = new UserRequest(name, pw);
+
 
             UserAPI = await appController.GetUserLogin(userrequest);
 
@@ -65,15 +57,13 @@ namespace Statify
             }
 
             this.DialogResult = true;
-
-
         }
 
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow registerWindow = new RegisterWindow();
 
-            if(registerWindow.ShowDialog() == true)
+            if (registerWindow.ShowDialog() == true)
             {
                 UserAPI = registerWindow.NewUser;
                 this.DialogResult = true;
@@ -84,7 +74,7 @@ namespace Statify
         {
             Application.Current.Shutdown();
             // Close the application
-            
+
             // With this.Close() the application would not entirely close,
             // and you would get into the App without logging in
         }

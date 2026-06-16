@@ -1,14 +1,17 @@
-﻿using Statifylib.Data.Models;
-using Statifylib.Data.Services.ArtistService;
-using Statifylib.Data.Services.PlaylistService;
-using Statifylib.Data.Services.TrackService;
-using Statifylib.Data.Services.UserService;
+﻿#region
+
+using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
-using StatifyLib.Data.Services.UserService;
-using System.Net.Http.Headers;
+using Statifylib.Data.Services.ArtistService;
 using StatifyLib.Data.Services.ArtistService;
+using Statifylib.Data.Services.PlaylistService;
 using StatifyLib.Data.Services.PlaylistService;
+using Statifylib.Data.Services.TrackService;
 using StatifyLib.Data.Services.TrackService;
+using Statifylib.Data.Services.UserService;
+using StatifyLib.Data.Services.UserService;
+
+#endregion
 
 namespace Statifylib.Domain;
 
@@ -21,19 +24,19 @@ public class AppController
 
     private bool usefakeservice = false;
 
-    public AppController() {
+    public AppController()
+    {
         HttpClient client = new HttpClient()
         {
             BaseAddress = new Uri("http://127.0.0.1:8888"),
         };
 
-       
+
         if (usefakeservice)
         {
             artistService = new ArtistServiceFake();
             trackService = new TrackServiceFake();
             playlistService = new PlaylistServiceFake();
-            
         }
         else
         {
@@ -45,14 +48,14 @@ public class AppController
         }
     }
 
-    
+
     public async Task<List<Artist>> GetArtists(int userId)
-    { 
-         List<Artist> artists = await artistService.GetArtists(userId);
+    {
+        List<Artist> artists = await artistService.GetArtists(userId);
 
         return artists;
     }
-    
+
 
     public async Task<List<Artist>> GetTopArtists(int userId)
     {
@@ -60,7 +63,7 @@ public class AppController
 
         return artists;
     }
-    
+
 
     public async Task SyncUser(int userId)
     {
@@ -73,11 +76,11 @@ public class AppController
         List<TrackRecord> Tracks = await trackService.GetTracks(userId);
         return Tracks;
     }
-    
+
     public async Task<List<TrackRecord>> GetTopTracks(int userId)
     {
         List<TrackRecord> Tracks = await trackService.GetTopTracks(userId);
-        
+
         return Tracks;
     }
 
@@ -98,18 +101,25 @@ public class AppController
     public async Task<List<Playlist>> GetPlaylists(int userId)
     {
         List<Playlist> playlists = await playlistService.GetPlaylists(userId);
-        
+
         return playlists;
     }
-    
+
     public async Task AddTracksfromPlaylist(int playlistId)
     {
         await playlistService.SyncTrackToPlaylist(playlistId);
     }
 
-    public async Task<List<Track>> GetTracksFromPlaylist(int playlistId,int offset)
+    public async Task<List<Track>> GetTracksFromPlaylist(int playlistId, int offset)
     {
-        List<Track> tracks = await playlistService.GetTracksfomPlaylist(playlistId,offset);
+        List<Track> tracks = await playlistService.GetTracksfomPlaylist(playlistId, offset);
+        return tracks;
+    }
+<<<<<<< HEAD
+
+    public async Task<List<TrackRecord>> GetTracksFromArtist(int UserId, int ArtistId, int limit)
+    {
+        List<TrackRecord> tracks = await artistService.GetTracksfromArtist(UserId, ArtistId, limit);
         return tracks;
     }
     
@@ -117,3 +127,6 @@ public class AppController
 }
     
  
+=======
+}
+>>>>>>> 71d8dfa8b425c191f5ecf37bfc2f1e2b15932239

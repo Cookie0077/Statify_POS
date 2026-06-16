@@ -40,7 +40,7 @@
                         <Image x:Name="ImageTrack" Stretch="UniformToFill" />
                     </Border>
 
-                    <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="36 0 0 0">
+                    <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" Margin="36 0 0 0">
                         <TextBlock Text="TRACK" Style="{StaticResource EyebrowTextStyle}" />
                         <Label x:Name="LabelTitel" Style="{StaticResource DetailTitleLabelStyle}" Margin="0 4 0 4" />
                         <Label x:Name="LabelArtistName" Style="{StaticResource DetailValueLabelStyle}"
@@ -86,6 +86,6 @@
                 </Grid>
             </Border>
         </Grid>
-        <local:LoadingOverlay x:Name="LoadingOverlay"/>
+        <local:LoadingOverlay x:Name="LoadingOverlay" />
     </Grid>
 </Page>
