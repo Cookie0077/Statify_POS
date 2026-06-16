@@ -46,14 +46,11 @@ namespace Statify
         {
             List<Playlist> playlists = await appController.GetPlaylists(UserId);
 
-            PlaylistView.GetSpotifyItemList(playlists.Cast<SpotifyItem>().ToList(),
-                PlaylistPageFrame.NavigationService);
 
-<<<<<<< HEAD
+
             PlaylistView.GetSpotifyItemList(playlists.Cast<SpotifyItem>().ToList(),PlaylistPageFrame.NavigationService,UserId);
             
-=======
->>>>>>> 71d8dfa8b425c191f5ecf37bfc2f1e2b15932239
+
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
         }

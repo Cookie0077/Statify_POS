@@ -55,7 +55,7 @@ namespace Statify
             // TODO: Make the Artist names the right color
 
 
-            List<Artist> artists = await appController.GetTopArtists(UserId);
+            List<Artist> artists = await appController.GetArtists(UserId);
 
             SpotfyItemViewArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(), this.NavigationService,UserId);
 
@@ -65,7 +65,7 @@ namespace Statify
                 {
                     Name = "Playtime in minutes: ",
                     Values = artists.Select(t => t.Playtime / 60000).ToArray(),
-                    Fill = new SolidColorPaint(SKColors.Red)
+                    Fill = new SolidColorPaint(SKColors.Beige)
                 }
             };
 

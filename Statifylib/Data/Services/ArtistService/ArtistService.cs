@@ -17,7 +17,11 @@ namespace StatifyLib.Data.Services.ArtistService
         {
             this.client = client;
         }
-        
+
+        public Task<Artist> GetArtist(int ArtistId)
+        {
+            throw new NotImplementedException();
+        }
 
         public async Task<List<Artist>> GetArtists(int User_id)
         {

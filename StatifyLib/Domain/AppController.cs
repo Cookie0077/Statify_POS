@@ -115,7 +115,7 @@ public class AppController
         List<Track> tracks = await playlistService.GetTracksfomPlaylist(playlistId, offset);
         return tracks;
     }
-<<<<<<< HEAD
+
 
     public async Task<List<TrackRecord>> GetTracksFromArtist(int UserId, int ArtistId, int limit)
     {
@@ -126,7 +126,4 @@ public class AppController
 
 }
     
- 
-=======
-}
->>>>>>> 71d8dfa8b425c191f5ecf37bfc2f1e2b15932239
+

@@ -35,11 +35,8 @@ namespace Statify
             DataContext = this;
         }
 
-<<<<<<< HEAD
         public void GetSpotifyItemList(List<SpotifyItem> spotifyItems,NavigationService parenNavigationService,int UserId)
-=======
-        public void GetSpotifyItemList(List<SpotifyItem> spotifyItems, NavigationService parenNavigationService)
->>>>>>> 71d8dfa8b425c191f5ecf37bfc2f1e2b15932239
+
         {
             this.UserId = UserId;
             _navigationService = parenNavigationService;

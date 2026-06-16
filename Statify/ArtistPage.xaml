@@ -35,7 +35,7 @@
                 <Border Grid.Column="0" Style="{StaticResource CardStyle}" MinWidth="500">
                     <DockPanel>
                         <TextBlock DockPanel.Dock="Top"
-                                   Text="Top Artists"
+                                   Text="All Artists"
                                    Style="{StaticResource SectionTitleStyle}"
                                    Margin="0 0 0 12" />
                         <local:SpotfyItemView x:Name="SpotfyItemViewArtists" />

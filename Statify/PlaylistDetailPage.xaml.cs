@@ -23,14 +23,10 @@ namespace Statify
 
         private int offset;
 
-<<<<<<< HEAD
+
         private int userId;
         
         public PlaylistDetailPage(Playlist playlist, int UserId)
-=======
-
-        public PlaylistDetailPage(Playlist playlist)
->>>>>>> 71d8dfa8b425c191f5ecf37bfc2f1e2b15932239
         {
             InitializeComponent();
             this.userId = userId;

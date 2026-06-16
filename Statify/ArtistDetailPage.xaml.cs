@@ -1,36 +1,23 @@
-<<<<<<< HEAD
-﻿using LiveChartsCore;
-using LiveChartsCore.SkiaSharpView;
-using Statify.Converters;
-using Statifylib.Data.Models;
-using Statifylib.Domain;
-using StatifyLib.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-=======
-﻿#region
 
->>>>>>> 71d8dfa8b425c191f5ecf37bfc2f1e2b15932239
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-<<<<<<< HEAD
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Windows.System;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
-=======
+
 using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
 using Statify.Converters;
 using Statifylib.Data.Models;
+using StatifyLib.Data.Models;
 using Statifylib.Domain;
->>>>>>> 71d8dfa8b425c191f5ecf37bfc2f1e2b15932239
+
 using Track = Statifylib.Data.Models.Track;
 
-#endregion
 
 namespace Statify
 {
@@ -41,7 +28,7 @@ namespace Statify
     {
         public ISeries[] TrackSeries { get; set; }
         private Artist artist;
-<<<<<<< HEAD
+
         private AppController appController = new AppController();
         private int UserId;
 
@@ -50,12 +37,6 @@ namespace Statify
         public Axis[] YAxes { get; set; }
         private bool _initialized = false;
         public ArtistDetailPage(Artist artist, int UserId)
-
-=======
-        private AppController aoAppController = new AppController();
-
-        public ArtistDetailPage(Artist artist)
->>>>>>> 71d8dfa8b425c191f5ecf37bfc2f1e2b15932239
         {
             InitializeComponent();
             this.UserId = UserId;
