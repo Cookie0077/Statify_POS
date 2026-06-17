@@ -3,6 +3,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
@@ -78,6 +79,15 @@ namespace Statify
 
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
+        }
+
+        private void ListViewTracks_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            TrackRecord chosenTrack = ListViewTracks.SelectedItem as TrackRecord;
+
+            TrackDetailPage trackDetailPage = new TrackDetailPage(chosenTrack);
+            
+            this.NavigationService.Navigate(trackDetailPage);
         }
     }
 }

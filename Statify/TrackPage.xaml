@@ -41,7 +41,8 @@
                                   ItemsSource="{Binding TopTracks}"
                                   FontSize="15"
                                   Background="Transparent"
-                                  BorderThickness="0">
+                                  BorderThickness="0"
+                                  MouseDoubleClick="ListViewTracks_OnMouseDoubleClick">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="Image">
