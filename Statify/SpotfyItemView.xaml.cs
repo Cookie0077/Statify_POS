@@ -1,6 +1,7 @@
 ﻿#region
 
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -80,6 +81,15 @@ namespace Statify
             if (item is Playlist)
             {
                 _navigationService.Navigate(new PlaylistDetailPage(item as Playlist,UserId));
+            }
+
+            if (item is Track)
+            {
+                Process.Start(new ProcessStartInfo()
+                {
+                    FileName = item.URL,
+                    UseShellExecute = true
+                });
             }
         }
 

@@ -52,30 +52,56 @@ namespace Statify
         private async void InitUI()
         {
             List<TrackRecord> tracks = await appController.GetTracks(UserId);
-
+            
             foreach (TrackRecord track in tracks)
             {
                 TopTracks.Add(track);
             }
+            
+            
+            TrackRecord[] TopTenTracks = tracks
+                .OrderByDescending(t => t.PlayCount)
+                .Take(10)
+                .ToArray();
+            
+            double[] values = TopTenTracks.Select(t => (double)t.PlayCount).ToArray();
+            // Cuts the track name to 18 characters
+            string[] labels = TopTenTracks.Select(t =>
+                t.Name.Length > 18 ? t.Name.Substring(0, 16) + "…" : t.Name
+            ).ToArray();
 
+            values = values.Reverse().ToArray();
+            labels = labels.Reverse().ToArray();
 
-            TrackSeries = new ISeries[tracks.Count];
-
-            for (int i = 0; i < tracks.Count; i++)
+            TrackSeries = new ISeries[]
             {
-                float hue = (i * 65f) % 360f;
-
-
-                TrackSeries[i] = new PieSeries<int>()
+                new RowSeries<double>
                 {
-                    Name = tracks[i].Name,
-                    Values = new int[1] { tracks[i].PlayCount },
-                    // Hue, Saturation, Lightness
-                    Fill = new SolidColorPaint(SKColor.FromHsl(hue, 80f, 55f))
-                };
+                    Values = values,
+                    Fill = new SolidColorPaint(new SKColor(242, 211, 171))
+                }
+            };
 
-                TrackChart.Series = TrackSeries;
-            }
+            TrackChart.Series = TrackSeries;
+            TrackChart.YAxes = new Axis[]
+            {
+                new Axis
+                {
+                    Labels = labels,
+                    TextSize = 13,
+                    LabelsPaint = new SolidColorPaint(SKColors.LightGray)
+                }
+            };
+            TrackChart.XAxes = new Axis[]
+            {
+                new Axis
+                {
+                    TextSize = 12,
+                    LabelsPaint = new SolidColorPaint(SKColors.LightGray),
+                    SeparatorsPaint = new SolidColorPaint(new SKColor(255, 255, 255, 40)),
+                    MinStep = 1
+                }
+            };
 
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
