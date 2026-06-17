@@ -70,8 +70,41 @@ yeah so that goes for every page
                                         </Image.Clip>
                                     </Image>
                                 </Border>
-                                <Label Content="Username" x:Name="Labelusername"
-                                       FontSize="15" Padding="0" VerticalAlignment="Center" />
+                                <Button Content="Username" x:Name="Labelusername"
+                                       FontSize="15" Padding="0" VerticalAlignment="Center" Click="Labelusername_Click" />
+
+                                <!-- User dropdown -->
+                                <Popup x:Name="UserDropdownPopup"
+                                       PlacementTarget="{Binding ElementName=Labelusername}"
+                                       Placement="Bottom"
+                                       StaysOpen="False"
+                                       AllowsTransparency="True"
+                                       VerticalOffset="10">
+                                    <Border Background="{StaticResource SurfaceBrush}"
+                                            CornerRadius="12"
+                                            Padding="6"
+                                            BorderBrush="{StaticResource HeroAccentBrush}"
+                                            BorderThickness="1">
+                                        <StackPanel MinWidth="170">
+                                            <Button Content="Change Username"
+                                                    HorizontalContentAlignment="Left"
+                                                    Click="ButtonChangeNaem_OnClick"
+                                                    Foreground="{StaticResource LightTextBrush}"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Padding="12 9"
+                                                    Cursor="Hand" />
+                                            <Button Content="Logout"
+                                                    Click="ButtonLogout_OnClick"
+                                                    HorizontalContentAlignment="Left"
+                                                    Foreground="{StaticResource LightTextBrush}"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Padding="12 9"
+                                                    Cursor="Hand" />
+                                        </StackPanel>
+                                    </Border>
+                                </Popup>
                             </StackPanel>
                         </Border>
                         <Button x:Name="ButtonClose"
