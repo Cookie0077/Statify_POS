@@ -29,4 +29,9 @@ public class UserServiceFake : IUserService
     {
         throw new NotImplementedException();
     }
+
+    public Task<List<DailyListening>> GetDailyListening(int userId)
+    {
+        throw new NotImplementedException();
+    }
 }

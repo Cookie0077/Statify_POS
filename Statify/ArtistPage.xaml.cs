@@ -52,7 +52,6 @@ namespace Statify
             ArtistChart.TooltipBackgroundPaint =
                 new SolidColorPaint(new SKColor(0x31, 0x2F, 0x54)); // matches your SurfaceColor
             ArtistChart.LegendTextPaint = new SolidColorPaint(SKColors.White);
-            // TODO: Make the Artist names the right color
 
 
             List<Artist> artists = await appController.GetArtists(UserId);
@@ -64,7 +63,7 @@ namespace Statify
                 new ColumnSeries<int>
                 {
                     Name = "Playtime in minutes: ",
-                    Values = artists.Select(t => t.Playtime / 60000).ToArray(),
+                    Values = artists.OrderByDescending(t => t.Playtime).Select(t => t.Playtime / 60000).ToArray(),
                     Fill = new SolidColorPaint(SKColors.Beige)
                 }
             };

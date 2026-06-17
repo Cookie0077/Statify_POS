@@ -38,5 +38,11 @@ namespace StatifyLib.Data.Services.UserService
 
             return loggedInUser;
         }
+
+        public async Task<List<DailyListening>> GetDailyListening(int userId)
+        {
+            List<DailyListening> result = await client.GetFromJsonAsync<List<DailyListening>>($"track_record/{userId}/playtime");
+            return result;
+        }
     }
 }

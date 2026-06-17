@@ -80,11 +80,10 @@
                             <TextBlock Text="Share of plays by your top tracks"
                                        Style="{StaticResource MutedTextStyle}" Margin="0 2 0 0" />
                         </StackPanel>
-                        <lvc:CartesianChart x:Name="TrackChart"
+                        <lvc:CartesianChart x:Name="DailyChart"
                                             Background="Transparent"
                                             Margin="0 8 0 0"
-                                            MinHeight="360"
-                                            TooltipPosition="Hidden" />
+                                            MinHeight="360"/>
                     </DockPanel>
                 </Border>
             </Grid>

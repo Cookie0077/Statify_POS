@@ -21,7 +21,9 @@ namespace Statify
     {
         private AppController appController = new AppController();
 
-        public ISeries[] TrackSeries { get; set; }
+        public ISeries[] DailyListeningSeries { get; set; }
+        public Axis[] XAxes { get; set; }
+        public Axis[] YAxes { get; set; }
 
 
         private int UserId;
@@ -56,44 +58,44 @@ namespace Statify
             SpotfyItemViewTopArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(), this.NavigationService,UserId);
             SpotfyItemViewTopTracks.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(), this.NavigationService,UserId);
 
-            double[] values = tracks.Select(t => (double)t.PlayCount).ToArray();
-            // Cuts the track name to 18 characters
-            string[] labels = tracks.Select(t =>
-                t.Name.Length > 18 ? t.Name.Substring(0, 16) + "…" : t.Name
-            ).ToArray();
+            
+            /* propmt: make me the chart for the mainpage so that it shows a linechart. Each day shows how much minutes you listened. I get this by using a function which returns a List of a dict/class with 
+                duration
+                day
+                make that pls
+            */
+            List<DailyListening> dailyData = await appController.GetDailyListening(UserId);
 
-            values = values.Reverse().ToArray();
-            labels = labels.Reverse().ToArray();
+            // sort by date ascending so the line reads left-to-right chronologically
+            List<DailyListening> sorted = dailyData.OrderBy(d => d.Timestamp).ToList();
 
-            TrackSeries = new ISeries[]
+            double[] minutesPerDay = sorted.Select(d => (double)(d.Playtime / 60000)).ToArray();
+            string[] dayLabels = sorted.Select(d => d.Timestamp.ToString("MMM d")).ToArray();
+
+            DailyListeningSeries = new ISeries[]
             {
-                new RowSeries<double>
+                new LineSeries<double>
                 {
-                    Values = values,
-                    Fill = new SolidColorPaint(new SKColor(242, 211, 171))
+                    Name = "Minutes listened",
+                    Values = minutesPerDay,
+                    Fill = null,                                    // no area fill under the line
+                    Stroke = new SolidColorPaint(SKColors.Beige, 3) // line color + thickness
                 }
             };
 
-            TrackChart.Series = TrackSeries;
-            TrackChart.YAxes = new Axis[]
+            XAxes = new Axis[]
             {
                 new Axis
                 {
-                    Labels = labels,
-                    TextSize = 13,
+                    Labels = dayLabels,
+                    LabelsRotation = 45,
+                    TextSize = 12,
                     LabelsPaint = new SolidColorPaint(SKColors.LightGray)
                 }
             };
-            TrackChart.XAxes = new Axis[]
-            {
-                new Axis
-                {
-                    TextSize = 12,
-                    LabelsPaint = new SolidColorPaint(SKColors.LightGray),
-                    SeparatorsPaint = new SolidColorPaint(new SKColor(255, 255, 255, 40)),
-                    MinStep = 1
-                }
-            };
+
+            DailyChart.Series = DailyListeningSeries;
+            DailyChart.XAxes = XAxes;
 
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;

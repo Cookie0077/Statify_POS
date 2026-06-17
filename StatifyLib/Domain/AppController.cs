@@ -122,8 +122,13 @@ public class AppController
         List<TrackRecord> tracks = await artistService.GetTracksfromArtist(UserId, ArtistId, limit);
         return tracks;
     }
-    
 
+
+    public async Task<List<DailyListening>> GetDailyListening(int userId)
+    {
+        List<DailyListening> dailyListenings = await userService.GetDailyListening(userId);
+        return dailyListenings;
+    }
 }
     
 
