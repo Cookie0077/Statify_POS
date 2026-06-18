@@ -17,9 +17,9 @@ namespace StatifyLib.Data.Services.PlaylistService
             this.client = client;
         }
 
-        public async Task<List<Playlist>> GetPlaylists(int userId)
+        public async Task<List<Playlist>> GetPlaylists()
         {
-            List<Playlist> playlists = await client.GetFromJsonAsync<List<Playlist>>($"playlist/{userId}");
+            List<Playlist> playlists = await client.GetFromJsonAsync<List<Playlist>>($"playlist/");
 
             return playlists;
         }
@@ -31,9 +31,9 @@ namespace StatifyLib.Data.Services.PlaylistService
             return playlistTracks;
         }
 
-        public async Task SyncPlaylist(int userID)
+        public async Task SyncPlaylist()
         {
-            HttpResponseMessage result = await client.PostAsync($"playlist/sync/{userID}", null);
+            HttpResponseMessage result = await client.PostAsync($"playlist/sync", null);
             result.EnsureSuccessStatusCode();
         }
 

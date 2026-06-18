@@ -37,24 +37,21 @@ public class TrackServiceFake : ITrackService
     }
 
 
-    public Task<List<Track>> GetTracks()
-    {
-        return Task.FromResult(tracks);
-    }
-
-
-    public Task<List<TrackRecord>> GetTopTracks(int userId)
+    public Task<List<TrackRecord>> GetTracks()
     {
         return Task.FromResult(trackRecords);
     }
 
-    public Task SyncTracks(int userId)
+
+    public Task<List<TrackRecord>> GetTopTracks()
+    {
+        return Task.FromResult(trackRecords);
+    }
+
+    public Task SyncTracks()
     {
         return Task.CompletedTask;
     }
 
-    public Task<List<TrackRecord>> GetTracks(int UserId)
-    {
-        return Task.FromResult(trackRecords);
-    }
+   
 }

@@ -19,7 +19,7 @@ namespace Statify
     /// </summary>
     public partial class ArtistPage : Page
     {
-        public AppController appController = new();
+        public AppController appController;
 
         public ISeries[] ArtistSeries { get; set; }
         public Axis[] XAxes { get; set; }
@@ -29,11 +29,11 @@ namespace Statify
         private bool _initialized = false;
 
 
-        public ArtistPage(int UserId)
+        public ArtistPage(AppController appController)
         {
             InitializeComponent();
             DataContext = this;
-            this.UserId = UserId;
+            this.appController = appController;
             Loaded += Page_Loaded;
         }
 
@@ -54,9 +54,9 @@ namespace Statify
             ArtistChart.LegendTextPaint = new SolidColorPaint(SKColors.White);
 
 
-            List<Artist> artists = await appController.GetArtists(UserId);
+            List<Artist> artists = await appController.GetArtists();
 
-            SpotfyItemViewArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(), this.NavigationService,UserId);
+            SpotfyItemViewArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(), this.NavigationService,appController);
 
             ArtistSeries = new ISeries[]
             {

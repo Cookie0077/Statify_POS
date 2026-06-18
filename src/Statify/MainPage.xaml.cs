@@ -20,21 +20,19 @@ namespace Statify
     /// </summary>
     public partial class MainPage : Page
     {
-        public AppController appController = new AppController();
+        public AppController appController;
 
         public ISeries[] DailyListeningSeries { get; set; }
         public Axis[] XAxes { get; set; }
         public Axis[] YAxes { get; set; }
 
 
-        private int UserId;
-
         private bool _initialized;
 
-        public MainPage(int userId)
+        public MainPage(AppController appController)
         {
             InitializeComponent();
-            UserId = userId;
+            this.appController = appController;
             DataContext = this;
 
             Loaded += Page_Loaded;
@@ -52,12 +50,12 @@ namespace Statify
 
         public async void InitUI()
         {
-            await appController.SyncUser(UserId);
-            List<Artist> artists = await appController.GetTopArtists(UserId);
-            List<TrackRecord> tracks = await appController.GetTopTracks(UserId);
+            await appController.SyncUser();
+            List<Artist> artists = await appController.GetTopArtists();
+            List<TrackRecord> tracks = await appController.GetTopTracks();
 
-            SpotfyItemViewTopArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(), this.NavigationService,UserId);
-            SpotfyItemViewTopTracks.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(), this.NavigationService,UserId);
+            SpotfyItemViewTopArtists.GetSpotifyItemList(artists.Cast<SpotifyItem>().ToList(), this.NavigationService,appController);
+            SpotfyItemViewTopTracks.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(), this.NavigationService,appController);
 
             
             /* propmt: make me the chart for the mainpage so that it shows a linechart. Each day shows how much minutes you listened. I get this by using a function which returns a List of a dict/class with 
@@ -65,7 +63,7 @@ namespace Statify
                 day
                 make that pls
             */
-            List<DailyListening> dailyData = await appController.GetDailyListening(UserId);
+            List<DailyListening> dailyData = await appController.GetDailyListening();
 
             // sort by date ascending so the line reads left-to-right chronologically
             List<DailyListening> sorted = dailyData.OrderBy(d => d.Timestamp).ToList();

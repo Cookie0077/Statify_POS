@@ -11,6 +11,7 @@ using System.Windows.Navigation;
 using Serilog;
 using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
+using Statifylib.Domain;
 
 #endregion
 
@@ -28,7 +29,7 @@ namespace Statify
 
         private NavigationService _navigationService;
 
-        private int UserId;
+        private AppController appController;
 
 
         public SpotfyItemView()
@@ -37,10 +38,10 @@ namespace Statify
             DataContext = this;
         }
 
-        public void GetSpotifyItemList(List<SpotifyItem> spotifyItems,NavigationService parenNavigationService,int UserId)
+        public void GetSpotifyItemList(List<SpotifyItem> spotifyItems,NavigationService parenNavigationService,AppController appController)
 
         {
-            this.UserId = UserId;
+            this.appController = appController;
             _navigationService = parenNavigationService;
             foreach (SpotifyItem item in spotifyItems)
             {
@@ -78,13 +79,13 @@ namespace Statify
             if (item is Artist)
             {
                 Log.Logger.Information("Artist selected");
-                _navigationService.Navigate(new ArtistDetailPage(item as Artist,UserId));
+                _navigationService.Navigate(new ArtistDetailPage(item as Artist,appController));
             }
 
             if (item is Playlist)
             {
                 Log.Logger.Information("Playlist selected");
-                _navigationService.Navigate(new PlaylistDetailPage(item as Playlist,UserId));
+                _navigationService.Navigate(new PlaylistDetailPage(item as Playlist,appController));
             }
 
             if (item is Track)

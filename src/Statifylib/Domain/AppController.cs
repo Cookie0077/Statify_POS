@@ -41,45 +41,45 @@ public class AppController
         else
         {
             client.DefaultRequestHeaders.Add("A-API-Key", "STATIKEY");
+            userService = new UserService(client);
             artistService = new ArtistService(client);
             trackService = new TrackService(client);
-            userService = new UserService(client);
             playlistService = new PlaylistService(client);
         }
     }
 
 
-    public async Task<List<Artist>> GetArtists(int userId)
+    public async Task<List<Artist>> GetArtists()
     {
-        List<Artist> artists = await artistService.GetArtists(userId);
+        List<Artist> artists = await artistService.GetArtists();
 
         return artists;
     }
 
 
-    public async Task<List<Artist>> GetTopArtists(int userId)
+    public async Task<List<Artist>> GetTopArtists()
     {
-        List<Artist> artists = await artistService.GetTopArtists(userId);
+        List<Artist> artists = await artistService.GetTopArtists();
 
         return artists;
     }
 
 
-    public async Task SyncUser(int userId)
+    public async Task SyncUser()
     {
-        await trackService.SyncTracks(userId);
-        await playlistService.SyncPlaylist(userId);
+        await trackService.SyncTracks();
+        await playlistService.SyncPlaylist();
     }
 
-    public async Task<List<TrackRecord>> GetTracks(int userId)
+    public async Task<List<TrackRecord>> GetTracks()
     {
-        List<TrackRecord> Tracks = await trackService.GetTracks(userId);
+        List<TrackRecord> Tracks = await trackService.GetTracks();
         return Tracks;
     }
 
-    public async Task<List<TrackRecord>> GetTopTracks(int userId)
+    public async Task<List<TrackRecord>> GetTopTracks()
     {
-        List<TrackRecord> Tracks = await trackService.GetTopTracks(userId);
+        List<TrackRecord> Tracks = await trackService.GetTopTracks();
 
         return Tracks;
     }
@@ -98,9 +98,9 @@ public class AppController
         return RegisteredUser;
     }
 
-    public async Task<List<Playlist>> GetPlaylists(int userId)
+    public async Task<List<Playlist>> GetPlaylists()
     {
-        List<Playlist> playlists = await playlistService.GetPlaylists(userId);
+        List<Playlist> playlists = await playlistService.GetPlaylists();
 
         return playlists;
     }
@@ -117,16 +117,16 @@ public class AppController
     }
 
 
-    public async Task<List<TrackRecord>> GetTracksFromArtist(int UserId, int ArtistId, int limit)
+    public async Task<List<TrackRecord>> GetTracksFromArtist(int ArtistId, int limit)
     {
-        List<TrackRecord> tracks = await artistService.GetTracksfromArtist(UserId, ArtistId, limit);
+        List<TrackRecord> tracks = await artistService.GetTracksfromArtist(ArtistId, limit);
         return tracks;
     }
 
 
-    public async Task<List<DailyListening>> GetDailyListening(int userId)
+    public async Task<List<DailyListening>> GetDailyListening()
     {
-        List<DailyListening> dailyListenings = await userService.GetDailyListening(userId);
+        List<DailyListening> dailyListenings = await userService.GetDailyListening();
         return dailyListenings;
     }
 }

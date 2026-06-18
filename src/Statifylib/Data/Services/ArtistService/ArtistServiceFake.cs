@@ -62,17 +62,17 @@ public class ArtistServiceFake : IArtistService
             Artists.Add(artist);
         }
 
-        public Task<List<Artist>> GetArtists(int User_id)
+        public Task<List<Artist>> GetArtists()
         {
             return Task.FromResult(Artists);
         }
 
-        public Task<List<Artist>> GetTopArtists(int User_id)
+        public Task<List<Artist>> GetTopArtists()
         {
             return Task.FromResult(Artists);
         }
 
-        public Task<List<TrackRecord>> GetTracksfromArtist(int UserId, int ArtistId, int limit)
+        public Task<List<TrackRecord>> GetTracksfromArtist(int ArtistId, int limit)
         {
         return Task.FromResult(trackRecords);
     }

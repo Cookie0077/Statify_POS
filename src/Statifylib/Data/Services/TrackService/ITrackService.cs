@@ -9,7 +9,7 @@ namespace Statifylib.Data.Services.TrackService;
 
 public interface ITrackService
 {
-    Task<List<TrackRecord>> GetTracks(int UserId);
-    Task<List<TrackRecord>> GetTopTracks(int userId);
-    Task SyncTracks(int userId);
+    Task<List<TrackRecord>> GetTracks();
+    Task<List<TrackRecord>> GetTopTracks();
+    Task SyncTracks();
 }

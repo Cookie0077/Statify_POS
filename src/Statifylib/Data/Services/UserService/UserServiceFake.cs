@@ -30,7 +30,7 @@ public class UserServiceFake : IUserService
         throw new NotImplementedException();
     }
 
-    public Task<List<DailyListening>> GetDailyListening(int userId)
+    public Task<List<DailyListening>> GetDailyListening()
     {
         throw new NotImplementedException();
     }

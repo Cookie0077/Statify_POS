@@ -11,5 +11,5 @@ public interface IUserService
 {
     Task<User> LoginUser(UserRequest user);
     Task<User> RegisterUser(UserRequest userRequest);
-    Task<List<DailyListening>> GetDailyListening(int userId);
+    Task<List<DailyListening>> GetDailyListening();
 }

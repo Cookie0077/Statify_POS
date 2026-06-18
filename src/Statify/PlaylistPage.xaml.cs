@@ -16,8 +16,7 @@ namespace Statify
     /// </summary>
     public partial class PlaylistPage : Page
     {
-        private int UserId;
-        public AppController appController = new AppController();
+        public AppController appController;
 
         public ObservableCollection<Playlist> TopPlaylists { get; set; } = new ObservableCollection<Playlist>();
         public ObservableCollection<Track> Tracks { get; set; } = new ObservableCollection<Track>();
@@ -25,10 +24,10 @@ namespace Statify
         private bool _initialized = false;
 
 
-        public PlaylistPage(int UserId)
+        public PlaylistPage(AppController appController)
         {
             InitializeComponent();
-            this.UserId = UserId;
+            this.appController = appController;
             DataContext = this;
             Loaded += Page_Loaded;
         }
@@ -45,11 +44,11 @@ namespace Statify
 
         public async void InitUI()
         {
-            List<Playlist> playlists = await appController.GetPlaylists(UserId);
+            List<Playlist> playlists = await appController.GetPlaylists();
 
 
 
-            PlaylistView.GetSpotifyItemList(playlists.Cast<SpotifyItem>().ToList(),PlaylistPageFrame.NavigationService,UserId);
+            PlaylistView.GetSpotifyItemList(playlists.Cast<SpotifyItem>().ToList(),PlaylistPageFrame.NavigationService,appController);
             
 
             LoadingOverlay.Visibility = Visibility.Collapsed;

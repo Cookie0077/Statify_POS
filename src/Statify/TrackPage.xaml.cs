@@ -21,21 +21,19 @@ namespace Statify
     /// </summary>
     public partial class TrackPage : Page
     {
-        public AppController appController = new();
+        public AppController appController;
 
         public ObservableCollection<TrackRecord> TopTracks { get; private set; } =
             new ObservableCollection<TrackRecord>();
 
         public ISeries[] TrackSeries { get; set; }
 
-        private int UserId;
-
         private bool _initialized = false;
 
-        public TrackPage(int UserID)
+        public TrackPage(AppController appController)
         {
-            this.UserId = UserID;
             InitializeComponent();
+            this.appController = appController;
             DataContext = this;
 
             Loaded += Page_Loaded;
@@ -52,7 +50,7 @@ namespace Statify
 
         private async void InitUI()
         {
-            List<TrackRecord> tracks = await appController.GetTracks(UserId);
+            List<TrackRecord> tracks = await appController.GetTracks();
             
             foreach (TrackRecord track in tracks)
             {

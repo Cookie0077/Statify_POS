@@ -18,13 +18,14 @@ namespace Statify
     {
         public User UserAPI;
         private IUserService UserService;
-        private AppController appController = new AppController();
+        private AppController appController;
 
         private bool usefakeService = true;
 
-        public LoginWindow()
+        public LoginWindow(AppController appController)
         {
             InitializeComponent();
+            this.appController = appController;
             TextBoxName.Focus();
         }
 
@@ -66,7 +67,7 @@ namespace Statify
 
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
-            RegisterWindow registerWindow = new RegisterWindow();
+            RegisterWindow registerWindow = new RegisterWindow(appController);
 
             if (registerWindow.ShowDialog() == true)
             {

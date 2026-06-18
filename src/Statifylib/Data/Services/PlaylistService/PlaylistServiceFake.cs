@@ -30,12 +30,12 @@ public class PlaylistServiceFake : IPlaylistService
     }
 
 
-    public Task<List<Playlist>> GetPlaylists(int userId)
+    public Task<List<Playlist>> GetPlaylists()
     {
         return Task.FromResult(Playlists);
     }
 
-    public Task SyncPlaylist(int UserID)
+    public Task SyncPlaylist()
     {
         return Task.CompletedTask;
     }

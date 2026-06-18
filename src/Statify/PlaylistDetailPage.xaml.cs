@@ -17,7 +17,7 @@ namespace Statify
     /// </summary>
     public partial class PlaylistDetailPage : Page
     {
-        private AppController appController = new AppController();
+        private AppController appController;
         private Playlist playlist;
 
         private bool _initialized = false;
@@ -27,10 +27,10 @@ namespace Statify
 
         private int userId;
         
-        public PlaylistDetailPage(Playlist playlist, int UserId)
+        public PlaylistDetailPage(Playlist playlist, AppController appController)
         {
             InitializeComponent();
-            this.userId = userId;
+            this.appController = appController;
             this.playlist = playlist;
             TextBlockPlaylistName.Text = playlist.Name;
 
@@ -59,7 +59,7 @@ namespace Statify
             }
             else
             {
-                TrackView.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(), this.NavigationService,userId);
+                TrackView.GetSpotifyItemList(tracks.Cast<SpotifyItem>().ToList(), this.NavigationService,appController);
             }
 
             LoadingOverlay.Visibility = Visibility.Collapsed;

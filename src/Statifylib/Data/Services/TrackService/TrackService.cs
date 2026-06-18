@@ -1,9 +1,10 @@
 ﻿#region
 
-using System.Net.Http.Json;
 using Statifylib.Data.Models;
-using StatifyLib.Data.Models;
 using Statifylib.Data.Services.TrackService;
+using StatifyLib.Data.Models;
+using System.Diagnostics;
+using System.Net.Http.Json;
 
 #endregion
 
@@ -18,23 +19,27 @@ namespace StatifyLib.Data.Services.TrackService
             this.client = client;
         }
 
-        public async Task<List<TrackRecord>> GetTopTracks(int userId)
+        public async Task<List<TrackRecord>> GetTopTracks()
         {
-            List<TrackRecord> tracks =
-                await client.GetFromJsonAsync<List<TrackRecord>>($"track_record/{userId}?limit=10");
+            List<TrackRecord> tracks = await client.GetFromJsonAsync<List<TrackRecord>>($"track_record/?limit=10");
 
             return tracks;
         }
 
-        public async Task SyncTracks(int userId)
+        public async Task SyncTracks()
         {
-            HttpResponseMessage result = await client.PostAsync($"track_record/sync/{userId}", null);
+            HttpResponseMessage result = await client.PostAsync($"track_record/sync", null);
+            if (!result.IsSuccessStatusCode)
+            {
+                var error = await result.Content.ReadAsStringAsync();
+                Debug.WriteLine($"Sync failed: {result.StatusCode} - {error}");
+            }
             result.EnsureSuccessStatusCode();
         }
 
-        public async Task<List<TrackRecord>> GetTracks(int userId)
+        public async Task<List<TrackRecord>> GetTracks()
         {
-            List<TrackRecord> tracks = await client.GetFromJsonAsync<List<TrackRecord>>($"track_record/{userId}");
+            List<TrackRecord> tracks = await client.GetFromJsonAsync<List<TrackRecord>>($"track_record/");
 
             return tracks;
         }

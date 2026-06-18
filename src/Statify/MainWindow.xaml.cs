@@ -6,6 +6,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Serilog;
 using Statifylib.Data.Models;
+using Statifylib.Domain;
 
 #endregion
 
@@ -24,6 +25,7 @@ public partial class MainWindow : Window
 
     private bool loginwindowoff = false;
 
+    private AppController appController = new AppController();
     private DispatcherTimer timer;
     private bool isTimerRunning = false;
 
@@ -33,14 +35,14 @@ public partial class MainWindow : Window
 
         if (!loginwindowoff)
         {
-            LoginWindow loginWindow = new LoginWindow();
+            LoginWindow loginWindow = new LoginWindow(appController);
             if (loginWindow.ShowDialog() == true)
             {
                 CurentUser = loginWindow.UserAPI;
-                mainPage = new MainPage(CurentUser.Id);
-                artistPage = new ArtistPage(CurentUser.Id);
-                trackPage = new TrackPage(CurentUser.Id);
-                playlistPage = new PlaylistPage(CurentUser.Id);
+                mainPage = new MainPage(appController);
+                artistPage = new ArtistPage(appController);
+                trackPage = new TrackPage(appController);
+                playlistPage = new PlaylistPage(appController);
                 Labelusername.Content = CurentUser.Name;
                 if (CurentUser.Image == null)
                     ImageProfile.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/user.png"));
@@ -53,10 +55,10 @@ public partial class MainWindow : Window
         }
         else
         {
-            mainPage = new MainPage(1);
-            artistPage = new ArtistPage(1);
-            trackPage = new TrackPage(1);
-            playlistPage = new PlaylistPage(1);
+            mainPage = new MainPage(appController);
+            artistPage = new ArtistPage(appController);
+            trackPage = new TrackPage(appController);
+            playlistPage = new PlaylistPage(appController);
             Log.Logger.Debug("Initialized without login");
         }
 
@@ -120,14 +122,14 @@ public partial class MainWindow : Window
 
         this.Hide(); 
 
-        LoginWindow loginWindow = new LoginWindow();
+        LoginWindow loginWindow = new LoginWindow(appController);
         if (loginWindow.ShowDialog() == true)
         {
             CurentUser = loginWindow.UserAPI;
-            mainPage = new MainPage(CurentUser.Id);
-            artistPage = new ArtistPage(CurentUser.Id);
-            trackPage = new TrackPage(CurentUser.Id);
-            playlistPage = new PlaylistPage(CurentUser.Id);
+            mainPage = new MainPage(appController);
+            artistPage = new ArtistPage(appController);
+            trackPage = new TrackPage(appController);
+            playlistPage = new PlaylistPage(appController);
             Labelusername.Content = CurentUser.Name;
 
             if (CurentUser.Image == null)
@@ -152,7 +154,7 @@ public partial class MainWindow : Window
     }
 
 
-    private void ButtonRefreshUserTable_Click(object sender, RoutedEventArgs e)
+    private async void ButtonRefreshUserTable_Click(object sender, RoutedEventArgs e)
     {
         if (isTimerRunning)
         {
@@ -164,7 +166,7 @@ public partial class MainWindow : Window
         timer.Start();
         
         object curPage = Mainframe.Content;
-        mainPage.appController.SyncUser(CurentUser.Id);
+        await mainPage.appController.SyncUser();
         Log.Logger.Information("TrackRecord Table refreshed");
     }
 }

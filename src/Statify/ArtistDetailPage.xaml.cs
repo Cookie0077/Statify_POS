@@ -31,17 +31,17 @@ namespace Statify
         public ISeries[] TrackSeries { get; set; }
         private Artist artist;
 
-        private AppController appController = new AppController();
+        private AppController appController;
         private int UserId;
 
        
         public Axis[] XAxes { get; set; }
         public Axis[] YAxes { get; set; }
         private bool _initialized = false;
-        public ArtistDetailPage(Artist artist, int UserId)
+        public ArtistDetailPage(Artist artist,AppController appController)
         {
             InitializeComponent();
-            this.UserId = UserId;
+            this.appController = appController;
 
             this.artist = artist;
             ImageArtist.Source = new BitmapImage(new Uri(artist.Image));
@@ -65,7 +65,7 @@ namespace Statify
         }
         private async void InitUI()
         {
-            List<TrackRecord> tracks = await appController.GetTracksFromArtist(UserId, artist.Id, 10);
+            List<TrackRecord> tracks = await appController.GetTracksFromArtist(artist.Id, 10);
 
             TrackSeries = new ISeries[]
             {

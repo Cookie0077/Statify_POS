@@ -8,8 +8,8 @@ namespace Statifylib.Data.Services.PlaylistService;
 
 public interface IPlaylistService
 {
-    Task<List<Playlist>> GetPlaylists(int userId);
-    Task SyncPlaylist(int userID);
+    Task<List<Playlist>> GetPlaylists();
+    Task SyncPlaylist();
     Task SyncTrackToPlaylist(int playlistId);
     Task<List<Track>> GetTracksfomPlaylist(int playlistId, int offset);
 }

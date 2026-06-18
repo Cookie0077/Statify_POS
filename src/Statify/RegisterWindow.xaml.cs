@@ -16,11 +16,12 @@ namespace Statify
     public partial class RegisterWindow : Window
     {
         public User NewUser;
-        private AppController appController = new AppController();
+        private AppController appController;
 
-        public RegisterWindow()
+        public RegisterWindow(AppController appController)
         {
             InitializeComponent();
+            this.appController = appController;
             TextBoxName.Focus();
         }
 

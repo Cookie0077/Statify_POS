@@ -1,9 +1,11 @@
 ﻿#region
 
-using System.Net.Http.Json;
 using Statifylib.Data.Models;
-using StatifyLib.Data.Models;
 using Statifylib.Data.Services.UserService;
+using StatifyLib.Data.Models;
+using System.Diagnostics;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 #endregion
 
@@ -24,6 +26,7 @@ namespace StatifyLib.Data.Services.UserService
             HttpResponseMessage result = await client.PostAsJsonAsync("/user/login", userRequest);
 
             User loggedInUser = await result.Content.ReadFromJsonAsync<User>();
+            await GetToken(userRequest);
 
 
             return loggedInUser;
@@ -34,14 +37,45 @@ namespace StatifyLib.Data.Services.UserService
             HttpResponseMessage result = await client.PostAsJsonAsync("/user/register", userRequest);
 
             User loggedInUser = await result.Content.ReadFromJsonAsync<User>();
-            string error = await result.Content.ReadAsStringAsync();
+
+            await GetToken(userRequest);
 
             return loggedInUser;
         }
 
-        public async Task<List<DailyListening>> GetDailyListening(int userId)
+        private async Task GetToken(UserRequest user)
         {
-            List<DailyListening> result = await client.GetFromJsonAsync<List<DailyListening>>($"track_record/{userId}/playtime");
+
+            KeyValuePair<string, string>[] data = new[]
+
+            {
+
+                new KeyValuePair<string, string>("grant_type", "password"),
+
+                new KeyValuePair<string, string>("username", user.Name),
+
+                new KeyValuePair<string, string>("password", user.Password)
+
+            };
+            var content = new FormUrlEncodedContent(data);
+            var result = await client.PostAsync("token/", content);
+            if (result.IsSuccessStatusCode)
+            {
+                Token token = await result.Content.ReadFromJsonAsync<Token>();
+                Debug.WriteLine(token.access_token);
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(token.token_type, token.access_token);
+            }
+            else
+            {
+                var error = await result.Content.ReadAsStringAsync();
+                Debug.WriteLine($"Token request failed: {result.StatusCode} - {error}");
+            }
+        }
+
+        public async Task<List<DailyListening>> GetDailyListening()
+        {
+            List<DailyListening> result = await client.GetFromJsonAsync<List<DailyListening>>($"track_record/playtime");
             return result;
         }
     }
