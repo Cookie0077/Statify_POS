@@ -49,8 +49,7 @@ namespace Statify
         public async void InitUI()
         {
             ArtistChart.TooltipTextPaint = new SolidColorPaint(SKColors.White);
-            ArtistChart.TooltipBackgroundPaint =
-                new SolidColorPaint(new SKColor(0x31, 0x2F, 0x54)); // matches your SurfaceColor
+            ArtistChart.TooltipBackgroundPaint = new SolidColorPaint(new SKColor(0x31, 0x2F, 0x54)); 
             ArtistChart.LegendTextPaint = new SolidColorPaint(SKColors.White);
 
 
@@ -63,17 +62,18 @@ namespace Statify
                 new ColumnSeries<int>
                 {
                     Name = "Playtime in minutes: ",
-                    Values = artists.OrderByDescending(t => t.Playtime).Select(t => t.Playtime / 60000).ToArray(),
+                    Values = artists.OrderByDescending(t => t.Playtime).Select(t => t.Playtime / 60000).Take(10).ToArray(),
                     Fill = new SolidColorPaint(SKColors.Beige)
                 }
             };
-
+            
             XAxes = new Axis[]
             {
                 new Axis
                 {
                     Labels = artists.Select(t => t.Name).ToArray(),
-                    LabelsRotation = 270
+                    LabelsRotation = 240,
+                    LabelsPaint = new SolidColorPaint(SKColors.White)
                 }
             };
 

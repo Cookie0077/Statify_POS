@@ -25,10 +25,10 @@ namespace Statify
 
             ImageTrack.Source = new BitmapImage(new Uri(track.Image));
             LabelTitel.Content = track.Name;
-            LabelArtistName.Content = $"Artist: {track.Name}";
+            LabelArtistName.Content = $"Artist: {track.Artist}";
             LabelDuration.Content = $"Duration: {MsToDurationConverter.Convert(track.Duration)}";
             LabelLastplayed.Content = $"Last Played: {track.LastPlayed}";
-            LabelPlaycount.Content = $"Played: {track.PlayCount} Times";
+            LabelPlaycount.Content = $"Played: {track.PlayCount} {(track.PlayCount == 1 ? "Time" : "Times")}";
 
 
             LoadingOverlay.Visibility = Visibility.Collapsed;
