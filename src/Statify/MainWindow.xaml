@@ -112,7 +112,7 @@ yeah so that goes for every page
                                                     BorderThickness="0"
                                                     Padding="12 9"
                                                     Cursor="Hand" />
-                                            <Button Content="Delet Account"
+                                            <Button Content="Delete Account"
                                                     x:Name="ButtonDeleteAccount"
                                                     Click="ButtonDeleteAccount_OnClick"
                                                     HorizontalContentAlignment="Left"
