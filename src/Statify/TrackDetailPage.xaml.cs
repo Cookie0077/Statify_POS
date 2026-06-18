@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using Serilog;
 using Statify.Converters;
 using StatifyLib.Data.Models;
 
@@ -33,6 +34,7 @@ namespace Statify
 
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
+            Log.Logger.Information("Loaded Track Detail Page");
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
@@ -43,6 +45,7 @@ namespace Statify
 
         private void ButtonViewOnSpotify_Click(object sender, RoutedEventArgs e)
         {
+            Log.Logger.Information("Viewing Track on Spotify");
             Process.Start(new ProcessStartInfo()
             {
                 FileName = track.URL,

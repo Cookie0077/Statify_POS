@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
+using Serilog;
 using SkiaSharp;
 using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
@@ -99,6 +100,8 @@ namespace Statify
 
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
+            
+            Log.Logger.Information("Loaded Main Page");
         }
     }
 }

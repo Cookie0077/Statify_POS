@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using Serilog;
 using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
 
@@ -70,21 +71,25 @@ namespace Statify
 
             if (item is TrackRecord)
             {
+                Log.Logger.Information("TrackRecord selected");
                 _navigationService.Navigate(new TrackDetailPage(item as TrackRecord));
             }
 
             if (item is Artist)
             {
+                Log.Logger.Information("Artist selected");
                 _navigationService.Navigate(new ArtistDetailPage(item as Artist,UserId));
             }
 
             if (item is Playlist)
             {
+                Log.Logger.Information("Playlist selected");
                 _navigationService.Navigate(new PlaylistDetailPage(item as Playlist,UserId));
             }
 
             if (item is Track)
             {
+                Log.Logger.Information("Track selected");
                 Process.Start(new ProcessStartInfo()
                 {
                     FileName = item.URL,

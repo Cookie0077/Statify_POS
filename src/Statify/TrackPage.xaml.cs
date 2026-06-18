@@ -7,6 +7,7 @@ using System.Windows.Input;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
+using Serilog;
 using SkiaSharp;
 using StatifyLib.Data.Models;
 using Statifylib.Domain;
@@ -105,6 +106,8 @@ namespace Statify
 
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
+            
+            Log.Logger.Information("Loaded Track Page");
         }
 
         private void ListViewTracks_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)

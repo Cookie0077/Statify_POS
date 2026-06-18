@@ -1,6 +1,7 @@
 ﻿#region
 
 using System.Windows;
+using Serilog;
 using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
 using Statifylib.Data.Services.UserService;
@@ -35,12 +36,14 @@ namespace Statify
 
             if (string.IsNullOrEmpty(name) == true || string.IsNullOrEmpty(pw) == true)
             {
+                Log.Logger.Error("No Name or Password entered");
                 MessageBox.Show("Please enter a Name AND a password");
                 return;
             }
 
             if (pw.Length <= 0 || pw.Length > 72)
             {
+                Log.Logger.Error("Invalid Passwordlength");
                 MessageBox.Show("Pleas enter a valid Password");
                 return;
             }
@@ -52,10 +55,12 @@ namespace Statify
 
             if (UserAPI.Name == null)
             {
+                Log.Logger.Error("User not found");
                 MessageBox.Show("Wrong Username or Password");
                 return;
             }
 
+            Log.Logger.Information("User Succesfully logged in");
             this.DialogResult = true;
         }
 

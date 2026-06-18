@@ -1,6 +1,7 @@
 ﻿#region
 
 using System.Windows;
+using Serilog;
 using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
 using Statifylib.Domain;
@@ -52,6 +53,7 @@ namespace Statify
 
 
             NewUser = await appController.GetUserRegister(userrequest);
+            Log.Logger.Information("User registered");
             this.DialogResult = true;
         }
 

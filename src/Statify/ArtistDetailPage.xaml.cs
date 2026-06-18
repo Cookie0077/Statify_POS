@@ -11,6 +11,8 @@ using SkiaSharp;
 
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
+using Serilog;
+using Serilog.Core;
 using Statify.Converters;
 using Statifylib.Data.Models;
 using StatifyLib.Data.Models;
@@ -98,6 +100,8 @@ namespace Statify
             TopTracksChart.Series = TrackSeries;
             TopTracksChart.XAxes = XAxes;
             TopTracksChart.YAxes = YAxes;
+            
+            Log.Logger.Information("Loaded Artist Detail Page");
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)

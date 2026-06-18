@@ -3,6 +3,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using Serilog;
 using Statifylib.Data.Models;
 using Statifylib.Domain;
 using Track = Statifylib.Data.Models.Track;
@@ -63,6 +64,8 @@ namespace Statify
 
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
+            
+            Log.Logger.Information("Loaded Playlist Detail Page");
         }
 
         private void ButtonViewOnSpotify_Click(object sender, RoutedEventArgs e)

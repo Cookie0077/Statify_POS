@@ -3,6 +3,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using Serilog;
 using Statifylib.Data.Models;
 using Statifylib.Domain;
 
@@ -53,6 +54,8 @@ namespace Statify
 
             LoadingOverlay.Visibility = Visibility.Collapsed;
             ContentGrid.Visibility = Visibility.Visible;
+            
+            Log.Logger.Information("Loaded Playlist Page");
         }
     }
 }
