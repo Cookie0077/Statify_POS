@@ -23,11 +23,11 @@ public partial class MainWindow : Window
     private PlaylistPage playlistPage;
     private User CurentUser;
 
-    private bool loginwindowoff = false;
+    private bool loginwindowoff = true;
 
     private AppController appController = new AppController();
     private DispatcherTimer timer;
-    private bool isTimerRunning = false;
+    private bool isTimerRunning;
 
     public MainWindow()
     {
