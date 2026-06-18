@@ -23,7 +23,7 @@ public partial class MainWindow : Window
     private PlaylistPage playlistPage;
     private User CurentUser;
 
-    private bool loginwindowoff = true;
+    private bool loginwindowoff = false;
 
     private AppController appController = new AppController();
     private DispatcherTimer timer;
@@ -141,16 +141,18 @@ public partial class MainWindow : Window
             Mainframe.Navigate(mainPage); 
             this.Show(); 
         }
-        else
-        {
-            Application.Current.Shutdown();
-        }
     }
 
 
-    private void ButtonChangeNaem_OnClick(object sender, RoutedEventArgs e)
+    private void ButtonChangeName_OnClick(object sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        ChangeUsernameWindow usernameWindow = new ChangeUsernameWindow(appController);
+
+        if (usernameWindow.ShowDialog() == true)
+        {
+            this.CurentUser = usernameWindow.user;
+            Labelusername.Content = CurentUser.Name;
+        }
     }
 
 
@@ -168,5 +170,37 @@ public partial class MainWindow : Window
         object curPage = Mainframe.Content;
         await mainPage.appController.SyncUser();
         Log.Logger.Information("TrackRecord Table refreshed");
+    }
+
+    private void ButtonDeleteAccount_OnClick(object sender, RoutedEventArgs e)
+    {
+        DeleteUserWindow deletwindow = new DeleteUserWindow(appController);
+
+        if (deletwindow.ShowDialog()== true)
+        {
+            UserDropdownPopup.IsOpen = false;
+
+            this.Hide();
+
+            LoginWindow loginWindow = new LoginWindow(appController);
+            if (loginWindow.ShowDialog() == true)
+            {
+                CurentUser = loginWindow.UserAPI;
+                mainPage = new MainPage(appController);
+                artistPage = new ArtistPage(appController);
+                trackPage = new TrackPage(appController);
+                playlistPage = new PlaylistPage(appController);
+                Labelusername.Content = CurentUser.Name;
+
+                if (CurentUser.Image == null)
+                    ImageProfile.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/user.png"));
+                else
+                    ImageProfile.Source = new BitmapImage(new Uri(CurentUser.Image));
+
+                Log.Logger.Information("User logged in: {Name}", CurentUser.Name);
+                Mainframe.Navigate(mainPage);
+                this.Show();
+            }
+        }
     }
 }

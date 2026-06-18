@@ -12,4 +12,6 @@ public interface IUserService
     Task<User> LoginUser(UserRequest user);
     Task<User> RegisterUser(UserRequest userRequest);
     Task<List<DailyListening>> GetDailyListening();
+    Task<User> UpdateUser(UpdateUser user);
+    Task DeleteUser();
 }

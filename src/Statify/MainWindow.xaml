@@ -72,10 +72,11 @@ yeah so that goes for every page
                         <Border Background="{StaticResource SurfaceBrush}" CornerRadius="22" Padding="18 8"
                                 Margin="0 0 14 0">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <Border Width="26" Height="26" CornerRadius="13" Margin="0 0 10 0" ClipToBounds="True">
-                                    <Image x:Name="ImageProfile" Width="26" Height="26" Stretch="UniformToFill">
+                                <Border Width="26" Height="26" CornerRadius="13" Margin="0 0 10 0" ClipToBounds="True" Background="{StaticResource SurfaceBrush}"
+                                        BorderThickness="0">
+                                    <Image x:Name="ImageProfile" Width="26"  Height="26" Stretch="UniformToFill" >
                                         <Image.Clip>
-                                            <EllipseGeometry Center="13,13" RadiusX="13" RadiusY="13" />
+                                            <EllipseGeometry Center="13,13" RadiusX="13" RadiusY="13"/>
                                         </Image.Clip>
                                     </Image>
                                 </Border>
@@ -87,17 +88,17 @@ yeah so that goes for every page
                                        PlacementTarget="{Binding ElementName=Labelusername}"
                                        Placement="Bottom"
                                        StaysOpen="False"
+                                       Visibility="Hidden"
                                        AllowsTransparency="True"
                                        VerticalOffset="10">
                                     <Border Background="{StaticResource SurfaceBrush}"
+                                            BorderBrush="Transparent"
                                             CornerRadius="12"
-                                            Padding="6"
-                                            BorderBrush="{StaticResource HeroAccentBrush}"
-                                            BorderThickness="1">
+                                            Padding="6">
                                         <StackPanel MinWidth="170">
                                             <Button Content="Change Username"
                                                     HorizontalContentAlignment="Left"
-                                                    Click="ButtonChangeNaem_OnClick"
+                                                    Click="ButtonChangeName_OnClick"
                                                     Foreground="{StaticResource LightTextBrush}"
                                                     Background="Transparent"
                                                     BorderThickness="0"
@@ -105,6 +106,15 @@ yeah so that goes for every page
                                                     Cursor="Hand" />
                                             <Button Content="Logout"
                                                     Click="ButtonLogout_OnClick"
+                                                    HorizontalContentAlignment="Left"
+                                                    Foreground="{StaticResource LightTextBrush}"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Padding="12 9"
+                                                    Cursor="Hand" />
+                                            <Button Content="Delet Account"
+                                                    x:Name="ButtonDeleteAccount"
+                                                    Click="ButtonDeleteAccount_OnClick"
                                                     HorizontalContentAlignment="Left"
                                                     Foreground="{StaticResource LightTextBrush}"
                                                     Background="Transparent"

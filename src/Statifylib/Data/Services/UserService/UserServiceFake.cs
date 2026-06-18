@@ -34,4 +34,14 @@ public class UserServiceFake : IUserService
     {
         throw new NotImplementedException();
     }
+
+    public Task<User> UpdateUser(UpdateUser user)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteUser()
+    {
+        throw new NotImplementedException();
+    }
 }

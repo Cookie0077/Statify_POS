@@ -98,6 +98,16 @@ public class AppController
         return RegisteredUser;
     }
 
+    public async Task<User> UpdateUser(UpdateUser user)
+    {
+       User? updatedUser = await userService.UpdateUser(user);
+       return updatedUser;
+    }
+
+    public async Task DeleteUser()
+    {
+        await userService.DeleteUser();
+    }
     public async Task<List<Playlist>> GetPlaylists()
     {
         List<Playlist> playlists = await playlistService.GetPlaylists();

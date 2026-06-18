@@ -57,8 +57,8 @@ namespace StatifyLib.Data.Services.UserService
                 new KeyValuePair<string, string>("password", user.Password)
 
             };
-            var content = new FormUrlEncodedContent(data);
-            var result = await client.PostAsync("token/", content);
+            FormUrlEncodedContent content = new FormUrlEncodedContent(data);
+            HttpResponseMessage result = await client.PostAsync("token/", content);
             if (result.IsSuccessStatusCode)
             {
                 Token token = await result.Content.ReadFromJsonAsync<Token>();
@@ -77,6 +77,23 @@ namespace StatifyLib.Data.Services.UserService
         {
             List<DailyListening> result = await client.GetFromJsonAsync<List<DailyListening>>($"track_record/playtime");
             return result;
+        }
+
+        public async Task<User> UpdateUser(UpdateUser user)
+        {
+            HttpResponseMessage result = await client.PutAsJsonAsync("user/", user);
+            var error = await result.Content.ReadAsStringAsync();
+
+            User updatedUser = await result.Content.ReadFromJsonAsync<User>();
+
+
+            return updatedUser;
+        }
+
+        public async Task DeleteUser()
+        {
+            HttpResponseMessage result = await client.DeleteAsync("user/");
+            result.EnsureSuccessStatusCode();
         }
     }
 }

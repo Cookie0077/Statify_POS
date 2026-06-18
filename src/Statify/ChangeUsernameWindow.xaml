@@ -1,0 +1,51 @@
+﻿<Window x:Class="Statify.ChangeUsernameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="ChangeUsernameWindow" WindowState="Maximized" MinWidth="400" MinHeight="300" WindowStyle="None"
+        Background="{StaticResource AppBackgroundBrush}">
+
+    <Viewbox Stretch="Uniform">
+        <Grid Width="1600" Height="900">
+            <!-- Decorative accent shape -->
+            <Border Width="700" Height="700" CornerRadius="350"
+                    Background="{StaticResource HeroAccentBrush}"
+                    Opacity="0.15"
+                    HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                    Margin="0 0 0 -250" />
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="520">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 40">
+                    <Border Width="56" Height="56" CornerRadius="14" Background="{StaticResource PrimaryBrush}" Margin="0 0 16 0">
+                        <TextBlock Text="S" FontSize="28" FontWeight="Bold" Foreground="{StaticResource LightTextBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Statify" Style="{StaticResource SectionTitleStyle}"/>
+                        <TextBlock Text="Music Analytics" Style="{StaticResource MutedTextStyle}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Card -->
+                <Border Style="{StaticResource CardStyle}" Padding="40">
+                    <StackPanel>
+                        <TextBlock Text="ACCOUNT" Style="{StaticResource EyebrowTextStyle}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Change your username" Style="{StaticResource HeadlineTextStyle}" FontSize="28" HorizontalAlignment="Center" Margin="0 4 0 32"/>
+
+                        <TextBlock Text="New Username" Style="{StaticResource MutedTextStyle}" Margin="2 0 0 6"/>
+                        <TextBox x:Name="TextBoxNewUsername" Margin="0 0 0 28"/>
+
+                        <Button x:Name="ButtonConfirm" IsDefault="True" Content="Confirm" Style="{StaticResource AccentButtonStyle}" FontSize="18" Margin="0 0 0 12" Click="ButtonConfirm_OnClick"/>
+                        <Button x:Name="ButtonCancel" IsCancel="True" Content="Cancel" Style="{StaticResource SecondaryButtonStyle}" FontSize="16"  Click="ButtonCancel_OnClick"/>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+
+            <Button Content="✕" Style="{StaticResource IconButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="24" Click="ButtonBase_OnClick"/>
+        </Grid>
+    </Viewbox>
+
+</Window>
