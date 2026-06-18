@@ -20,7 +20,7 @@ public partial class MainWindow : Window
     private PlaylistPage playlistPage;
     private User CurentUser;
 
-    private bool loginwindowoff = true;
+    private bool loginwindowoff = false;
 
     public MainWindow()
     {
