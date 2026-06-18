@@ -60,6 +60,14 @@ yeah so that goes for every page
 
                     <!-- User actions -->
                     <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+
+                        <Button x:Name="ButtonRefreshUserTable"
+                                Content="⟳"
+                                Style="{StaticResource IconButtonStyle}"
+                                ToolTip="Refresh user table"
+                                Margin="0 0 10 0"
+                                Click="ButtonRefreshUserTable_Click" />
+
                         <Border Background="{StaticResource SurfaceBrush}" CornerRadius="22" Padding="18 8"
                                 Margin="0 0 14 0">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">

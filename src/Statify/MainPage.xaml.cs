@@ -20,7 +20,7 @@ namespace Statify
     /// </summary>
     public partial class MainPage : Page
     {
-        private AppController appController = new AppController();
+        public AppController appController = new AppController();
 
         public ISeries[] DailyListeningSeries { get; set; }
         public Axis[] XAxes { get; set; }

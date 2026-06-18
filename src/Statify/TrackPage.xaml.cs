@@ -21,7 +21,7 @@ namespace Statify
     /// </summary>
     public partial class TrackPage : Page
     {
-        private AppController appController = new();
+        public AppController appController = new();
 
         public ObservableCollection<TrackRecord> TopTracks { get; private set; } =
             new ObservableCollection<TrackRecord>();

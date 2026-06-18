@@ -17,7 +17,7 @@ namespace Statify
     public partial class PlaylistPage : Page
     {
         private int UserId;
-        private AppController appController = new AppController();
+        public AppController appController = new AppController();
 
         public ObservableCollection<Playlist> TopPlaylists { get; set; } = new ObservableCollection<Playlist>();
         public ObservableCollection<Track> Tracks { get; set; } = new ObservableCollection<Track>();

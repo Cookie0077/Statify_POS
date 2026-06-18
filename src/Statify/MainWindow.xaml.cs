@@ -3,6 +3,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using Serilog;
 using Statifylib.Data.Models;
 
@@ -22,6 +23,9 @@ public partial class MainWindow : Window
     private User CurentUser;
 
     private bool loginwindowoff = false;
+
+    private DispatcherTimer timer;
+    private bool isTimerRunning = false;
 
     public MainWindow()
     {
@@ -57,6 +61,14 @@ public partial class MainWindow : Window
         }
 
         Mainframe.Navigate(mainPage);
+
+        timer = new DispatcherTimer();
+        timer.Interval = TimeSpan.FromSeconds(30);
+        timer.Tick += (s, e) =>
+        {
+            isTimerRunning = false;
+            timer.Stop();
+        };
     }
 
     private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -140,5 +152,19 @@ public partial class MainWindow : Window
     }
 
 
-
+    private void ButtonRefreshUserTable_Click(object sender, RoutedEventArgs e)
+    {
+        if (isTimerRunning)
+        {
+            Log.Logger.Warning("Timer already running");
+            return;
+        }
+        
+        isTimerRunning = true;
+        timer.Start();
+        
+        object curPage = Mainframe.Content;
+        mainPage.appController.SyncUser(CurentUser.Id);
+        Log.Logger.Information("TrackRecord Table refreshed");
+    }
 }

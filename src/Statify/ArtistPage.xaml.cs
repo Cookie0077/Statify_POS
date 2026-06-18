@@ -19,7 +19,7 @@ namespace Statify
     /// </summary>
     public partial class ArtistPage : Page
     {
-        private AppController appController = new();
+        public AppController appController = new();
 
         public ISeries[] ArtistSeries { get; set; }
         public Axis[] XAxes { get; set; }
